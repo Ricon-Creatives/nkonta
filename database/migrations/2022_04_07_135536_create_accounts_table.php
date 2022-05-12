@@ -18,6 +18,7 @@ class CreateAccountsTable extends Migration
             $table->string('name');
             $table->string('code')->unique();
             $table->string('type');
+            $table->string('financial_statement')->nullable();
             $table->timestamps();
         });
     }

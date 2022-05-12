@@ -22,6 +22,11 @@ class CreateTransactionsTable extends Migration
             $table->string('type');
             $table->integer('category_id')->unsigned();
             $table->integer('reference_no')->unsigned();
+            $table->text('description_to_debit')->nullable();
+            $table->text('description_to_credit')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('contact_address')->nullable();
+            $table->date('expected_payment_date')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
