@@ -35,5 +35,9 @@ class Account extends Model
         return $this->hasMany(Total::class)->orderBy('code','asc');
     }
 
+    public function ScopeAccouttype($query,$type)
+    {
+        return $query->where('type',$type);
+    }
 
 }

@@ -88,7 +88,7 @@ class DownloadPDFController extends Controller
         ->get();
 
 
-        PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+        //PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
         // share data to view
         $data = ['debits' => $debits, 'credits' => $credits];
 

@@ -21,25 +21,25 @@
      @csrf
 
      <div class=" flex-row items-center justify-center mt-2 hidden">
-        <x-label for="type" :value="__('type')" class="w-2/12"/>
+        <x-label for="type" :value="__('type')" class="w-3/12"/>
 
-        <x-input id="type" class="block mt-1 w-10/12" type="type" name="type" :value="('income')" required autofocus />
+        <x-input id="type" class="block mt-1 w-9/12" type="type" name="type" :value="('income')" required autofocus />
     </div>
 
      <!-- Date -->
      <div class="flex flex-row items-center justify-center mt-2">
-         <x-label for="date" :value="__('Date')" class="w-2/12"/>
+         <x-label for="date" :value="__('Date')" class="w-3/12"/>
 
-         <x-input id="date" class="block mt-1 w-10/12" type="date" name="date" :value="old('date')" required autofocus />
+         <x-input id="date" class="block mt-1 w-9/12" type="date" name="date" :value="old('date')" required autofocus />
      </div>
-     <!-- Account -->
+     <!-- Account to debit-->
      <div class="flex flex-row items-center justify-center mt-2">
-         <x-label for="account" :value="__('Account')" class="w-2/12"/>
+         <x-label for="account" :value="__('Account To Debit')" class="w-3/12"/>
 
-         <div class="flex w-10/12 mt-1">
+         <div class="flex w-9/12 mt-1">
             <select class="form-select appearance-none block py-1.5 text-base font-normal text-gray-600
             bg-white bg-no-repeat transition ease-in-out m-0
-            focus:text-gray-600 focus:bg-white focus:outline-none" name="account" required>
+            focus:text-gray-600 focus:bg-white focus:outline-none" name="account" id="account" onchange="checkValue(this,'extraField')" required>
               <option selected>Select Account</option>
               @foreach($accounts as $account)
               @if ($account->type == 'Asset')
@@ -49,15 +49,36 @@
           </select>
           </div>
      </div>
-     <!-- Category -->
-     <div class="flex flex-row items-center justify-center mt-2">
-         <x-label for="category" :value="__('Category')" class="w-2/12"/>
 
-         <div class="flex w-10/12 mt-1">
+      <!-- Description To Debit -->
+      <div class="flex flex-row items-center justify-center mt-2">
+        <x-label for="description" :value="__('Narration To Debit')" class="w-3/12"/>
+
+        <textarea name="description_to_debit"
+     class="form-control block w-9/12  mt-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-200
+       rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     rows="2"
+     placeholder="Your message"
+   ></textarea>
+    </div>
+
+     <!-- Amount -->
+     <div class="flex flex-row items-center justify-center mt-2">
+        <x-label for="amount" :value="__('Amount')" class="w-3/12" />
+
+        <x-input id="amount" class="block mt-1 w-9/12" type="number" name="amount" :value="old('amount')"  step="any" required autofocus />
+    </div>
+
+
+     <!-- Acount to credit-->
+     <div class="flex flex-row items-center justify-center mt-2">
+         <x-label for="category" :value="__('Acount To Credit')" class="w-3/12"/>
+
+         <div class="flex w-9/12 mt-1">
             <select class="form-select appearance-none block py-1.5 text-base font-normal text-gray-600
             bg-white bg-no-repeat transition ease-in-out m-0
-            focus:text-gray-600 focus:bg-white focus:outline-none" name="category" required>
-              <option selected>Select Category</option>
+            focus:text-gray-600 focus:bg-white focus:outline-none" name="category" onchange="checkValue(this,'extraField')" required>
+              <option selected>Select Acount</option>
                @foreach($accounts as $account)
               @if ($account->type != 'Asset' )
               <option value="{{$account->id}}">{{$account->name}}</option>
@@ -67,23 +88,38 @@
           </div>
 
      </div>
-     <!-- Amount -->
-     <div class="flex flex-row items-center justify-center mt-2">
-         <x-label for="amount" :value="__('Amount')" class="w-2/12" />
 
-         <x-input id="amount" class="block mt-1 w-10/12" type="number" name="amount" :value="old('amount')"  step="any" required autofocus />
-     </div>
-     <!-- Description -->
-     <div class="flex flex-row items-center justify-center mt-2">
-         <x-label for="description" :value="__('Description')" class="w-2/12"/>
+      <!-- Narration To Credit -->
+      <div class="flex flex-row items-center justify-center mt-2">
+        <x-label for="description" :value="__('Description To Credit')" class="w-3/12"/>
 
-         <textarea name="description"
-      class="form-control block w-10/12  mt-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-200
-        rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-      rows="2"
-      placeholder="Your message"
-    ></textarea>
-     </div>
+        <textarea name="description_to_credit"
+     class="form-control block w-9/12  mt-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-200
+       rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     rows="2"
+     placeholder="Your message"
+   ></textarea>
+    </div>
+
+    <div id="extraField" class="hidden">
+
+        <div class="flex flex-row items-center justify-center mt-2">
+            <x-label for="type" :value="__('Company Name')" class="w-3/12"/>
+
+            <x-input id="company_name" class="block mt-1 w-9/12" type="text" name="company_name" :value="old('company_name')" autofocus />
+        </div>
+        <div class="flex flex-row items-center justify-center mt-2">
+            <x-label for="contact_address" :value="__('Contact Address')" class="w-3/12"/>
+
+            <x-input id="contact_address" class="block mt-1 w-9/12" type="text" name="contact_address" :value="old('contact_address')" autofocus />
+        </div>
+        <div class="flex flex-row items-center justify-center mt-2">
+            <x-label for="payment_date" :value="__('Expected Payment Date')" class="w-3/12"/>
+
+            <x-input id="payment_date" class="block mt-1 w-9/12" type="text" name="payment_date" :value="old('payment_date')" autofocus />
+        </div>
+    </div>
+
      <div
      class="flex flex-shrink-0 flex-wrap items-center justify-end p-2 border-0 mt-3 rounded-b-md">
      <button type="button"
@@ -104,24 +140,24 @@
     @csrf
 
     <div class=" flex-row items-center justify-center mt-2 hidden">
-        <x-label for="type" :value="__('type')" class="w-2/12"/>
+        <x-label for="type" :value="__('type')" class="w-3/12"/>
 
-        <x-input id="type" class="block mt-1 w-10/12" type="type" name="type" :value="('expense')" required autofocus />
+        <x-input id="type" class="block mt-1 w-9/12" type="type" name="type" :value="('expense')" required autofocus />
     </div>
     <!-- Date -->
     <div class="flex flex-row items-center justify-center mt-2">
-        <x-label for="date" :value="__('Date')" class="w-2/12"/>
+        <x-label for="date" :value="__('Date')" class="w-3/12"/>
 
-        <x-input id="exp-date" class="block mt-1 w-10/12" type="date" name="date" :value="old('date')" required autofocus />
+        <x-input id="exp-date" class="block mt-1 w-9/12" type="date" name="date" :value="old('date')" required autofocus />
     </div>
     <!-- Account -->
     <div class="flex flex-row items-center justify-center mt-2">
-        <x-label for="account" :value="__('Account')" class="w-2/12"/>
+        <x-label for="account" :value="__('Account to credit')" class="w-3/12"/>
 
-        <div class="flex w-10/12 mt-1">
+        <div class="flex w-9/12 mt-1">
             <select class="form-select appearance-none block py-1.5 text-base font-normal text-gray-600
             bg-white bg-no-repeat transition ease-in-out m-0
-            focus:text-gray-600 focus:bg-white focus:outline-none" name="account" required>
+            focus:text-gray-600 focus:bg-white focus:outline-none" name="account" onchange="checkValue(this,'extraField-exp')" required>
               <option selected>Select Account</option>
               @foreach($accounts as $account)
               @if ($account->type == 'Asset')
@@ -129,15 +165,37 @@
               @endif
               @endforeach
           </select>
-          </div>    </div>
-    <!-- Category -->
-    <div class="flex flex-row items-center justify-center mt-2">
-        <x-label for="category" :value="__('Category')" class="w-2/12"/>
+          </div>
+            </div>
 
-        <div class="flex w-10/12 mt-1">
+             <!-- Narration To Credit -->
+      <div class="flex flex-row items-center justify-center mt-2">
+        <x-label for="description" :value="__('Narration To Credit')" class="w-3/12"/>
+
+        <textarea name="description_to_credit"
+     class="form-control block w-9/12  mt-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-200
+       rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+     rows="2"
+     placeholder="Your message"
+     ></textarea>
+    </div>
+
+
+        <!-- Amount -->
+        <div class="flex flex-row items-center justify-center mt-2">
+        <x-label for="amount" :value="__('Amount')" class="w-3/12"/>
+
+        <x-input id="exp-amount" class="block mt-1 w-9/12" type="number" name="amount" :value="old('amount')"  step="any" required autofocus />
+        </div>
+
+    <!-- Account To Debit -->
+    <div class="flex flex-row items-center justify-center mt-2">
+        <x-label for="category" :value="__('Account to debit')" class="w-3/12"/>
+
+        <div class="flex w-9/12 mt-1">
             <select class="form-select appearance-none block py-1.5 text-base font-normal text-gray-600
             bg-white bg-no-repeat transition ease-in-out m-0
-            focus:text-gray-600 focus:bg-white focus:outline-none" name="category" required>
+            focus:text-gray-600 focus:bg-white focus:outline-none" name="category" onchange="checkValue(this,'extraField-exp')" required>
               <option selected>Select Category</option>
               @foreach($accounts as $account)
               @if ($account->type != 'Asset' && $account->type != 'Revenue')
@@ -145,23 +203,37 @@
               @endif
               @endforeach
           </select>
-          </div>    </div>
-    <!-- Amount -->
-    <div class="flex flex-row items-center justify-center mt-2">
-        <x-label for="amount" :value="__('Amount')" class="w-2/12"/>
+          </div>
+     </div>
 
-        <x-input id="exp-amount" class="block mt-1 w-10/12" type="number" name="amount" :value="old('amount')"  step="any" required autofocus />
-    </div>
     <!-- Description -->
     <div class="flex flex-row items-center justify-center mt-2">
-        <x-label for="description" :value="__('Description')" class="w-2/12"/>
+        <x-label for="description" :value="__('Narration To Debit')" class="w-3/12"/>
 
-        <textarea name="description"
-      class="form-control block w-10/12  mt-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-200
+        <textarea name="description_to_debit"
+      class="form-control block w-9/12  mt-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-200
         rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
       rows="2"
       placeholder="Your message"
     ></textarea>
+    </div>
+    <div id="extraField-exp" class="hidden">
+
+        <div class="flex flex-row items-center justify-center mt-2">
+            <x-label for="type" :value="__('Company Name')" class="w-3/12"/>
+
+            <x-input id="company_name" class="block mt-1 w-9/12" type="text" name="company_name" :value="old('company_name')" autofocus />
+        </div>
+        <div class="flex flex-row items-center justify-center mt-2">
+            <x-label for="contact_address" :value="__('Contact Address')" class="w-3/12"/>
+
+            <x-input id="contact_address" class="block mt-1 w-9/12" type="text" name="contact_address" :value="old('contact_address')" autofocus />
+        </div>
+        <div class="flex flex-row items-center justify-center mt-2">
+            <x-label for="payment_date" :value="__('Expected Payment Date')" class="w-3/12"/>
+
+            <x-input id="payment_date" class="block mt-1 w-9/12" type="text" name="payment_date" :value="old('payment_date')" autofocus />
+        </div>
     </div>
     <div
             class="flex flex-shrink-0 flex-wrap items-center justify-end p-2 border-0 mt-3 rounded-b-md">

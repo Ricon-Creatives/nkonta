@@ -21,7 +21,6 @@ class CreateTransactionsTable extends Migration
             $table->double('amount',[15,2]);
             $table->string('type');
             $table->integer('category_id')->unsigned();
-            $table->text('description')->nullable();
             $table->integer('reference_no')->unsigned();
             $table->timestamps();
 

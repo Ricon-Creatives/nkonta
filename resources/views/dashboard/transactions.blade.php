@@ -94,20 +94,21 @@
                           {{ $transaction->reference_no }}
                       </td>
                       <td class="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">
-                       {{$transaction->description}}
+                       {{($transaction->type == 'debit') ? $transaction->description_to_debit : $transaction->description_to_credit}}
                       </td>
 
                       <td class="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">
-                          {{ ($transaction->type == 'debit') ? $transaction->amount : "" }}
+                          {{ ($transaction->type == 'debit') ? number_format($transaction->amount,2) : "" }}
                     </td>
                     <td class="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">
-                        {{ ($transaction->type == 'credit') ? $transaction->amount  : "" }}
+                        {{ ($transaction->type == 'credit') ? number_format($transaction->amount,2)  : "" }}
                       </td>
                     </tr>
 
                   @endforeach
 
                 </tbody>
+                {{ $transactions->links() }}
               </table>
             </div>
           </div>

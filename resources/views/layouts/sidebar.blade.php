@@ -32,14 +32,33 @@
                 </a>
             </li>
              <li>
-                <a href="{{ route('reports') }}" class="flex flex-col items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-400
-                {{ request()->routeIs('reports') ? ' bg-gray-400' : '' }} focus:shadow-outline">
-                    <span class="text-white text-3xl">
-                        <i class="fa-solid fa-file"></i>
-                    </span>
-                    <span class="hidden">Reports</span>
-                </a>
-            </li>
+                <a href="#" class="flex flex-col items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-400
+             focus:shadow-outline">
+                <x-dropdown align="right" width="full">
+                    <x-slot name="trigger">
+                            <span class="text-white text-3xl">
+                                <i class="fa-solid fa-file"></i>
+                            </span>
+                            <span class="hidden">Reports</span>
+                    </x-slot>
+
+                    <x-slot name="content" class="w-full mt-0">
+                        <!-- Authentication -->
+                        <a href="{{ route('reports.revenue') }}" class="{{ request()->routeIs('reports.revenue') ? ' text-blue-600' : '' }} focus:shadow-outline
+                            text-center block px-4 py-2 text-sm leading-5 ">
+                            <span class="">Revenue Reports</span>
+                        </a>
+                        <a href="{{ route('reports.expenses') }}" class="{{ request()->routeIs('reports.expenses') ? ' text-blue-600' : '' }} focus:shadow-outline
+                            text-center block px-4 py-2 text-sm leading-5 ">
+                            <span class="">Expense Reports</span>
+                        </a>
+                        <a href="{{ route('reports.tax') }}" class="{{ request()->routeIs('reports.tax') ? ' text-blue-600' : '' }} focus:shadow-outline
+                            text-center block px-4 py-2 text-sm leading-5 ">
+                            <span class="">Tax Reports</span>
+                        </a>
+                    </x-slot>
+                </x-dropdown>
+                </a></li>
             <li>
                 <a href="{{ route('summary') }}"class="flex flex-col items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-400 focus:bg-gray-200 focus:shadow-outline
                 {{ request()->routeIs('summary') ? ' bg-gray-400' : '' }}">

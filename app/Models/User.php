@@ -26,7 +26,10 @@ class User extends Authenticatable
         'phone',
         'password',
         'token',
-        'token_expires_at'
+        'token_expires_at',
+        'company_name',
+        'tin_no',
+        'locked'
     ];
 
     /**
@@ -48,13 +51,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $dates = [
+        'locked'
+    ];
+
     /**
      * Get all of the transactions for the User
      *
      */
     public function transactions()
     {
-        return $this->hasMany(Transaction::class,);
+        return $this->hasMany(Transaction::class);
     }
     /**
      * Get all of the transactions for the User
@@ -68,8 +75,8 @@ class User extends Authenticatable
         public function generateTwoFactorCode()
     {
         $this->timestamps = false;
-        $this->token = Keygen::numeric(7)->prefix('NK-')->generate();
-        $this->token_expires_at = now()->addMinutes(2);
+        $this->token = Keygen::alphanum(6)->generate('strtoupper');
+        $this->token_expires_at = now()->addMinutes(1);
         $this->save();
     }
 
@@ -78,6 +85,13 @@ class User extends Authenticatable
         $this->timestamps = false;
         $this->token = null;
         $this->token_expires_at = null;
+        $this->save();
+    }
+
+    public function lockUser()
+    {
+        $this->timestamps = false;
+        $this->locked = now();
         $this->save();
     }
 }

@@ -19,11 +19,16 @@ class Transaction extends Model
         'amount',
         'account_id',
         'category_id',
-        'description',
+        'description_to_credit',
+        'description_to_debit',
         'type',
         'user_id',
-        'reference_no'
+        'reference_no',
+        'company_name',
+        'contact_address',
+        'expected_payment_date',
     ];
+
 
     /**
      *
@@ -32,14 +37,6 @@ class Transaction extends Model
         return $this-> belongsTo(User::class);
       }
 
-      /**
-       * Get the category that owns the Transactions
-       *
-       */
-      public function category()
-      {
-          return $this->belongsTo(Category::class);
-      }
 
        /**
        * Get the account that owns the Transactions
@@ -49,5 +46,6 @@ class Transaction extends Model
       {
           return $this->belongsTo(Account::class);
       }
+
 
 }

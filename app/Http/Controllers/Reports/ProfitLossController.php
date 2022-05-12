@@ -22,12 +22,13 @@ class ProfitLossController extends Controller
 
         $books = Total::where('user_id',$user)
         ->join('accounts', 'totals.account_id', '=', 'accounts.id')
-        ->whereDate('totals.created_at',Carbon::today())
-        ->whereBetween('accounts.code',[4000,5999])
-        ->orderBy('accounts.code')
+        ->whereDate('totals.created_at', Carbon::today())
+        ->orWhere('accounts.type','Expense')
+        ->where('accounts.type','Revenue')
+        ->orderBy('totals.created_at')
         ->get();
 
-        $totals = DB::table('totals')->where('user_id',$user)
+        /* $totals = DB::table('totals')->where('user_id',$user)
         ->join('accounts', 'totals.account_id', '=', 'accounts.id')
         ->whereDate('totals.created_at',Carbon::today())
         ->whereBetween('accounts.code',[4000,5999])
@@ -35,9 +36,10 @@ class ProfitLossController extends Controller
         ->groupBy('accounts.type')
         ->havingRaw('SUM(amount) > ?', [1])
         ->get();
+*/
 
+     // dd($books);
 
-        //dd($totals);
 
         return view('dashboard.profitLoss',compact('books'));
     }

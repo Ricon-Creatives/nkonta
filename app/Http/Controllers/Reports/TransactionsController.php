@@ -32,7 +32,7 @@ class TransactionsController extends Controller
         $user = auth()->user();
         $transactions = Transaction::with(['account'])->whereBelongsTo($user)
         ->whereDate('created_at',Carbon::today())
-        ->oldest()->get();
+        ->oldest()->paginate(10);
         $accounts = Account::get();
 
         return view('dashboard.transactions', compact('transactions','accounts'));
@@ -67,7 +67,8 @@ class TransactionsController extends Controller
             'amount' => ['required',],
             'account' => ['required'],
             'category' => ['required'],
-            'description' => ['required'],
+            'description_to_credit' => ['required'],
+            'description_to_debit' => ['required'],
             'type' => ['required'],
         ]);
 
@@ -78,7 +79,7 @@ class TransactionsController extends Controller
             'amount' => $request->amount,
             'account_id'=> $request->account,
             'category_id'=> $request->category,
-            'description'=> $request->description,
+            'description_to_debit'=> $request->description_to_debit,
             'type'=> ($request->type == 'income') ? "debit" : "credit",
             'reference_no' => $reference_no,
         ]);
@@ -90,7 +91,7 @@ class TransactionsController extends Controller
                 'amount' => $request->amount,
                 'account_id'=> $request->category,
                 'category_id'=> $request->category,
-                'description'=> $request->description,
+                'description_to_credit'=> $request->description_to_credit,
                 'type'=> ($request->type == 'income') ? "credit" : "debit" ,
                 'reference_no' => $reference_no,
             ]

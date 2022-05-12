@@ -1,8 +1,28 @@
 <x-guest-layout>
+    <div class="grid grid-cols-1 md:grid-cols-2 bg-gray-100">
+    <div>
+
+    <main class="flex justify-center mt-10 mx-auto max-w-7xl px-5 sm:mt-12 sm:px-6 md:mt-20 lg:mt-20 lg:px-8 xl:mt-40 ">
+        <div class="text-center lg:text-center">
+            <h2 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-5xl">
+            <span class="block xl:inline">Know how well your business is doing with</span>
+            </h2>
+            <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                <span class="block text-purple-900 xl:inline">nkonta.</span>
+                </h1>
+            <p class="mt-2 text-base text-gray-500 sm:mt-3 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-3 md:text-xl lg:mx-0">
+                Smart book keeping for small business.
+            </p>
+        </div>
+        </main>
+
+    </div>
+
+    <div>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="h-20 w-auto" />
+              <!--  <x-application-logo class="h-20 w-auto" />-->
             </a>
         </x-slot>
 
@@ -32,33 +52,29 @@
                                 required autocomplete="current-password" />
             </div>
 
-            <div class="block mt-4 items-center">
-                <!-- Remember Me -->
-                <label for="remember_me" class="inline-flex">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-
 
             <div class="flex items-center justify-center mt-4">
-                <x-button class="ml-3">
+                <x-button class="w-full text-center justify-center">
                     {{ __('Log in') }}
                 </x-button>
             </div>
 
-                  <!-- Forgot your password -->
-            <div class="block mt-2 text-center items-center">
+            <!-- Forgot your password -->
+            <div class="block mt-3 text-center">
                 @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
-            <a class="underline text-sm text-indigo-600 hover:text-gray-900 mx-3" href="{{ route('register') }}">
+            </div>
+            <div class="block mt-3 text-center items-center border-t border-gray-200 pt-3">
+            <a type="button" class="inline-flex items-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-900 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring
+             ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="{{ route('register') }}">
                 {{ __('Create an account') }}
             </a>
             </div>
         </form>
     </x-auth-card>
+    </div>
+    </div>
 </x-guest-layout>

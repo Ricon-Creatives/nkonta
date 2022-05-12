@@ -20,7 +20,7 @@ class TwoFactor
 
         if(auth()->check() && $user->token)
         {
-            if($user->token_expires_at->lt(now()))
+            if($user->token_expires_at < now())
             {
                 $user->resetTwoFactorCode();
                 auth()->logout();
