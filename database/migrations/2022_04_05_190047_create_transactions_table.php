@@ -17,7 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->date('date');
-            $table->integer('account_id')->unsigned();
+            $table->unsignedBigInteger('account_id');
             $table->double('amount',[15,2]);
             $table->string('type');
             $table->integer('category_id')->unsigned();
