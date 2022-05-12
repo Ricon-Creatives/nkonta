@@ -46,9 +46,9 @@
 
             <!--TIN -->
             <div class="mt-2">
-                <x-label for="tin" :value="__('Tin')" />
+                <x-label for="tin" :value="__('Tin No.')" />
 
-                <x-input id="tin" class="block mt-1 w-full" type="text" name="tin" :value="old('tin')" required autofocus />
+                <x-input id="tin" class="block mt-1 w-full" type="text" name="tin_no" :value="old('tin')" required autofocus />
             </div>
 
             </div>

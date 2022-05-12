@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required'],
             'company_name' => ['required','unique:users'],
-            'tin' => ['required','unique:users'],
+            'tin_no' => ['required','unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -49,7 +49,7 @@ class RegisteredUserController extends Controller
             'username' => $request->username,
             'email' => $request->email,
             'company_name' => $request->company_name,
-            'tin' => $request->tin,
+            'tin_no' => $request->tin,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
         ]);
