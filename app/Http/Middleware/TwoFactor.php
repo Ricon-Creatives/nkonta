@@ -26,7 +26,7 @@ class TwoFactor
                 auth()->logout();
 
                 return redirect()->route('login')
-                    ->withMessage('The two factor code has expired. Please login again.');
+                    ->withMessage('The code has expired. Please login again.');
             }
 
             if(!$request->is('verify*'))

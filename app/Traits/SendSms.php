@@ -28,13 +28,12 @@ use GuzzleHttp\Client;
         return redirect()->back()->with('message', 'Message has been sent successfully');
     }
 
-    public function initiateSmsGuzzle($destination, $message)
+    public function sendSmS($destination, $message)
     {
         $client = new Client();
         // $message = $msg;
         $response = $client->post(
         "http://sms.apavone.com:8080/bulksms/bulksms?username=tsg-teksup&password=Mirlin12&type=0&dlr=0&destination=$destination&source=Nkonta&message= $message");
-
 
         $response = json_decode($response->getBody(), true);
     }
@@ -53,7 +52,7 @@ use GuzzleHttp\Client;
             'response' => $this->RESPONSE_TYPE
         );
 
-        $url = "http://portal.bulksmsnigeria.net/api/";
+        $url = "http://sms.apavone.com:8080/bulksms/bulksms?";
 
         $ch = curl_init();
         curl_setopt_array($ch, array(

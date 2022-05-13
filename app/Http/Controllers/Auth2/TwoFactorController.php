@@ -24,7 +24,7 @@ class TwoFactorController extends Controller
         //generate
         $user->generateTwoFactorCode();
         //send sms
-        $this->initiateSmsGuzzle($user->phone,$user->token);
+        $this->sendSmS($user->phone,$user->token);
 
         return view('2FA.verify');
     }
@@ -45,16 +45,15 @@ class TwoFactorController extends Controller
         }
 
         return redirect()->back()
-            ->withErrors(['token' =>
-                'The code you have entered does not match']);
+            ->withMessage('The code you have entered does not match');
     }
 
     public function resend()
     {
         $user = auth()->user();
         $user->generateTwoFactorCode();
-        $this->initiateSmsGuzzle($user->phone,$user->token);
+        $this->sendSmS($user->phone,$user->token);
 
-        return view('2FA.verify')->withMessage('The two factor code has been sent again');
+        return view('2FA.verify')->withMessage('The code has been sent again');
     }
 }

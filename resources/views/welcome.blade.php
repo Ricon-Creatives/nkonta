@@ -38,7 +38,7 @@
             <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
               <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                 <div class="flex items-center justify-between w-full md:w-auto">
-                  <a href="#">
+                  <a href="/">
                     <span class="sr-only">Nkonta</span>
                     <x-application-logo class="h-20 w-auto" />
                 </a>
@@ -58,7 +58,7 @@
                 @if (Route::has('login'))
 
             @auth
-                <a href="{{ url('/home') }}" class="text-gray-500 font-medium dark:text-gray-500">Dashboard</a>
+                <a href="{{ url('/home') }}" class="text-gray-500 font-medium dark:text-gray-500">Home</a>
             @else
                 <a href="{{ route('login') }}" class="text-gray-500 font-medium dark:text-gray-500">Log in</a>
 

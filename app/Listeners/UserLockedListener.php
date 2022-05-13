@@ -2,9 +2,9 @@
 
 namespace App\Listeners;
 
+use \Illuminate\Auth\Events\Lockout;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Auth\Events\Lockout;
 use App\Models\User;
 
 class UserLockedListener
@@ -22,18 +22,17 @@ class UserLockedListener
     /**
      * Handle the event.
      *
-     * @param  object  $event
+     * @param  \Illuminate\Auth\Events\Lockout  $event
      * @return void
      */
     public function handle(Lockout $event)
     {
-       // var_dump($event);
+        ///dd($event);
 
-       if ($user = User::where('email', $event->request->email)->first()) {
+        if ($user = User::where('email', $event->request->email)->first()) {
 
-            //User::where('email', $event->request->email)->update(['locked' => now()]);
-           // $user->lockUser();
-           // $user->notify(new LockedOut);
-        }
+             $user->lockUser();
+            // $user->notify(new LockedOut);
+         }
     }
 }

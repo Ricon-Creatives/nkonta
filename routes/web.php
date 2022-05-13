@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth','twofactor']], function () {
 
 Route::get('/verify-code','Auth2\TwoFactorController@index')->name('verify.index');
-Route::post('/verify-code','Auth2\TwoFactorController@store')->name('verify.send');
+Route::post('/verify-code/check','Auth2\TwoFactorController@store')->name('verify.send');
 Route::get('verify/resend', 'Auth2\TwoFactorController@resend')->name('verify.resend');
 
 Route::get('/home','Dashboard\DashboardController@income')->name('home');

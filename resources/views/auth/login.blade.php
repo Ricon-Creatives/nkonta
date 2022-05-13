@@ -1,3 +1,10 @@
+@if(session()->has('message'))
+<div class="absolute right-0 p-1">
+    <div class="flex items-center px-4 py-4 rounded  text-slate-800 bg-slate-300" role="alert">
+        <p>{{ session()->get('message') }}</p>
+    </div>
+  </div>
+@endif
 <x-guest-layout>
     <div class="grid grid-cols-1 md:grid-cols-2 bg-gray-100">
     <div>
@@ -8,7 +15,7 @@
             <span class="block xl:inline">Know how well your business is doing with</span>
             </h2>
             <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                <span class="block text-purple-900 xl:inline">nkonta.</span>
+                <span class="block text-purple-900 xl:inline"><a href="/">nkonta.</a></span>
                 </h1>
             <p class="mt-2 text-base text-gray-500 sm:mt-3 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-3 md:text-xl lg:mx-0">
                 Smart book keeping for small business.
