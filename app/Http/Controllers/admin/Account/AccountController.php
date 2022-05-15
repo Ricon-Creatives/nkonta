@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Account;
 
 
-class AccountsController extends Controller
+class AccountController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

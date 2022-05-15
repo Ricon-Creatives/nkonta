@@ -6,10 +6,10 @@ Route::get('/dashboard', function () {
     return view('admin.layouts.index');
 })->name('dashboard');
 
-Route::get('/admin/dashboard/accounts', 'Admin\Account\AccountsController@index')->name('accounts');
-Route::get('/account/new', 'Admin\Account\AccountsController@create')->name('account.create');
-Route::post('/account/new', 'Admin\Account\AccountsController@store')->name('account.add');
-Route::delete('/account/{id}', 'Admin\Account\AccountsController@destroy')->name('account.delete');
+Route::get('/dashboard/accounts', 'Admin\Account\AccountController@index')->name('accounts');
+Route::get('/account/new', 'Admin\Account\AccountController@create')->name('account.create');
+Route::post('/account/new', 'Admin\Account\AccountController@store')->name('account.add');
+Route::delete('/account/{id}', 'Admin\Account\AccountController@destroy')->name('account.delete');
 
 //
 Route::get('file-import-export', 'Admin\Account\ExportImportController@fileImportExport')->name('file-import-export');
