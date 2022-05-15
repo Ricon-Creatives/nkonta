@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-require 'admin.php';
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +20,7 @@ Route::get('/', function () {
 //Route::resource('verify', 'Auth\TwoFactorController')->only(['index', 'store']);
 
 Route::group(['middleware' => ['auth','twofactor']], function () {
+    require 'admin.php';
 
 Route::get('/verify-code','Auth2\TwoFactorController@index')->name('verify.index');
 Route::post('/verify-code/check','Auth2\TwoFactorController@store')->name('verify.send');
@@ -41,7 +41,6 @@ Route::get('/balance-sheet','Reports\TotalController@index')->name('bal-sheet');
 Route::get('/reports/revenues', 'Reports\ReportController@revenue')->name('reports.revenue');
 Route::get('/reports/expenses', 'Reports\ReportController@expenses')->name('reports.expenses');
 Route::get('/reports/tax', 'Reports\ReportController@tax')->name('reports.tax');
-
 
 //DownloadPDF
 Route::get('/download/balance-sheet-pdf','Documents\DownloadPDFController@downloadBalSheetPdf')->name('download-pdf');
