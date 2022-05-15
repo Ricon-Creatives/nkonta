@@ -2,11 +2,11 @@
 <div class="flex flex-wrap bg-gray-100 w-full h-screen">
     <div :class="{'block': open, 'hidden': ! open}" class="hidden md:block md:w-1/12 sm:w-3/12 bg-indigo-900 p-2 z-10
      fixed h-full">
-        <div class="flex justify-center space-x-2 mb-16 bg-white">
+        <div class="flex justify-center space-x-2 mb-14">
              <!-- Logo -->
              <div class="shrink-0 flex items-center">
-                <a href="{{ route('home') }}" class="text-white">
-                    <x-application-logo class="h-20 w-auto" />
+                <a href="{{ route('home') }}" >
+                    <img src="{{ 'img/logo-03.png' }}" class="h-28 w-auto"/>
                 </a>
             </div>
 

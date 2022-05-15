@@ -1,9 +1,6 @@
 <x-app-layout>
-   <!-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard Menu') }}
-        </h2>
-    </x-slot>-->
+    <x-slot name="header">
+    </x-slot>
 
 
     <!-- Grid -->
@@ -49,7 +46,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 mt-8 bg-white">
         <div class="col-span-2 p-2 mx-1">
             <h3 class="font-bold text-center text-lg">Income And Expenditure</h3>
-            <div class=" flex items-center justify-center mt-4">
+            <div class=" flex items-center justify-center mt-4 border-r sm:border-r-0">
                 <div id="inc-exp" class="w-10/12">
 
                 </div>
@@ -57,11 +54,11 @@
         </div>
 
         <!-- ... -->
-        <div class="p-2">
+        <div class="p-2 items-center">
             <div class="flex justify-between">
                 <h3 class="font-bold text-lg">Activities</h3> <button class="border rounded-3xl px-3 py-1 text-sm">view all</button>
             </div>
-            <ul class="list-disc p-3 mt-4">
+            <ul class="list-disc p-3 mt-5">
                 <li>Now this is a story all about how, my life got flipped turned upside down</li>
                 <!-- ... -->
                 <li>Now this is a story all about how, my life got flipped turned upside down</li>

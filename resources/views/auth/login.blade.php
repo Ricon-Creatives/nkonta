@@ -6,10 +6,10 @@
   </div>
 @endif
 <x-guest-layout>
-    <div class="grid grid-cols-1 md:grid-cols-2 bg-gray-100">
+    <div class="grid grid-cols-1 md:grid-cols-2 bg-gray-100 items-center">
     <div>
 
-    <main class="flex justify-center mt-10 mx-auto max-w-7xl px-5 sm:mt-12 sm:px-6 md:mt-20 lg:mt-20 lg:px-8 xl:mt-40 ">
+    <main class="flex justify-center mx-auto max-w-7xl px-5 sm:px-6">
         <div class="text-center lg:text-center">
             <h2 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-5xl">
             <span class="block xl:inline">Know how well your business is doing with</span>
@@ -75,8 +75,8 @@
             @endif
             </div>
             <div class="block mt-3 text-center items-center border-t border-gray-200 pt-3">
-            <a type="button" class="inline-flex items-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-900 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring
-             ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="{{ route('register') }}">
+            <a type="button" class="inline-flex items-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-900 active:bg-green-600 focus:outline-none focus:border-gray-900
+                    disabled:opacity-25 transition ease-in-out duration-150" href="{{ route('register') }}">
                 {{ __('Create an account') }}
             </a>
             </div>
