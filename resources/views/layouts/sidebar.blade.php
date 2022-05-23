@@ -2,7 +2,7 @@
 <div class="flex flex-wrap bg-gray-100 w-full h-screen">
     <div :class="{'block': open, 'hidden': ! open}" class="hidden md:block md:w-1/12 sm:w-3/12 bg-indigo-900 p-2 z-10
      fixed h-full overflow-x-hidden">
-        <div class="flex justify-center space-x-2 mb-11">
+        <div class="flex justify-center space-x-2 mb-10">
              <!-- Logo -->
              <div class="shrink-0 flex items-center">
                 <a href="{{ route('home') }}" >

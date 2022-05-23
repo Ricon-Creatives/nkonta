@@ -14,23 +14,23 @@
                     <!--Table-->
                     <table class="min-w-full">
                         <!--Invoice-->
-                        <div class="w-full bg-white rounded-lg shadow-lg lg:w-1/3">
-                            <ul class="divide-y-2 font-bold">
-                                <li class="flex justify-between p-3 hover:bg-blue-600 hover:text-blue-200">
+                        <div class="w-full bg-white">
+                            <ul class="divide-x-2 font-bold">
+                                <li class="flex justify-between p-3">
                                     Supplier Name: {{ $trade->name }}
                                    <span>
                                     Contact Person: {{ $trade->contact_person }}
                                    </span>
                                 </li>
-                                <li class="flex justify-between p-3 hover:bg-blue-600 hover:text-blue-200">
+                                <li class="flex justify-between p-3">
                                     Contact Address: {{ $trade->address }}
                                   <span>
                                     Contact No: {{ $trade->contact_no}}
                                </span>
                                 </li>
-                                <li class="flex items-center justify-between p-3 hover:bg-blue-600 hover:text-blue-200">
+                                <li class="flex items-center justify-between p-3">
 
-                                    <span class="px-2 py-1 text-sm text-blue-200 bg-blue-600 rounded-full">
+                                    <span class="px-2 py-1 text-sm">
                                         Date: {{  \Carbon\Carbon::parse($trade->created_at)->format('D d-M-Y') }}
                                     </span>
                                 </li>

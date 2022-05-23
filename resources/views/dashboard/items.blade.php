@@ -76,7 +76,7 @@
                       <div class="flex flex-wrap -mx-2 mb-2">
                       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <x-label for="due_date" :value="__('Discount')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                        <x-input   class="block w-full sm:w-9/12" type="number" name="discount" step="any" required autofocus />
+                        <x-input   class="block w-full sm:w-9/12" type="number" name="discount" step="any" autofocus />
                     </div>
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <x-label for="due_date" :value="__('Total')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
