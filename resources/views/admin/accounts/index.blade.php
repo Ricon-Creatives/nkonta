@@ -55,6 +55,8 @@ Import</a>
        </td>
        <td class="px-4 py-3">
          <div class="flex items-center space-x-4 text-sm">
+            <form method="get" action="{{route('account.edit',$account->id)}}">
+                @csrf
            <button
              class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
              aria-label="Edit"
@@ -70,7 +72,8 @@ Import</a>
                ></path>
              </svg>
            </button>
-           <form method="post" action="{{route('account.delete',$account->id)}}">
+            </form>
+           <form method="post" action="{{route('account.destroy',$account->id)}}">
             @method('delete')
             @csrf
            <button

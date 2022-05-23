@@ -3,13 +3,14 @@
 <div
 class="px-4 py-3 mt-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 w-5/12"
 >
-<form action="{{ route('account.create') }}" enctype="form/html" method="POST">
+<form action="{{ route('account.update',$account->id) }}" enctype="form/html" method="POST">
+    @method('PUT')
     @csrf
     <label class="block text-sm">
         <span class="text-gray-700 dark:text-gray-400">Name</span>
         <input type="text"
           class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-          placeholder="Name" name="name"
+          placeholder="Name" name="name" value="{{ $account->name }}"
         />
       </label>
 
@@ -17,7 +18,7 @@ class="px-4 py-3 mt-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 w-5/12
         <span class="text-gray-700 dark:text-gray-400">Code</span>
         <input type="number"
           class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-          placeholder="Code" name="code"
+          placeholder="Code" name="code" value="{{ old('code') ?? $account->code }}"
         />
       </label>
 
@@ -28,6 +29,7 @@ class="px-4 py-3 mt-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 w-5/12
         <select
           class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
          name="type">
+         <option selected>{{ $account->type }}</option>
           <option>Asset</option>
           <option>Liability</option>
           <option>Equity</option>
@@ -41,8 +43,9 @@ class="px-4 py-3 mt-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 w-5/12
         <select
           class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
          name="financial_statement">
-          <option>Asset</option>
-          <option>Liability</option>
+         <option selected>Select Statement</option>
+          <option>Balance Sheet</option>
+          <option>Income Statement</option>
           <option>Equity</option>
         </select>
       </label>
