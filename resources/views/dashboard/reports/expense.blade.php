@@ -34,21 +34,21 @@
                 <a  href="#" onclick="generate('expenses','Expense-Report','header')" class="text-gray-700 block px-4 py-2 text-sm">
                     PDF
                    </a>
-               <!-- <a href="#" onclick="htmlToCSV('expenses','Expense-Report.csv')" class="text-gray-700 block px-4 py-2 text-sm">
+               <a href="#" onclick="htmlToCSV('expenses','Expense-Report.csv')" class="text-gray-700 block px-4 py-2 text-sm">
                      CSV
-                    </a>-->
+                    </a>
             </x-slot>
         </x-dropdown>
     </div>
 
      <!-- Date Range -->
-     <form method="POST" action="{{ route('search.expense') }}">
+     <form method="GET" action="{{ route('search.expense') }}">
         @csrf
     <div class="flex items-center justify-between">
 
-      <x-input id="from" class="block w-full py-1 rounded-r-none" type="date" name="from-date"  required  />
+      <x-input id="from" class="block w-full py-1 rounded-r-none" type="date" name="from_date"  required  />
       <span class="p-1 ">To</span>
-      <x-input id="to" class="block w-full py-1 rounded-none" type="date" name="to-date"  required  />
+      <x-input id="to" class="block w-full py-1 rounded-none" type="date" name="to_date"  required  />
       <x-button class="px-2 rounded-l-none">
           {{ __('Search') }}
       </x-button>

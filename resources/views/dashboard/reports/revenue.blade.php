@@ -14,14 +14,13 @@
   </x-slot>
 
   <!-- Link -->
-  <div class="flex items-center justify-between p-4">
-
+  <div class="sm:flex sm:items-center sm:justify-between justify-center sm:p-4">
         <!-- Exports -->
-        <div class="inline-block text-left">
+        <div class="inline-block text-left p-2">
             <x-dropdown align="right" width="full">
                 <x-slot name="trigger">
                     <button type="button" class="inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 text-white bg-purple-900 text-sm font-medium focus:outline-none
-                    focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+                    focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500 mb-2">
                     Export
                     <!-- Heroicon name: solid/chevron-down -->
                     <svg class="-mr-1 ml-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -42,17 +41,18 @@
         </div>
 
       <!-- Date Range -->
-      <form method="GET" action="{{ route('search.revenue') }}">
+      <form method="GET" action="{{ route('search.revenue') }}" class="p-2">
           @csrf
-      <div class="flex items-center justify-between">
-        <input class="hidden" type="text" value="Revenue" name="type"  required  />
-        <x-input id="from" class="block w-full py-1 rounded-r-none" type="date" name="from_date"
-        :value="old('from_date')" required  />
-        <span class="p-1 ">To</span>
-        <x-input id="to" class="block w-full py-1 rounded-none" type="date" name="to_date"
-        :value="old('to_date')" required  />
+      <div class="flex sm:items-center sm:justify-between justify-center w-full">
+              <input class="hidden" type="text" value="Revenue" name="type"  required  />
+              <x-input id="from" class="w-full py-1 rounded-r-none" type="date" name="from_date"
+              :value="old('from_date')" required  />
+              <div class="p-1">To</div>
+              <x-input id="to" class="w-full py-1 rounded-none" type="date" name="to_date"
+              :value="old('to_date')" required  />
+
         <x-button class="px-2 rounded-l-none">
-            {{ __('Search') }}
+            <i class="fa-solid fa-search"></i>
         </x-button>
     </div>
 </form>

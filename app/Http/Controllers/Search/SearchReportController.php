@@ -39,10 +39,11 @@ class SearchReportController extends Controller
 
         $transactions = Transaction::where('user_id',$user)
         ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
-        ->where('accounts.type',$request->type)
+        ->where('accounts.type','Expense')
         ->whereBetween('transactions.created_at',[$from,$to])
         ->paginate(10);
 
+        //dd($transactions);
         $transactions->appends($data);
 
         return view('dashboard.reports.expense',compact('transactions'));

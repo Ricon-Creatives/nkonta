@@ -63,6 +63,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class);
     }
+
     /**
      * Get all of the transactions for the User
      *
@@ -72,13 +73,33 @@ class User extends Authenticatable
         return $this->hasMany(Total::class,);
     }
 
-        public function generateTwoFactorCode()
+    /**
+     * Get all of the titles for the User
+     *
+     */
+    public function titles()
+    {
+        return $this->hasMany(Title::class);
+    }
+
+     /**
+     * Get all of the transactions for the User
+     *
+     */
+    public function items()
+    {
+        return $this->hasMany(Item::class,);
+    }
+
+
+    public function generateTwoFactorCode()
     {
         $this->timestamps = false;
         $this->token = Keygen::alphanum(6)->generate('strtoupper');
         $this->token_expires_at = now()->addMinutes(1);
         $this->save();
     }
+
 
         public function resetTwoFactorCode()
     {

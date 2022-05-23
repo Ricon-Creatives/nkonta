@@ -87,3 +87,10 @@ function generate(id,filename,header) {
     })
     doc.save(`${filename}.pdf`);
 }
+
+/********************************************************* */
+function stepper() {
+    return {
+        step: 1,
+    }
+}

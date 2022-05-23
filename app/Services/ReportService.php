@@ -53,6 +53,43 @@ class ReportService
         }
     }
 
+    public function storeTransaction($request, $type)
+    {
+
+        $date = Carbon::today();
+        $reference_no =  mt_rand(10000, 99999);
+
+        $data = auth()->user()->transactions()->create([
+            'date'=> $date,
+            'amount' => $request->total,
+            'account_id'=> $request->acc_dr,
+            'category_id'=> $request->acc_cr,
+           // 'description_to_debit'=> $request->description_to_debit,
+            'type'=> ($type == 'Selling') ? "debit" : "credit",
+            'reference_no' => $reference_no,
+        ]);
+
+        //if type = income
+        $copy = $data->replicate()->fill(
+            [
+                'date'=> $date,
+                'amount' => $request->total,
+                'account_id'=> $request->acc_cr,
+                'category_id'=> $request->acc_dr,
+                //'description_to_credit'=> $request->description_to_credit,
+                'type'=> ($type == 'Selling') ? "credit" : "debit" ,
+                'reference_no' => $reference_no,
+            ]
+        );
+
+        $copy->save();
+         //($copy);
+
+         $transactions = [$data,$copy];
+
+         $this->storeTotals($transactions);
+    }
+
 }
 
 

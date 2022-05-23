@@ -32,9 +32,9 @@
                 <a  href="#" onclick="generate('trialSummary','trial-balance','header')" class="text-gray-700 block px-4 py-2 text-sm">
                  PDF
                 </a>
-                <!--<a href="#" onclick="htmlToCSV('trialSummary','trial-balance.csv')" class="text-gray-700 block px-4 py-2 text-sm">
+                <a href="#" onclick="htmlToCSV('trialSummary','trial-balance.csv')" class="text-gray-700 block px-4 py-2 text-sm">
                      CSV
-                    </a>-->
+                    </a>
             </x-slot>
         </x-dropdown>
     </div>
