@@ -40,7 +40,7 @@
                 <div class="flex items-center justify-between w-full md:w-auto">
                   <a href="/">
                     <span class="sr-only">Nkonta</span>
-                    <x-application-logo class="h-20 w-auto" />
+                    <img src="{{asset('img/logo-01.png') }}" class="h-20 w-auto" />
                 </a>
                  <!-- <div class="-mr-2 flex items-center md:hidden">
                     <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">

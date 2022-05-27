@@ -8,14 +8,12 @@ Route::get('/dashboard', function () {
     return view('admin.layouts.index');
 })->name('dashboard');
 
-Route::get('/dashboard/accounts', 'Admin\Account\AccountController@index')->name('accounts');
-
-/*
-Route::get('/account/new', 'Admin\Account\AccountController@create')->name('account.create');
-Route::post('/account/new', 'Admin\Account\AccountController@store')->name('account.add');
-Route::delete('/account/{id}', 'Admin\Account\AccountController@destroy')->name('account.delete');
-*/
 Route::resource('account', 'Admin\Account\AccountController');
+Route::resource('transaction', 'Admin\Report\TransactionController');
+Route::resource('user', 'Admin\User\UserController');
+Route::resource('role', 'Admin\Tools\RoleController');
+//
+Route::put('/user/account/status/{id}', 'Admin\User\UnlockUsuerController@__invoke')->name('account.status');
 
 //
 Route::get('file-import-export', 'Admin\Account\ExportImportController@fileImportExport')->name('file-import-export');

@@ -40,6 +40,23 @@
         </x-dropdown>
     </div>
 
+    <!-- Date Range -->
+        <form method="GET" action="{{ route('profit-loss') }}" class="p-2">
+            @csrf
+        <div class="hidden sm:flex sm:items-center sm:justify-between justify-center w-full">
+            <div class="sm:flex">
+                <x-input id="from" class="w-full py-1 rounded-r-none" type="date" name="from_date"
+                :value="old('from_date')" required  />
+                <div class="p-1">To</div>
+                <x-input id="to" class="w-full py-1 rounded-none" type="date" name="to_date"
+                :value="old('to_date')" required  />
+            </div>
+
+            <x-button class="px-2 py-2 rounded">
+                Search
+            </x-button>
+        </div>
+    </form>
         </div>
 
        <!--Table-->

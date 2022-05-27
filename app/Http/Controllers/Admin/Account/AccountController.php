@@ -90,7 +90,13 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $account = Account::findOrFail($id);
+
+        $account->update($request->all());
+        $account->save();
+
+        return redirect()->route('accounts');
+
     }
 
     /**

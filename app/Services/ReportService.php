@@ -53,7 +53,7 @@ class ReportService
         }
     }
 
-    public function storeTransaction($request, $type)
+    public function storeTransaction($request,$type,$total)
     {
 
         $date = Carbon::today();
@@ -61,7 +61,7 @@ class ReportService
 
         $data = auth()->user()->transactions()->create([
             'date'=> $date,
-            'amount' => $request->total,
+            'amount' => $total,
             'account_id'=> $request->acc_dr,
             'category_id'=> $request->acc_cr,
            // 'description_to_debit'=> $request->description_to_debit,
@@ -73,7 +73,7 @@ class ReportService
         $copy = $data->replicate()->fill(
             [
                 'date'=> $date,
-                'amount' => $request->total,
+                'amount' => $total,
                 'account_id'=> $request->acc_cr,
                 'category_id'=> $request->acc_dr,
                 //'description_to_credit'=> $request->description_to_credit,

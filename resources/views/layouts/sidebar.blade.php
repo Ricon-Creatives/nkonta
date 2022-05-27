@@ -2,7 +2,7 @@
 <div class="flex flex-wrap bg-gray-100 w-full h-screen">
     <div :class="{'block': open, 'hidden': ! open}" class="hidden md:block md:w-1/12 sm:w-3/12 bg-indigo-900 p-2 z-10
      fixed h-full overflow-x-hidden">
-        <div class="flex justify-center space-x-2 mb-10">
+        <div class="flex justify-center space-x-2 mb-4">
              <!-- Logo -->
              <div class="shrink-0 flex items-center">
                 <a href="{{ route('home') }}" >
@@ -12,7 +12,7 @@
 
         </div>
 
-        <ul class="space-y-2 text-sm mt">
+        <ul class="space-y-2 text-sm mb-4">
             <li>
                 <a href="{{ route('home') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400
                 {{ request()->routeIs('home') ? ' bg-gray-400' : '' }} focus:shadow-outline">
@@ -86,7 +86,7 @@
             </li>
 
             <li>
-                <a href="{{ route('trade') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400 focus:bg-gray-200 focus:shadow-outline">
+                <a href="{{ route('trade.index') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400 focus:bg-gray-200 focus:shadow-outline">
                     <span class="text-white text-3xl">
                         <i class="fa-solid fa-cog"></i>
                     </span>

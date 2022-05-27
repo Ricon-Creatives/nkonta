@@ -12,14 +12,13 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/tailwind.output.css')}}" />
+        <link rel="stylesheet" href="{{ asset('css/tailwind.css')}}" />
+        <link rel="stylesheet" href="{{ mix('css/icons.css') }}">
 
         <!-- Scripts -->
         <script
-        src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
-        defer
-        ></script>
-        <script src="{{ asset('js/init-alpine.js') }}" defer></script>
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"  defer></script>
+        <script src="{{ asset('js/init-alpine.js') }}"></script>
     </head>
     <body>
         <div

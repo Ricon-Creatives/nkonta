@@ -1,5 +1,6 @@
 @extends('admin.layouts.index')
 @section('main')
+
  <!-- With actions -->
  <div class="flex items-center mb-4 mt-4">
 <a href="{{ route('account.create') }}"

@@ -50,7 +50,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'company_name' => $request->company_name,
             'tin_no' => $request->tin,
-            'phone' => $request->phone,
+            'phone' => '233'.intval($request->phone),
             'password' => Hash::make($request->password),
         ]);
 

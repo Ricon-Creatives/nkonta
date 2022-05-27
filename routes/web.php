@@ -47,10 +47,9 @@ Route::get('/create/new','Reports\TitleController@create')->name('create.title')
 Route::post('/create/new','Reports\TitleController@store')->name('new.title');
 //Item
 Route::get('/create/item', 'Reports\ItemController@create')->name('item.create');
-Route::post('/item/new','Reports\ItemController@store')->name('item.add');
-
+Route::post('/item/new','Reports\ItemController@store')->name('item.store');
 //
-Route::get('/trade', 'Reports\TradeController@index')->name('trade');
+Route::resource('trade', 'Reports\TradeController');
 //
 Route::get('/invoice/{id}', 'Reports\TitleController@show')->name('show.invoice');
 Route::get('/estimate/{id}', 'Documents\GenerateFileController@estimate')->name('show.estimate');
@@ -68,6 +67,10 @@ Route::get('/export/csv','Documents\ExportCSVController@export')->name('export.c
 Route::get('/search/reports/revenue','Search\SearchReportController@revenueFilter')->name('search.revenue');
 Route::get('/search/reports/expense','Search\SearchReportController@expenseFilter')->name('search.expense');
 Route::get('/search/reports/tax','Search\SearchReportController@taxFilter')->name('search.tax');
+Route::get('/search/reports/trial-summary','Search\SearchReportController@trialSummaryFilter')->name('search.trialSummary');
+Route::get('/search/reports/balance-sheet','Search\SearchReportController@balSheetFilter')->name('search.balance-sheet');
+Route::get('/search/reports/profit-loss','Search\SearchReportController@profitLossFilter')->name('search.profit-loss');
+
 
 
 

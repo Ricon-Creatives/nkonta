@@ -39,9 +39,11 @@
                         </svg>
                     </button>
                     <div x-show="show" class="absolute bg-white z-10 shadow-md w-40">
+                        <x-dropdown-link :href="route('dashboard')">
+                            {{ __('Admin') }}
+                        </x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">

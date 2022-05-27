@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="h-28 w-full" />
+                <x-application-logo class="" />
             </a>
         </x-slot>
 
@@ -41,7 +41,8 @@
             <div class="mt-2">
                 <x-label for="phone" :value="__('Phone')" />
 
-                <x-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autofocus />
+                <x-input id="phone" class="block mt-1 w-full" type="tel" name="phone" :value="old('phone')"
+                pattern="[0-1]{1}[0-9]{3}[0-9]{3}[0-9]{3}" placeholder="eg. 0201234567" required autofocus />
             </div>
 
             <!--TIN -->

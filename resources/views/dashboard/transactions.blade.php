@@ -11,11 +11,8 @@
      focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#addModal">
       Add Transaction
       </button>
-        <button type="button" class="inline-block px-6 py-2.5 bg-purple-900 text-white font-medium text-xs leading-tight rounded shadow-sm hover:bg-purple-700 hover:shadow-lg
-     focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#invoiceModal">
-      Create Invoice
-      </button>
-        </div>
+
+    </div>
 
         <!-- Select
             <div class="flex justify-start px-3">
@@ -79,7 +76,7 @@
 
                     <tr class="bg-white border-b">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                          {{ $transaction->date }}
+                          {{ \Carbon\Carbon::parse( $transaction->date)->format('D d-M-Y') }}
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         {{ $transaction->account->code }}

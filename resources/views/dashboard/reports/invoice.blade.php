@@ -61,11 +61,11 @@
                         </thead>
                         <tbody>
                             @php($subtotal=0)
-                            @foreach($trade->items as $item)
+                            @foreach($trade->items as $index => $item)
 
                             <tr class="bg-white border-b">
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                  {{ $item->item_no }}
+                                  {{ $index +1 }}
                               </td>
                               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                   {{ $item->item_name }}

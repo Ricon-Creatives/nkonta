@@ -4,11 +4,23 @@ namespace App\Http\Controllers\Reports;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ItemRequest;
 use App\Models\Title;
+use App\Services\ReportService;
 
 
 class TradeController extends Controller
 {
+     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(ReportService $reportService)
+    {
+        $this->reportService = $reportService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,7 +52,7 @@ class TradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       //
     }
 
     /**

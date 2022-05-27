@@ -29,10 +29,9 @@ class="px-4 py-3 mt-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 w-5/12
         <select
           class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
          name="type">
-         <option selected>{{ $account->type }}</option>
-          <option>Asset</option>
-          <option>Liability</option>
-          <option>Equity</option>
+          <option value="Asset" {{$account->type== 'Asset' ? 'selected= selected' : '' }}>Asset</option>
+          <option value="Liability" {{$account->type== 'Liability' ? 'selected= selected' : '' }}>Liability</option>
+          <option value="Equity" {{$account->type== 'Equity' ? 'selected= selected' : '' }}>Equity</option>
         </select>
       </label>
 
@@ -46,7 +45,6 @@ class="px-4 py-3 mt-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 w-5/12
          <option selected>Select Statement</option>
           <option>Balance Sheet</option>
           <option>Income Statement</option>
-          <option>Equity</option>
         </select>
       </label>
 
