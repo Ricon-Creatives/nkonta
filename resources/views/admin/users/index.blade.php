@@ -26,13 +26,13 @@ Import</a>
        <tr
          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
        >
-         <th class="px-4 py-3">Username</th>
-         <th class="px-4 py-3">Name</th>
-         <th class="px-4 py-3">Email</th>
-         <th class="px-4 py-3">Company Name</th>
-         <th class="px-4 py-3">Role</th>
-         <th class="px-4 py-3">Status</th>
-         <th class="px-4 py-3">Last Login</th>
+         <th class="px-3 py-3">Username</th>
+         <th class="px-3 py-3">Name</th>
+         <th class="px-3 py-3">Email</th>
+         <th class="px-3 py-3">Company Name</th>
+         <th class="px-3 py-3">Role</th>
+         <th class="px-3 py-3">Status</th>
+         <th class="px-3 py-3">Last Login</th>
          <th class="px-2 py-3">Actions</th>
        </tr>
      </thead>
@@ -41,16 +41,16 @@ Import</a>
      >
      @foreach ($users as $user)
      <tr class="text-gray-700 dark:text-gray-400">
-       <td class="px-4 py-3">
+       <td class="px-3 py-3">
          {{ $user->username }}
        </td>
-       <td class="px-4 py-3 text-sm">
+       <td class="px-3 py-3 text-sm">
         {{$user->name}}
        </td>
-       <td class="px-4 py-3 text-xs">
+       <td class="px-3 py-3 text-xs">
         {{ $user->email }}
        </td>
-       <td class="px-4 py-3 text-sm">
+       <td class="px-3 py-3 text-sm">
           {{ $user->company_name }}
        </td>
      <td class="px-2 py-3 text-sm">
@@ -58,17 +58,17 @@ Import</a>
          {{$role->name }}
          @endforeach
      </td>
-     <td class="px-4 py-3 text-sm">
+     <td class="px-3 py-3 text-sm">
          <span class="{{  ($user->locked) ? 'px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full
           dark:text-white dark:bg-orange-600' : ''  }}">
         {{ $user->locked }}
          </span>
      </td>
-     <td class="px-4 py-3 text-sm">
+     <td class="px-3 py-3 text-sm">
         {{$user->last_login_at }}
      </td>
-       <td class="px-4 py-3">
-         <div class="flex items-center space-x-4 text-sm">
+       <td class="px-3 py-3">
+         <div class="flex items-center space-x-3 text-sm">
             <form method="get" action="{{route('user.edit',$user->id)}}">
                 @csrf
            <button
