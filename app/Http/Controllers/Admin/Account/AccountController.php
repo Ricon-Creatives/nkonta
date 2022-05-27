@@ -53,7 +53,7 @@ class AccountController extends Controller
         $account->financial_statement = $request->financial_statement;
         $account->save();
 
-        return redirect()->route('accounts');
+        return redirect()->route('account.index');
 
     }
 
@@ -95,7 +95,7 @@ class AccountController extends Controller
         $account->update($request->all());
         $account->save();
 
-        return redirect()->route('accounts');
+        return redirect()->route('account.index');
 
     }
 
@@ -109,6 +109,6 @@ class AccountController extends Controller
     {
         Account::where('id', $id)->delete();
 
-        return redirect()->route('accounts');
+        return redirect()->route('account.index');
     }
 }
