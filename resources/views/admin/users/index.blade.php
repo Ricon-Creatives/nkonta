@@ -41,7 +41,7 @@ Import</a>
      >
      @foreach ($users as $user)
      <tr class="text-gray-700 dark:text-gray-400">
-       <td class="px-3 py-3">
+       <td class="px-3 py-3 text-sm">
          {{ $user->username }}
        </td>
        <td class="px-3 py-3 text-sm">
