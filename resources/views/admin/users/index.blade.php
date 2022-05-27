@@ -47,7 +47,7 @@ Import</a>
        <td class="px-3 py-3 text-sm">
         {{$user->name}}
        </td>
-       <td class="px-3 py-3 text-xs">
+       <td class="px-3 py-3 text-sm">
         {{ $user->email }}
        </td>
        <td class="px-3 py-3 text-sm">
