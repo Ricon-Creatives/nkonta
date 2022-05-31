@@ -16,7 +16,6 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->integer('title_id')->unsigned();
             $table->integer('item_no');
             $table->string('item_name');
             $table->double('price',[15,2]);
@@ -28,7 +27,6 @@ class CreateItemsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('title_id')->references('id')->on('titles');
         });
     }
 

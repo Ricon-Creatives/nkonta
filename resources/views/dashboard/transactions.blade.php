@@ -12,7 +12,24 @@
       Add Transaction
       </button>
 
+       <!-- <button type="button" class="inline-block px-6 py-2.5 bg-purple-900  text-white font-bold text-xs leading-tight rounded shadow-sm hover:bg-purple-700 hover:shadow-lg
+     focus:shadow-lg focus:outline-none focus:ring-0 border border-black active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#search">
+      Search
+      <i class="fa-solid fa-search"></i>
+      </button>-->
+          <!--Form-->
+    <form method="GET" action="{{ route('search.transaction') }}">
+        @csrf
+      <div class="flex flex-row items-center justify-center">
+        <x-input id="type" type="text" name="search" class="block w-full rounded border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200
+         focus:ring-opacity-50 py-1 mx-1" placeholder="Search..." required autofocus />
+    <button type="submit" class="inline-block px-6 py-2.5 bg-purple-900 text-white font-medium text-xs leading-tight rounded shadow-sm hover:bg-purple-700 hover:shadow-lg
+        focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out">
+        Search
+        </button>
     </div>
+    </form>
+        </div>
 
         <!-- Select
             <div class="flex justify-start px-3">
@@ -123,6 +140,19 @@
         </div>
       </div>
     </div>
+
+    <!--Search-->
+    <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="search" tabindex="-1" aria-labelledby="search" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
+          <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+
+            <div class="modal-body relative p-4">
+                @include('partials.search.index')
+            </div>
+
+          </div>
+        </div>
+      </div>
 
 
 </x-app-layout>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Transaction;
 use Illuminate\Support\Carbon;
 use App\Models\Total;
+use App\Models\Account;
 use DB;
 
 
@@ -136,6 +137,26 @@ class SearchReportController extends Controller
         //$transactions->appends($data);
 
         return view('dashboard.profitLoss',compact('books'));
+    }
+
+    public function transactionsFilter(Request $request)
+    {
+        $user = auth()->user();
+        $data = $request->all();
+        $search =\Request::get('search');
+
+        //generate the accounts for balance sheet
+        $transactions = Transaction::with(['account'])->whereBelongsTo($user)
+        ->where(function($query) use ($search){
+            $query->where('company_name', 'Like',"%$search%")->orWhere('type','Like',"%$search%")
+            ->orWhere('amount','Like',"%$search%")->orWhere('reference_no','Like',"%$search%");
+            })->paginate(10);
+
+            $accounts = Account::get();
+
+        $transactions->appends($data);
+
+        return view('dashboard.transactions',compact('transactions','accounts'));
     }
 
 }

@@ -16,7 +16,7 @@ class CreateTotalsTable extends Migration
         Schema::create('totals', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->integer('account_id')->unsigned();
+            $table->unsignedBigInteger('account_id');
             $table->string('type')->nullable();
             $table->string('slug')->unique();
             $table->double('amount',[15,2]);

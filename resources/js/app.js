@@ -8,3 +8,4 @@ Alpine.start();
 
 
 require('./components/IncomeExpenditure');
+require('./components/Search');

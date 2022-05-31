@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/pricing', function () {
+    return view('pricing');
+});
+
 //Route::resource('verify', 'Auth\TwoFactorController')->only(['index', 'store']);
 require 'admin.php';
 
@@ -70,6 +74,7 @@ Route::get('/search/reports/tax','Search\SearchReportController@taxFilter')->nam
 Route::get('/search/reports/trial-summary','Search\SearchReportController@trialSummaryFilter')->name('search.trialSummary');
 Route::get('/search/reports/balance-sheet','Search\SearchReportController@balSheetFilter')->name('search.balance-sheet');
 Route::get('/search/reports/profit-loss','Search\SearchReportController@profitLossFilter')->name('search.profit-loss');
+Route::get('/search/transactions','Search\SearchReportController@transactionsFilter')->name('search.transaction');
 
 
 

@@ -32,7 +32,6 @@ class UserLockedListener
         if ($user = User::where('email', $event->request->email)->first()) {
 
              $user->lockUser();
-            // $user->notify(new LockedOut);
          }
     }
 }

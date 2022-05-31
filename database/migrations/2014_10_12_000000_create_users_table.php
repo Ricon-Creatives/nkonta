@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->dateTime('token_expires_at')->nullable();
             $table->integer('isverified')->nullable();
             $table->timestamp('locked')->nullable();
+            $table->timestamp('last_login_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

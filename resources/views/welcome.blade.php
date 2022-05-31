@@ -60,13 +60,15 @@
             @auth
                 <a href="{{ url('/home') }}" class="text-gray-500 font-medium dark:text-gray-500">Home</a>
             @else
-                <a href="{{ route('login') }}" class="text-gray-500 font-medium dark:text-gray-500">Log in</a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-gray-500 font-medium dark:text-gray-500">Register</a>
-                @endif
             @endauth
-              @endif
+                <a href="{{ url('/pricing') }}" class="text-gray-500 font-medium dark:text-gray-500">Pricing</a>
+              @guest
+                <a href="{{ route('login') }}" class="text-gray-500 font-medium dark:text-gray-500">Log in</a>
+               @if (Route::has('register'))
+                <a href="{{ route('register') }}" class="ml-4 text-gray-500 font-medium dark:text-gray-500">Register</a>
+               @endif
+              @endguest
+             @endif
 
               </div>
             </nav>

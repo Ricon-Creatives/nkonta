@@ -89,8 +89,3 @@ function generate(id,filename,header) {
 }
 
 /********************************************************* */
-function stepper() {
-    return {
-        step: 1,
-    }
-}

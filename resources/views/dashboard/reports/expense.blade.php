@@ -45,7 +45,7 @@
      <form method="GET" action="{{ route('search.expense') }}">
         @csrf
     <div class="flex items-center justify-between">
-
+        <input class="hidden" type="text" value="Expense" name="type"  required  />
       <x-input id="from" class="block w-full py-1 rounded-r-none" type="date" name="from_date"  required  />
       <span class="p-1 ">To</span>
       <x-input id="to" class="block w-full py-1 rounded-none" type="date" name="to_date"  required  />

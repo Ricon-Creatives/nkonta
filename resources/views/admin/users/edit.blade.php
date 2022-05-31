@@ -82,7 +82,7 @@ class="px-4 py-3 mt-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 w-5/12
             <span class="text-gray-700 dark:text-gray-400">Password</span>
             <input type="password"
               class="block w-full sm:w-9/12 mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-              placeholder="Password" name="password" disabled
+              placeholder="Password" name="password"
             />
           </label>
         </div>
