@@ -96,19 +96,19 @@ class="flex md:flex-row items-center justify-center md:px-4 py-9"
     </p>
     <ul>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
-            No. User License - 1
+            No. User License - 3
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
             Financial Transactions <br>(Sales, Purchases, Revenue, Expense)
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
-            Dashboard - 10
+            Dashboard - 15
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
-            Financial Reporting - 4
+            Financial Reporting - 6
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
-            Financial Ratio - 4
+            Financial Ratio - 6
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
             Tax Returns <br>(Including VAT, COVID, NHIS, eLevy, Talk Tax)
@@ -143,19 +143,19 @@ class="flex md:flex-row items-center justify-center md:px-4 py-9"
     </p>
     <ul>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
-            No. User License - 1
+            No. User License - 10
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
             Financial Transactions <br>(Sales, Purchases, Revenue, Expense)
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
-            Dashboard - 10
+            Dashboard - 20
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
-            Financial Reporting - 4
+            Financial Reporting - 8
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
-            Financial Ratio - 4
+            Financial Ratio - 8
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
             Tax Returns <br>(Including VAT, COVID, NHIS, eLevy, Talk Tax)
@@ -193,19 +193,19 @@ class="flex md:flex-row items-center justify-center md:px-4 py-9"
     </p>
     <ul>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
-            No. User License - 1
+            No. User License - Unlimited
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
             Financial Transactions <br>(Sales, Purchases, Revenue, Expense)
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
-            Dashboard - 10
+            Dashboard - 20
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
-            Financial Reporting - 4
+            Financial Reporting - 10
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
-            Financial Ratio - 4
+            Financial Ratio - 10
         </li>
         <li class="text-sm font-inter leading-normal text-center font-medium text-black dark:text-white py-3 border-t border-gray-300">
             Tax Returns <br>(Including VAT, COVID, NHIS, eLevy, Talk Tax)
