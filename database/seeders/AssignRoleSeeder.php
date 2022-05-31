@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+
 
 class AssignRoleSeeder extends Seeder
 {
@@ -14,10 +16,7 @@ class AssignRoleSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('model_has_roles')->insert([
-            'role_id' => 4,
-            'model_type' => 'App\Models\User',
-            'model_id' => 1,
-        ]);
+       $user = User::where('email','nkonta@gmail.com')->first();
+       $user->assignRole('Administrator');
     }
 }
