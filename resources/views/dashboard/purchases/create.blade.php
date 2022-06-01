@@ -29,7 +29,8 @@
                         <div class="flex flex-wrap -mx-2 mb-6">
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                 <x-label for="contact_no" :value="__('Contact No.')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                                <x-input id="contact_no" class="block mt-1 w-9/12" type="number" name="contact_no" required autofocus />
+                                <x-input id="contact_no" class="block mt-1 w-9/12" type="tel" name="contact_no"
+                                placeholder="eg. 233501234567" required autofocus pattern="[0-3]{3}[0-9]{3}[0-9]{3}[0-9]{3}" required autofocus />
                             </div>
                               <div class="w-full md:w-1/2 px-3">
                                 <x-label for="contact_person" :value="__('Contact Person')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />

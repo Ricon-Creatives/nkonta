@@ -63,7 +63,8 @@ class SalesController extends Controller
      */
     public function show($id)
     {
-        //
+        $trade = Title::find($id);
+        return view('dashboard.reports.invoice' ,compact('trade'));
     }
 
     /**
