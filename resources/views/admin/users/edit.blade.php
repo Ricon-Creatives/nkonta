@@ -43,7 +43,7 @@ class="px-4 py-3 mt-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 w-5/12
             <span class="text-gray-700 dark:text-gray-400">Phone</span>
             <input type="text"
               class="block w-full sm:w-9/12 mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-              placeholder="Phone" name="phone" value="{{ old('phone') ?? $user->phone }}"
+              placeholder="Phone" name="phone" value="{{ old('phone') ?? $user->phone }}" pattern="[0-3]{3}[0-9]{3}[0-9]{3}[0-9]{3}"
             />
           </label>
         </div>

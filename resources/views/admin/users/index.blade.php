@@ -26,8 +26,8 @@ Import</a>
        <tr
          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
        >
-         <th class="px-3 py-3">Username</th>
-         <th class="px-3 py-3">Name</th>
+       <th class="px-3 py-3">Name</th>
+       <th class="px-3 py-3">Username</th>
          <th class="px-3 py-3">Email</th>
          <th class="px-3 py-3">Company Name</th>
          <th class="px-3 py-3">Role</th>
@@ -41,12 +41,12 @@ Import</a>
      >
      @foreach ($users as $user)
      <tr class="text-gray-700 dark:text-gray-400">
-       <td class="px-3 py-3 text-sm">
-         {{ $user->username }}
-       </td>
-       <td class="px-3 py-3 text-sm">
-        {{$user->name}}
-       </td>
+         <td class="px-3 py-3 text-sm">
+             {{$user->name}}
+         </td>
+        <td class="px-3 py-3 text-sm">
+            {{ $user->username }}
+        </td>
        <td class="px-3 py-3 text-sm">
         {{ $user->email }}
        </td>

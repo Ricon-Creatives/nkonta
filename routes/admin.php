@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix'=>'admin','middleware' => ['auth','twofactor']], function () {
+Route::group(['prefix'=>'admin','middleware' => ['auth','twofactor','can:view']], function () {
 
 Route::get('/dashboard', function () {
     return view('admin.layouts.index');

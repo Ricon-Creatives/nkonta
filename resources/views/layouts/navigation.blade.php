@@ -39,9 +39,13 @@
                         </svg>
                     </button>
                     <div x-show="show" class="absolute bg-white z-10 shadow-md w-40">
+
+                        @can('view')
                         <x-dropdown-link :href="route('dashboard')">
                             {{ __('Admin') }}
                         </x-dropdown-link>
+                        @endcan
+
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <x-dropdown-link :href="route('logout')"
