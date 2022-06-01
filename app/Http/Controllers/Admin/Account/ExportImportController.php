@@ -24,7 +24,7 @@ class ExportImportController extends Controller
     public function fileImport(Request $request)
     {
         Excel::import(new AccountsImport, $request->file('file')->store('temp'));
-        return redirect()->route('accounts');
+        return redirect()->route('account.index');
     }
 
     /**
