@@ -49,15 +49,17 @@ Route::get('/reports/tax', 'Reports\ReportController@tax')->name('reports.tax');
 //Title
 Route::get('/create/new','Reports\TitleController@create')->name('create.title');
 Route::post('/create/new','Reports\TitleController@store')->name('new.title');
+
+//
+Route::resource('purchases', 'Purchases\PurchasesController');
+Route::resource('sales', 'Sales\SalesController');
 //Item
 Route::get('/create/item', 'Reports\ItemController@create')->name('item.create');
 Route::post('/item/new','Reports\ItemController@store')->name('item.store');
-//
-Route::resource('trade', 'Reports\TradeController');
-//
-Route::get('/invoice/{id}', 'Reports\TitleController@show')->name('show.invoice');
-Route::get('/estimate/{id}', 'Documents\GenerateFileController@estimate')->name('show.estimate');
 
+
+//
+Route::get('/estimate/{id}', 'Documents\GenerateFileController@estimate')->name('show.estimate');
 
 //DownloadPDF
 Route::get('/download/balance-sheet-pdf','Documents\DownloadPDFController@downloadBalSheetPdf')->name('download-pdf');

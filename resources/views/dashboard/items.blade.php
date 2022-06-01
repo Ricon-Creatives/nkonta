@@ -17,11 +17,20 @@
 
                     <div class="flex flex-wrap -mx-2 mb-5">
                         <div class="w-full md:w-1/2 px-1 mb-6 md:mb-0">
-                          <x-label for="Name" :value="__('Supplier/Purchaser Name')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                            @if($title->type == 'Selling')
+                          <x-label for="Name" :value="__('Customer Name')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                           <h6> {{ $title->name }} </h6>
-                          <a href="{{ route('create.title') }}" class="underline text-sm text-blue-600 hover:text-blue-900 mt-3">
+                          <a href="{{ route('sales.create') }}" class="underline text-sm text-blue-600 hover:text-blue-900 mt-3">
                              Change
                             </a>
+                            @else
+                            <x-label for="Name" :value="__('Buyer\'s Name')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                          <h6> {{ $title->name }} </h6>
+                          <a href="{{ route('sales.create') }}" class="underline text-sm text-blue-600 hover:text-blue-900 mt-3">
+                             Change
+                            </a>
+
+                            @endif
                          </div>
 
                       </div>

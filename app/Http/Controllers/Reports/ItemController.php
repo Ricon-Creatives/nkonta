@@ -67,8 +67,8 @@ class ItemController extends Controller
             'price'=> $request->price,
             'acc_dr'=> $request->acc_dr,
             'acc_cr'=> $request->acc_cr,
-            'title_id'=> $title->id,
             'total' => $total,
+            'title_id'=> $title->id,
             'discount' => $request->discount,
         ]);
 
@@ -78,7 +78,8 @@ class ItemController extends Controller
         if($request->next){
          return redirect()->route('item.create');
         }else{
-        return redirect()->route('trade.index');
+
+        return ($type == 'Selling') ? redirect()->route('sales.index'):redirect()->route('purchases.index');
         }
 
 
@@ -92,7 +93,8 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        //
+        $trade = Title::find($id);
+        return view('dashboard.reports.invoice' ,compact('trade'));
     }
 
     /**
