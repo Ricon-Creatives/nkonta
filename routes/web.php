@@ -42,9 +42,9 @@ Route::get('/trial-summary','Reports\TrialSummaryController@index')->name('summa
 Route::get('/balance-sheet','Reports\TotalController@index')->name('bal-sheet');
 
 //
-Route::get('/reports/revenues', 'Reports\ReportController@revenue')->name('reports.revenue');
-Route::get('/reports/expenses', 'Reports\ReportController@expenses')->name('reports.expenses');
-Route::get('/reports/tax', 'Reports\ReportController@tax')->name('reports.tax');
+Route::get('/revenues', 'Reports\ReportController@revenue')->name('reports.revenue');
+Route::get('/expenses', 'Reports\ReportController@expenses')->name('reports.expenses');
+Route::get('/tax-reports', 'Reports\ReportController@tax')->name('reports.tax');
 
 //Title
 Route::get('/create/new','Reports\TitleController@create')->name('create.title');
