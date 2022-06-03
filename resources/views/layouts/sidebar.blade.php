@@ -94,7 +94,7 @@
 
     <!-- Page Content -->
     <div :class="{'w-full': open, 'w-full': ! open}" class="md:w-10/12 w-full">
-        <div @click="open = ! open" :class="{'block': open, 'hidden': ! open}" class="hidden bg-black opacity-60 w-full h-screen fixed">
+        <div @click="open = ! open" :class="{'block': open, 'hidden': ! open}" class="hidden bg-black opacity-60 w-full">
 
         </div>
         @include('layouts.navigation')

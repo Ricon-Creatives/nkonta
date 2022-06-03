@@ -11801,6 +11801,9 @@ select{
 .p-6{
   padding: 1.5rem;
 }
+.p-2\.5{
+  padding: 0.625rem;
+}
 .px-4{
   padding-left: 1rem;
   padding-right: 1rem;
@@ -11905,6 +11908,9 @@ select{
 }
 .pl-0{
   padding-left: 0px;
+}
+.pb-10{
+  padding-bottom: 2.5rem;
 }
 .text-left{
   text-align: left;
@@ -20502,10 +20508,6 @@ readers do not read off random characters that represent icons */
   .sm\:px-6{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-  }
-  .sm\:px-4{
-    padding-left: 1rem;
-    padding-right: 1rem;
   }
   .sm\:pb-16{
     padding-bottom: 4rem;

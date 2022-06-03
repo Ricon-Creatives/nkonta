@@ -77,7 +77,8 @@ Route::get('/search/reports/trial-summary','Search\SearchReportController@trialS
 Route::get('/search/reports/balance-sheet','Search\SearchReportController@balSheetFilter')->name('search.balance-sheet');
 Route::get('/search/reports/profit-loss','Search\SearchReportController@profitLossFilter')->name('search.profit-loss');
 Route::get('/search/transactions','Search\SearchReportController@transactionsFilter')->name('search.transaction');
-
+Route::get('/search/sales','Search\SearchReportController@sales')->name('search.sales');
+Route::get('/search/purchases','Search\SearchReportController@purchases')->name('search.purchases');
 
 
 

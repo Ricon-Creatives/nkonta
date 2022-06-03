@@ -68,22 +68,22 @@
               <table class="min-w-full" id="trialSummary">
                 <thead class="bg-white border-b border-gray-300">
                   <tr>
-                    <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
+                    <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                         REF_NO
                       </th>
-                      <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
+                      <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                           AMOUNT
                         </th>
-                        <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
+                        <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                           DESC
                         </th>
-                    <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
+                    <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                       DEBIT
                     </th>
-                    <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
+                    <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                       CREDIT
                     </th>
-                    <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
+                    <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                         DESC
                       </th>
                   </tr>
@@ -94,22 +94,22 @@
                     @foreach ($credits as $credit)
                     @if ($debit->reference_no === $credit->reference_no )
                     <tr class="bg-white border-b">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           {{ $debit->reference_no }}
                       </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           {{ number_format($debit->amount,2) }}
                         </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                         {{ $debit->description_to_debit }}
                     </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                         {{ $debit->account->name }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                         {{$credit->account->name }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                         {{ $credit->description_to_credit }}
                     </td>
                     </tr>
@@ -120,20 +120,20 @@
 
                   @endforeach
                   <tr class="bg-white border-b">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           Total
                       </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
+                      <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
                           {{ number_format($sum,2)}}
                       </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">
+                    <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
                     </td>
 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
+                    <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
 
                     </td>
                     </tr>

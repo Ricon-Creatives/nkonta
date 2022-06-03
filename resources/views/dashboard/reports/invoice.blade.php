@@ -39,22 +39,22 @@
 
                         <thead class="bg-white border-b border-gray-300">
                           <tr>
-                            <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
+                            <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                               ITEM NO.
                             </th>
-                            <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
+                            <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                                 ITEM NAME
                               </th>
-                              <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
+                              <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                                  QUANTITY
                                 </th>
-                                <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
+                                <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                                    UNIT PRICE
                                   </th>
-                            <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
+                            <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                              DISCOUNT(%)
                             </th>
-                            <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
+                            <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                               TOTAL PRICE
                             </th>
                           </tr>
@@ -64,104 +64,104 @@
                             @foreach($trade->items as $index => $item)
 
                             <tr class="bg-white border-b">
-                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                              <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                                   {{ $index +1 }}
                               </td>
-                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                              <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                                   {{ $item->item_name }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                                 {{ $item->qty }}
                             </td>
-                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                              <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                                   {{ number_format($item->price,2) }}
                               </td>
-                              <td class="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">
+                              <td class="text-sm text-gray-900 px-4 py-2 whitespace-nowrap">
                                   {{ $item->discount }}
                               </td>
-                              <td class="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">
+                              <td class="text-sm text-gray-900 px-4 py-2 whitespace-nowrap">
                                   {{number_format($item->total ,2)}}
                             </td>
                             </tr>
                             @php($subtotal += $item->total)
                           @endforeach
                           <tr class="bg-white">
-                            <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                               SUBTOTAL
                           </td>
-                            <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="text-sm text-gray-900 px-6 py-3 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 px-4 py-2 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900 px-6 py-3 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 px-4 py-2 whitespace-nowrap">
                                 {{number_format($subtotal,2) }}
                           </td>
                           </tr>
                           <tr class="bg-white">
-                            <td class="bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class="bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                              NHIS
                           </td>
-                            <td class="bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-6 py-3 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-6 py-3 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
                               -
                           </td>
                           </tr>
                           <tr class="bg-white">
-                            <td class="bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class="bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                              COVID
                           </td>
-                            <td class="bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-6 py-3 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-6 py-3 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
                               -
                           </td>
                           </tr>
                           <tr class="bg-white">
-                            <td class="bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class="bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                               VAT
                           </td>
-                            <td class="bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-6 py-3 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-6 py-3 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
                                 {{ $vat = number_format($subtotal * ($trade->vat/100),2) }}
                           </td>
                           </tr>
                           <tr class="bg-white">
-                            <td class=" bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class=" bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class=" bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class=" bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class=" bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class=" bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                               TOTAL
                           </td>
-                            <td class=" bg-white px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class=" bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="text-sm text-gray-900  bg-white px-6 py-3 whitespace-nowrap">
+                            <td class="text-sm text-gray-900  bg-white px-4 py-2 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900  bg-white px-6 py-3 whitespace-nowrap">
+                            <td class="text-sm text-gray-900  bg-white px-4 py-2 whitespace-nowrap">
                                 {{ number_format($subtotal,2) }}
                           </td>
                           </tr>

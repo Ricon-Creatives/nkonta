@@ -6,12 +6,14 @@
    <x-slot name="header">
     </x-slot>
 
-
          <!--Form-->
          <div class="flex flex-col px-4">
           <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 inline-block sm:min-w-md min-w-full sm:px-6 lg:px-8">
               <div class="overflow-hidden bg-white">
+                  <h1 class="text-lg text-center p-3 font-bold text-gray-800">
+                      Add Purchase
+                  </h1>
                 <div class="mx-auto px-4 py-10">
                     <form class="w-full" action="{{ route('purchases.store') }}" method="POST">
                         @csrf
@@ -38,7 +40,18 @@
                             </div>
                         </div>
                         <div class="flex flex-wrap -mx-2 mb-6">
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <x-label for="due_date" :value="__('Due Date  (in days)')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                                <x-input id="due_date" class="block mt-1 w-9/12" type="number" name="due_date" step="any" required autofocus />
+                            </div>
+
                           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <x-label for="vat" :value="__('VAT')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                             <x-input id="vat" class="block mt-1 w-9/12" type="number" name="vat"  step="any" required autofocus />
+                          </div>
+                        </div>
+                          <div class="flex flex-wrap -mx-2 mb-2">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 hidden">
                             <x-label for="account" :value="__('Type')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"/>
                             <div class="flex w-9/12 mt-1">
                                <select class="form-select appearance-none block py-1.5 text-base font-normal text-gray-600
@@ -50,16 +63,6 @@
                              </select>
                              </div>
                           </div>
-                          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                            <x-label for="vat" :value="__('VAT')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                             <x-input id="vat" class="block mt-1 w-9/12" type="number" name="vat"  step="any" required autofocus />
-                          </div>
-                        </div>
-                          <div class="flex flex-wrap -mx-2 mb-2">
-                          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                            <x-label for="due_date" :value="__('Due Date  (in days)')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                            <x-input id="due_date" class="block mt-1 w-9/12" type="number" name="due_date" step="any" required autofocus />
-                        </div>
                         </div>
                         <!--Button-->
                         <div class="left-0 right-0 mt-5">

@@ -62,14 +62,6 @@
    ></textarea>
     </div>
 
-     <!-- Amount -->
-     <div class="flex flex-row items-center justify-center mt-2">
-        <x-label for="amount" :value="__('Amount')" class="w-3/12" />
-
-        <x-input id="amount" class="block mt-1 w-9/12" type="number" name="amount" :value="old('amount')"  step="any" required autofocus />
-    </div>
-
-
      <!-- Acount to credit-->
      <div class="flex flex-row items-center justify-center mt-2">
          <x-label for="category" :value="__('Acount To Credit')" class="w-3/12"/>
@@ -118,6 +110,13 @@
 
             <x-input id="payment_date" class="block mt-1 w-9/12" type="text" name="payment_date" :value="old('payment_date')" autofocus />
         </div>
+    </div>
+
+     <!-- Amount -->
+     <div class="flex flex-row items-center justify-center mt-2">
+        <x-label for="amount" :value="__('Amount')" class="w-3/12" />
+
+        <x-input id="amount" class="block mt-1 w-9/12" type="number" name="amount" :value="old('amount')"  step="any" required autofocus />
     </div>
 
      <div
@@ -180,14 +179,6 @@
      ></textarea>
     </div>
 
-
-        <!-- Amount -->
-        <div class="flex flex-row items-center justify-center mt-2">
-        <x-label for="amount" :value="__('Amount')" class="w-3/12"/>
-
-        <x-input id="exp-amount" class="block mt-1 w-9/12" type="number" name="amount" :value="old('amount')"  step="any" required autofocus />
-        </div>
-
     <!-- Account To Debit -->
     <div class="flex flex-row items-center justify-center mt-2">
         <x-label for="category" :value="__('Account to debit')" class="w-3/12"/>
@@ -235,6 +226,13 @@
             <x-input id="payment_date" class="block mt-1 w-9/12" type="text" name="payment_date" :value="old('payment_date')" autofocus />
         </div>
     </div>
+    <!-- Amount -->
+    <div class="flex flex-row items-center justify-center mt-2">
+        <x-label for="amount" :value="__('Amount')" class="w-3/12"/>
+
+        <x-input id="exp-amount" class="block mt-1 w-9/12" type="number" name="amount" :value="old('amount')"  step="any" required autofocus />
+        </div>
+
     <div
             class="flex flex-shrink-0 flex-wrap items-center justify-end p-2 border-0 mt-3 rounded-b-md">
             <button type="button"

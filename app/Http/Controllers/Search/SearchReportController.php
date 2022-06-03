@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Transaction;
 use Illuminate\Support\Carbon;
 use App\Models\Total;
+use App\Models\Title;
 use App\Models\Account;
 use DB;
 
@@ -157,6 +158,48 @@ class SearchReportController extends Controller
         $transactions->appends($data);
 
         return view('dashboard.transactions',compact('transactions','accounts'));
+    }
+
+    public function sales(Request $request)
+    {
+        $user = auth()->user();
+        $data = $request->all();
+        $search =\Request::get('search');
+
+        //generate the accounts for balance sheet
+        $sales = Title::whereBelongsTo($user)->where('type','Selling')
+        ->where(function($query) use ($search){
+            $query->where('name', 'Like',"%$search%")->orWhere('vat','Like',"%$search%")
+            ->orWhere('address','Like',"%$search%")->orWhere('contact_no','Like',"%$search%")
+            ->orWhere('contact_person','Like',"%$search%")->orWhere('due_date','Like',"%$search%")
+           ;
+            })->paginate(10);
+
+
+        $sales->appends($data);
+
+        return view('dashboard.sales.index',compact('sales'));
+    }
+
+    public function purchases(Request $request)
+    {
+        $user = auth()->user();
+        $data = $request->all();
+        $search =\Request::get('search');
+
+        //generate the accounts for balance sheet
+        $purchases = Title::whereBelongsTo($user)->where('type','Buying')
+        ->where(function($query) use ($search){
+            $query->where('name', 'Like',"%$search%")->orWhere('vat','Like',"%$search%")
+            ->orWhere('address','Like',"%$search%")->orWhere('contact_no','Like',"%$search%")
+            ->orWhere('contact_person','Like',"%$search%")->orWhere('due_date','Like',"%$search%")
+            ;
+            })->paginate(10);
+
+
+        $purchases->appends($data);
+
+        return view('dashboard.purchases.index',compact('purchases'));
     }
 
 }
