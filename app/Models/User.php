@@ -93,6 +93,20 @@ class User extends Authenticatable
         return $this->hasMany(Item::class,);
     }
 
+    /*
+     * The companies that belong to this user
+     */
+    public  function company(){
+        return $this->belongsToMany(Company::class);
+    }
+
+    /*
+     * The companies that belong to this user
+     */
+    public  function firm(){
+        return $this->hasOne(Company::class);
+    }
+
 
     public function generateTwoFactorCode()
     {

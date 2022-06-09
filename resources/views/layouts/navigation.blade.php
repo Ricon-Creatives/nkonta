@@ -2,18 +2,17 @@
     <!-- Primary Navigation Menu -->
     <div class=" mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-end h-16">
-            <div class="flex">
-
-                <!-- Navigation Links
+           <!-- <div class="flex">
+                 Navigation Links
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
-                </div>-->
-            </div>
+                </div>
+            </div>-->
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+         <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Notifications -->
                 <div class="mx-3">
                     <x-dropdown align="right" width="48">
@@ -45,7 +44,9 @@
                             {{ __('Admin') }}
                         </x-dropdown-link>
                         @endcan
-
+                       <!-- <x-dropdown-link :href="route('profile')">
+                            {{ __('Profile') }}
+                        </x-dropdown-link>-->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <x-dropdown-link :href="route('logout')"

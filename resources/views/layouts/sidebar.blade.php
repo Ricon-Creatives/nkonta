@@ -1,6 +1,6 @@
 <!-- component -->
 <div class="flex flex-wrap bg-gray-100 w-full h-screen">
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden md:block md:w-2/12 sm:w-3/12 bg-indigo-900 p-2 z-10
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden md:block md:w-2/12 sm:w-3/12 bg-indigo-800 p-2 z-10
      fixed h-full overflow-x-hidden">
         <div class="flex justify-center space-x-2 mb-4">
              <!-- Logo -->
@@ -33,40 +33,69 @@
             </li>
 
             <li>
-                <div x-data="{ show: false }"  @click.away="show = false" class="flex flex-col items-center space-x-3 p-2 rounded-md font-medium hover:bg-gray-400
+                <div x-data="{isPagesMenuOpen: false}" class="flex flex-col items-center space-x-3 p-2 rounded-md font-medium hover:bg-gray-400
              focus:shadow-outline">
-                <button @click="show = ! show" type="button" class="flex flex-col items-center space-x-3 p-2  text-white font-medium hover:text-yellow-700 hover:border-yellow-300 focus:outline-none focus:text-yellow-700 transition duration-150 ease-in-out">
+                <button @click="isPagesMenuOpen = !isPagesMenuOpen" type="button" class="flex flex-col items-center space-x-3 p-2  text-white font-medium hover:text-gray-700 transition duration-150 ease-in-out">
                     <span class="text-white text-3xl">
                      <i class="fa-solid fa-bar-chart"></i>
                     </span>
                  <span class="">Reports</span>
                 </button>
-                <div x-show="show" class="absolute bg-white z-50 shadow-md">
-                    <a href="{{ route('reports.revenue') }}" class="{{ request()->routeIs('reports.revenue') ? ' text-blue-600' : '' }} focus:shadow-outline
-                        text-center block px-4 py-2 text-sm leading-5 ">
-                        <span class="">Revenue Reports</span>
-                    </a>
-                    <a href="{{ route('reports.expenses') }}" class="{{ request()->routeIs('reports.expenses') ? ' text-blue-600' : '' }} focus:shadow-outline
-                        text-center block px-4 py-2 text-sm leading-5 ">
-                        <span class="">Expense Reports</span>
-                    </a>
-                    <a href="{{ route('reports.tax') }}" class="{{ request()->routeIs('reports.tax') ? ' text-blue-600' : '' }} focus:shadow-outline
-                        text-center block px-4 py-2 text-sm leading-5 ">
-                        <span class="">Tax Reports</span>
-                    </a>
-                    <a href="{{ route('summary') }}" class="{{ request()->routeIs('summary') ? ' text-blue-600' : '' }} focus:shadow-outline
-                        text-center block px-4 py-2 text-sm leading-5 ">
+                    <template x-if="isPagesMenuOpen">
+                        <ul x-transition:enter="transition-all ease-in-out duration-300"
+                          x-transition:enter-start="opacity-25 max-h-0"
+                          x-transition:enter-end="opacity-100 max-h-xl"
+                          x-transition:leave="transition-all ease-in-out duration-300"
+                          x-transition:leave-start="opacity-100 max-h-xl"
+                          x-transition:leave-end="opacity-0 max-h-0"
+                          class="p-2 mt-2 space-y-2 max-h-40 overflow-x-hidden text-sm font-medium text-white rounded-md shadow-inner bg-indigo-900 w-full"
+                          aria-label="submenu"
+                        >
+                          <li
+                            class="px-2 py-1 transition-colors duration-150 text-white">
+                            <a href="{{ route('reports.revenue') }}" class="{{ request()->routeIs('reports.revenue') ? ' text-blue-600' : '' }} focus:shadow-outline
+                                text-center block text-sm leading-5 ">
+                                <span class="">Revenue Reports</span>
+                            </a>
+                          </li>
+                          <li
+                          class="px-2 py-1 transition-colors duration-150 text-white">
+                          <a href="{{ route('reports.expenses') }}" class="{{ request()->routeIs('reports.expenses') ? ' text-blue-600' : '' }} focus:shadow-outline
+                            text-center block text-sm leading-5 ">
+                            <span class="">Expense Reports</span>
+                        </a>
+                        </li>
+                        <li
+                        class="px-2 py-1 transition-colors duration-150 text-white">
+                        <a href="{{ route('reports.tax') }}" class="{{ request()->routeIs('reports.tax') ? ' text-blue-600' : '' }} focus:shadow-outline
+                            text-center block text-sm leading-5 ">
+                            <span class="">Tax Reports</span>
+                        </a>
+                      </li>
+                      <li
+                      class="px-2 py-1 transition-colors duration-150 text-white">
+                      <a href="{{ route('summary') }}" class="{{ request()->routeIs('summary') ? ' text-blue-600' : '' }} focus:shadow-outline
+                        text-center block text-sm leading-5 ">
                         <span class="">Trial Balance</span>
                     </a>
-                    <a href="{{ route('bal-sheet') }}" class="{{ request()->routeIs('bal-sheet') ? ' text-blue-600' : '' }} focus:shadow-outline
-                        text-center block px-4 py-2 text-sm leading-5 ">
-                        <span class="">Balance Sheet</span>
-                    </a>
+                    </li>
+                    <li
+                        class="px-2 py-1 transition-colors duration-150 text-white">
+                        <a href="{{ route('bal-sheet') }}" class="{{ request()->routeIs('bal-sheet') ? ' text-blue-600' : '' }} focus:shadow-outline
+                            text-center block text-sm leading-5 ">
+                            <span class="">Balance Sheet</span>
+                        </a>
+                    </li>
+                    <li
+                    class="px-2 py-1 transition-colors duration-150 text-white">
                     <a href="{{ route('profit-loss') }}" class="{{ request()->routeIs('profit-loss') ? ' text-blue-600' : '' }} focus:shadow-outline
-                        text-center block px-4 py-2 text-sm leading-5 ">
+                        text-center block text-sm leading-5 ">
                         <span class="">Prfoit & Loss</span>
                     </a>
-                </div>
+                    </li>
+                        </ul>
+                 </template>
+
                 </div>
             </li>
 
@@ -86,6 +115,15 @@
                     <span class="">Purchases</span>
                 </a>
             </li>
+
+          <!--  <li>
+                <a href="{{ route('employee.index') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400 focus:bg-gray-200 focus:shadow-outline">
+                    <span class="text-white text-3xl">
+                <i class="fa-solid fa-users"></i>
+                    </span>
+                    <span class="">Add User</span>
+                </a>
+            </li>-->
 
         </ul>
     </div>

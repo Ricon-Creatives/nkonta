@@ -25,11 +25,11 @@ Route::get('/pricing', function () {
 require 'admin.php';
 
 Route::group(['middleware' => ['auth','twofactor']], function () {
-
+//
 Route::get('/verify-code','Auth2\TwoFactorController@index')->name('verify.index');
 Route::post('/verify-code/check','Auth2\TwoFactorController@store')->name('verify.send');
 Route::get('verify/resend', 'Auth2\TwoFactorController@resend')->name('verify.resend');
-
+//
 Route::get('/home','Dashboard\DashboardController@income')->name('home');
 
 Route::get('/income-statement','Reports\ProfitLossController@index')->name('profit-loss');
@@ -41,25 +41,28 @@ Route::post('/transaction','Reports\TransactionsController@store')->name('add.tr
 Route::get('/trial-summary','Reports\TrialSummaryController@index')->name('summary');
 Route::get('/balance-sheet','Reports\TotalController@index')->name('bal-sheet');
 
-//
+//Reports
 Route::get('/revenues', 'Reports\ReportController@revenue')->name('reports.revenue');
 Route::get('/expenses', 'Reports\ReportController@expenses')->name('reports.expenses');
 Route::get('/tax-reports', 'Reports\ReportController@tax')->name('reports.tax');
-
 //Title
 Route::get('/create/new','Reports\TitleController@create')->name('create.title');
 Route::post('/create/new','Reports\TitleController@store')->name('new.title');
-
-//
+//Sales & Purchases
 Route::resource('purchases', 'Purchases\PurchasesController');
 Route::resource('sales', 'Sales\SalesController');
 //Item
 Route::get('/create/item', 'Reports\ItemController@create')->name('item.create');
 Route::post('/item/new','Reports\ItemController@store')->name('item.store');
-
-
 //
 Route::get('/estimate/{id}', 'Documents\GenerateFileController@estimate')->name('show.estimate');
+//
+Route::get('/profile', function () {
+    return view('dashboard.profile.index');
+})->name('profile');
+
+//
+Route::resource('employee', 'User\AddUserController');
 
 //DownloadPDF
 Route::get('/download/balance-sheet-pdf','Documents\DownloadPDFController@downloadBalSheetPdf')->name('download-pdf');
@@ -79,7 +82,6 @@ Route::get('/search/reports/profit-loss','Search\SearchReportController@profitLo
 Route::get('/search/transactions','Search\SearchReportController@transactionsFilter')->name('search.transaction');
 Route::get('/search/sales','Search\SearchReportController@sales')->name('search.sales');
 Route::get('/search/purchases','Search\SearchReportController@purchases')->name('search.purchases');
-
 
 
 });

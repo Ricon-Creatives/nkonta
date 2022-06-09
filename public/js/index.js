@@ -1,10 +1,10 @@
 
 const checkValue = (elem,id) => {
 
-   let selectedValue = elem.value;
+   let selectedValue = elem.text;
    let idValue = document.getElementById(`${id}`);
 
-    if (selectedValue == 5 || selectedValue == 16) {
+    if (selectedValue == 'Accounts Payable' || selectedValue == 'Accounts Recievable') {
         idValue.classList.remove('hidden');
         idValue.classList.add('block');
     }else{
