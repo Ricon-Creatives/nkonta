@@ -32,10 +32,10 @@
                 </a>
             </li>
 
-            <li>
-                <div x-data="{isPagesMenuOpen: false}" class="flex flex-col items-center space-x-3 p-2 rounded-md font-medium hover:bg-gray-400
+            <li  x-data="data()">
+                <div  class="flex flex-col items-center space-x-3 p-2 rounded-md font-medium hover:bg-gray-400
              focus:shadow-outline">
-                <button @click="isPagesMenuOpen = !isPagesMenuOpen" type="button" class="flex flex-col items-center space-x-3 p-2  text-white font-medium hover:text-gray-700 transition duration-150 ease-in-out">
+                <button @click="togglePagesMenu" type="button" class="flex flex-col items-center space-x-3 p-2  text-white font-medium hover:text-gray-700 transition duration-150 ease-in-out">
                     <span class="text-white text-3xl">
                      <i class="fa-solid fa-bar-chart"></i>
                     </span>

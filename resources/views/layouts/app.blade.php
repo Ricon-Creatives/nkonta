@@ -19,6 +19,7 @@
       <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" ></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/index.js') }}"></script>
+        <script src="{{ asset('js/init-alpine.js') }}" defer></script>
 
     </head>
     <body class="font-sans antialiased">
