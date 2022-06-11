@@ -6,8 +6,8 @@
   </div>
 @endif
 <x-guest-layout>
-    <div class="grid grid-cols-1 md:grid-cols-2 bg-gray-100 items-center">
-    <div>
+    <div class="grid grid-cols-1 md:grid-cols-2 bg-gray-100 items-center p-2">
+    <div class="hidden sm:block">
 
     <main class="flex justify-center mx-auto max-w-7xl px-5 sm:px-6">
         <div class="text-center lg:text-center">

@@ -1,6 +1,6 @@
 <!-- component -->
 <div class="flex flex-wrap bg-gray-100 w-full h-screen">
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden md:block md:w-2/12 sm:w-3/12 bg-indigo-800 p-2 z-10
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden md:block md:w-2/12 sm:w-3/12 w-6/12 bg-indigo-800 p-2 z-10
      fixed h-full overflow-x-hidden">
         <div class="flex justify-center space-x-2 mb-4">
              <!-- Logo -->
@@ -132,7 +132,7 @@
 
     <!-- Page Content -->
     <div :class="{'w-full': open, 'w-full': ! open}" class="md:w-10/12 w-full">
-        <div @click="open = ! open" :class="{'block': open, 'hidden': ! open}" class="hidden bg-black opacity-60 w-full">
+        <div @click="open = ! open" :class="{'block': open, 'hidden': ! open}" class="hidden absolute bg-black opacity-60 w-full">
 
         </div>
         @include('layouts.navigation')
