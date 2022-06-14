@@ -31,7 +31,7 @@ class TransactionsController extends Controller
     {
         $user = auth()->user();
         $transactions = Transaction::with(['account'])->whereBelongsTo($user)
-        ->whereDate('created_at',Carbon::today())
+       // ->whereDate('created_at',Carbon::today())
         ->oldest()->paginate(10);
         $accounts = Account::get();
 
