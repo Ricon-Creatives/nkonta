@@ -10,7 +10,7 @@
                 <div class="px-6 py-4">
                   <div class="text-sm mb-1 text-center">TOTAL INCOME</div>
                   <h1 class="font-bold text-gray-700 text-3xl text-center">
-                      GH&#8373;{{ number_format($totalRevenue,2) }}
+                      GHS {{ number_format($totalRevenue,2) }}
                 </h1>
                 </div>
 
@@ -22,7 +22,7 @@
                 <div class="px-6 py-4">
                   <div class="text-sm mb-1 text-center">TOTAL EXPENSES</div>
                   <p class="font-bold text-gray-700 text-3xl text-center">
-                    GH&#8373;{{ number_format($totalExpense,2) }}
+                    GHS {{ number_format($totalExpense,2) }}
                   </p>
                 </div>
               </div>
@@ -33,7 +33,7 @@
                 <div class="px-6 py-4">
                   <div class="text-sm mb-1 text-center">DEBTS DUE</div>
                   <p class="font-bold text-gray-700 text-3xl text-center">
-                    GH&#8373;25K
+                    GHS -
                   </p>
                 </div>
               </div>
