@@ -27,8 +27,8 @@ class TotalController extends Controller
         ->join('accounts', 'totals.account_id', '=', 'accounts.id')
         ->whereDate('totals.created_at', Carbon::today())
         ->where('accounts.type','!=','Revenue')->where('accounts.type','!=','Expense')
-        ->select('accounts.code',DB::raw('SUM(amount) as amount,accounts.type,accounts.name'))
-        ->groupBy('accounts.code')
+        //->select('accounts.code',DB::raw('SUM(amount) as amount,accounts.type,accounts.name'))
+        ->orderBy('accounts.code')
         ->get();
 
        /* //
@@ -59,7 +59,7 @@ class TotalController extends Controller
 
         //$totals =  $totalAssets->concat($totalLiab)->concat($totalEquity);
 
-      // dd($accounts);
+       //dd($accounts);
 
 
     return view('dashboard.balSheet', compact('accounts'))->with('account');
