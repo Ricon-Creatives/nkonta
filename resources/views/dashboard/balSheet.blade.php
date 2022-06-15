@@ -136,7 +136,7 @@
                     </td>
                     <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-center">
                     </td>
-                    <td  class="text-sm text-gray-900 text-center font-medium px-4 py-4">
+                    <td  class="text-sm text-gray-900 text-center font-medium px-4 py-2">
                         {{number_format($item->amount,2)}}
                     </td>
                     </tr>

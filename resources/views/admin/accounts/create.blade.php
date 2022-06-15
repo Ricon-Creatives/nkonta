@@ -3,7 +3,7 @@
 <div
 class="px-4 py-3 mt-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 w-5/12"
 >
-<form action="{{ route('account.create') }}" enctype="form/html" method="POST">
+<form action="{{ route('account.store') }}" enctype="form/html" method="POST">
     @csrf
     <label class="block text-sm">
         <span class="text-gray-700 dark:text-gray-400">Name</span>
