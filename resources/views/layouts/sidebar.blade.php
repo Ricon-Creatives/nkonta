@@ -52,42 +52,42 @@
                           aria-label="submenu"
                         >
                           <li
-                            class="px-2 py-1 transition-colors duration-150 text-white">
+                            class="px-2 py-0 transition-colors duration-150 text-white">
                             <a href="{{ route('reports.revenue') }}" class="{{ request()->routeIs('reports.revenue') ? ' text-blue-600' : '' }} focus:shadow-outline
                                 text-center block text-sm leading-5 ">
                                 <span class="">Revenue Reports</span>
                             </a>
                           </li>
                           <li
-                          class="px-2 py-1 transition-colors duration-150 text-white">
+                          class="px-2 py-0 transition-colors duration-150 text-white">
                           <a href="{{ route('reports.expenses') }}" class="{{ request()->routeIs('reports.expenses') ? ' text-blue-600' : '' }} focus:shadow-outline
                             text-center block text-sm leading-5 ">
                             <span class="">Expense Reports</span>
                         </a>
                         </li>
                         <li
-                        class="px-2 py-1 transition-colors duration-150 text-white">
+                        class="px-2 py-0 transition-colors duration-150 text-white">
                         <a href="{{ route('reports.tax') }}" class="{{ request()->routeIs('reports.tax') ? ' text-blue-600' : '' }} focus:shadow-outline
                             text-center block text-sm leading-5 ">
                             <span class="">Tax Reports</span>
                         </a>
                       </li>
                       <li
-                      class="px-2 py-1 transition-colors duration-150 text-white">
+                      class="px-2 py-0 transition-colors duration-150 text-white">
                       <a href="{{ route('summary') }}" class="{{ request()->routeIs('summary') ? ' text-blue-600' : '' }} focus:shadow-outline
                         text-center block text-sm leading-5 ">
                         <span class="">Trial Balance</span>
                     </a>
                     </li>
                     <li
-                        class="px-2 py-1 transition-colors duration-150 text-white">
+                        class="px-2 py-0 transition-colors duration-150 text-white">
                         <a href="{{ route('bal-sheet') }}" class="{{ request()->routeIs('bal-sheet') ? ' text-blue-600' : '' }} focus:shadow-outline
                             text-center block text-sm leading-5 ">
                             <span class="">Balance Sheet</span>
                         </a>
                     </li>
                     <li
-                    class="px-2 py-1 transition-colors duration-150 text-white">
+                    class="px-2 py-0 transition-colors duration-150 text-white">
                     <a href="{{ route('profit-loss') }}" class="{{ request()->routeIs('profit-loss') ? ' text-blue-600' : '' }} focus:shadow-outline
                         text-center block text-sm leading-5 ">
                         <span class="">Prfoit & Loss</span>

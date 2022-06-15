@@ -49,13 +49,13 @@
                                  QUANTITY
                                 </th>
                                 <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
-                                   UNIT PRICE
+                                   UNIT PRICE (GHS)
                                   </th>
                             <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                              DISCOUNT(%)
                             </th>
                             <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
-                              TOTAL PRICE
+                              TOTAL PRICE (GHS)
                             </th>
                           </tr>
                         </thead>
@@ -89,82 +89,82 @@
                           @php($vat = number_format($subtotal * ($trade->vat/100),2))
 
                           <tr class="bg-white">
-                            <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
+                          <td class="px-4 py-0 whitespace-nowrap text-sm font-bold text-gray-900">
                               SUBTOTAL
                           </td>
-                            <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="text-sm text-gray-900 px-4 py-2 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 px-4 py-0 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900 px-4 py-2 font-bold whitespace-nowrap">
+                            <td class="text-sm text-gray-900 px-4 py-0 font-bold whitespace-nowrap">
                                 {{number_format($subtotal,2) }}
                           </td>
                           </tr>
                           <tr class="bg-white">
-                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-bold font-medium text-gray-900">
+                          <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-bold font-medium text-gray-900">
                              NHIS
                           </td>
-                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-0 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-4 py-2 font-bold whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-0 font-bold whitespace-nowrap">
                               -
                           </td>
                           </tr>
                           <tr class="bg-white">
-                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
+                          <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-bold text-gray-900">
                              COVID
                           </td>
-                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-0 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-4 py-2 font-bold whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-0 font-bold whitespace-nowrap">
                               -
                           </td>
                           </tr>
                           <tr class="bg-white">
-                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
+                          <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-bold text-gray-900">
                               VAT
                           </td>
-                            <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-0 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-4 py-2 font-bold whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-0 font-bold whitespace-nowrap">
                                 {{ $vat }}
                           </td>
                           </tr>
                           <tr class="bg-white">
-                            <td class=" bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class=" bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class=" bg-white px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
+                          <td class=" bg-white px-4 py-0 whitespace-nowrap text-sm font-bold text-gray-900">
                               TOTAL
                           </td>
-                            <td class=" bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td class=" bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
-                            <td class="text-sm text-gray-900  bg-white px-4 py-2 whitespace-nowrap">
+                            <td class="text-sm text-gray-900  bg-white px-4 py-0 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900  bg-white px-4 py-2 font-bold whitespace-nowrap">
+                            <td class="text-sm text-gray-900  bg-white px-4 py-0 font-bold whitespace-nowrap">
                                 {{ number_format($subtotal + $vat,2)}}
                           </td>
                           </tr>

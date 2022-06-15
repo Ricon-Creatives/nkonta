@@ -12,6 +12,7 @@ Route::resource('account', 'Admin\Account\AccountController');
 Route::resource('transaction', 'Admin\Report\TransactionController');
 Route::resource('user', 'Admin\User\UserController');
 Route::resource('role', 'Admin\Tools\RoleController');
+Route::resource('trade', 'Admin\Report\TradeController');
 //
 Route::put('/user/account/status/{id}', 'Admin\User\UnlockUsuerController@__invoke')->name('account.status');
 

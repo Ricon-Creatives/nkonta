@@ -78,10 +78,10 @@
                           DESC
                         </th>
                     <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
-                      DEBIT
+                      DEBIT (GHS)
                     </th>
                     <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
-                      CREDIT
+                      CREDIT (GHS)
                     </th>
                     <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                         DESC

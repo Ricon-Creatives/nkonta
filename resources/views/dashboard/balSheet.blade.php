@@ -77,7 +77,7 @@
                         BF
                     </th>
                     <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-center">
-                        Amount
+                        Amount (GHS)
                     </th>
                 </tr>
                 </thead>

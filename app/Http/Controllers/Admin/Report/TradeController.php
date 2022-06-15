@@ -1,25 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Reports;
+namespace App\Http\Controllers\Admin\Report;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\ItemRequest;
 use App\Models\Title;
-use App\Services\ReportService;
 
 
 class TradeController extends Controller
 {
-     /**
-     * Instantiate a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct(ReportService $reportService)
-    {
-        $this->reportService = $reportService;
-    }
 
     /**
      * Display a listing of the resource.
@@ -31,7 +20,7 @@ class TradeController extends Controller
         $user = auth()->user();
         $trades = Title::whereBelongsTo($user)->latest()->paginate(10);
 
-        return view('dashboard.trade',compact('trades'));
+        return view('admin.reports.index',compact('trades'));
     }
 
     /**

@@ -67,19 +67,19 @@
                 <thead class="bg-white border-b border-gray-300">
                   <tr>
                     <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
-                     Code
+                     CODE
                     </th>
                       <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
-                          Desc
+                          DESCRIPTION
                         </th>
                     <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                         BF
                     </th>
                     <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
-                       DR
+                       DEBIT (GHS)
                     </th>
                     <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
-                        CR
+                        CREDIT (GHS)
                     </th>
                   </tr>
                 </thead>
