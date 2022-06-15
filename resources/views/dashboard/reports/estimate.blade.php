@@ -54,6 +54,7 @@
                         <tbody>
                             @php($subtotal=0)
                             @foreach($trade->items as $item)
+                            @php($discount = $item->total * ($item->discount/100))
 
                             <tr class="bg-white border-b">
                                 <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -68,11 +69,13 @@
                               </td>
 
                               <td class="text-sm text-gray-900 px-4 py-2 whitespace-nowrap">
-                                  {{number_format($item->total ,2)}}
+                                  {{number_format($item->total - $discount ,2)}}
                             </td>
                             </tr>
                             @php($subtotal += $item->total)
                           @endforeach
+                          @php($vat = number_format($subtotal * ($trade->vat/100),2))
+
                           <tr class="bg-white">
                             <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
@@ -94,7 +97,7 @@
                             VAT
                         </td>
                             <td class="text-sm text-gray-900 bg-white font-bold px-4 py-2 whitespace-nowrap">
-                                {{ $vat = number_format($subtotal * ($trade->vat/100),2) }}
+                                {{ $vat}}
                           </td>
                           </tr>
                           <tr class="bg-white">
@@ -106,7 +109,7 @@
                             TOTAL
                         </td>
                             <td class="text-sm text-gray-900 font-bold bg-white px-4 py-2 whitespace-nowrap">
-                                {{ number_format($subtotal,2) }}
+                                {{ number_format($subtotal+$vat,2) }}
                           </td>
                           </tr>
                         </tbody>

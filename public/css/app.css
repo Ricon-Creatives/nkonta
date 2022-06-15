@@ -11339,20 +11339,8 @@ select{
 .h-56{
   height: 14rem;
 }
-.h-28{
-  height: 7rem;
-}
 .max-h-0{
   max-height: 0px;
-}
-.max-h-20{
-  max-height: 5rem;
-}
-.max-h-28{
-  max-height: 7rem;
-}
-.max-h-36{
-  max-height: 9rem;
 }
 .max-h-40{
   max-height: 10rem;
@@ -11365,6 +11353,9 @@ select{
 }
 .w-full{
   width: 100%;
+}
+.w-6\/12{
+  width: 50%;
 }
 .w-auto{
   width: auto;
@@ -11413,9 +11404,6 @@ select{
 }
 .w-20{
   width: 5rem;
-}
-.w-6\/12{
-  width: 50%;
 }
 .min-w-full{
   min-width: 100%;
@@ -11592,9 +11580,6 @@ select{
 .overflow-x-hidden{
   overflow-x: hidden;
 }
-.overflow-y-hidden{
-  overflow-y: hidden;
-}
 .whitespace-nowrap{
   white-space: nowrap;
 }
@@ -11733,17 +11718,17 @@ select{
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
-.bg-indigo-900{
+.bg-indigo-800{
   --tw-bg-opacity: 1;
-  background-color: rgb(49 46 129 / var(--tw-bg-opacity));
+  background-color: rgb(55 48 163 / var(--tw-bg-opacity));
 }
 .bg-gray-400{
   --tw-bg-opacity: 1;
   background-color: rgb(156 163 175 / var(--tw-bg-opacity));
 }
-.bg-gray-50{
+.bg-indigo-900{
   --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  background-color: rgb(49 46 129 / var(--tw-bg-opacity));
 }
 .bg-black{
   --tw-bg-opacity: 1;
@@ -11764,6 +11749,10 @@ select{
 .bg-red-100{
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+}
+.bg-gray-50{
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 .bg-indigo-600{
   --tw-bg-opacity: 1;
@@ -11787,14 +11776,6 @@ select{
 }
 .bg-transparent{
   background-color: transparent;
-}
-.bg-blue-900{
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 58 138 / var(--tw-bg-opacity));
-}
-.bg-indigo-800{
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 48 163 / var(--tw-bg-opacity));
 }
 .bg-opacity-50{
   --tw-bg-opacity: 0.5;
@@ -12051,6 +12032,10 @@ select{
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
 }
+.text-blue-600{
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+}
 .text-yellow-500{
   --tw-text-opacity: 1;
   color: rgb(234 179 8 / var(--tw-text-opacity));
@@ -12058,10 +12043,6 @@ select{
 .text-gray-400{
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
-}
-.text-blue-600{
-  --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 .text-purple-600{
   --tw-text-opacity: 1;
@@ -20118,13 +20099,13 @@ readers do not read off random characters that represent icons */
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
-.hover\:text-yellow-700:hover{
-  --tw-text-opacity: 1;
-  color: rgb(161 98 7 / var(--tw-text-opacity));
-}
 .hover\:text-gray-700:hover{
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+.hover\:text-yellow-700:hover{
+  --tw-text-opacity: 1;
+  color: rgb(161 98 7 / var(--tw-text-opacity));
 }
 .hover\:text-blue-900:hover{
   --tw-text-opacity: 1;
@@ -20133,10 +20114,6 @@ readers do not read off random characters that represent icons */
 .hover\:text-gray-900:hover{
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-.hover\:text-purple-800:hover{
-  --tw-text-opacity: 1;
-  color: rgb(107 33 168 / var(--tw-text-opacity));
 }
 .hover\:shadow-lg:hover{
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -20350,10 +20327,6 @@ readers do not read off random characters that represent icons */
     --tw-border-opacity: 1;
     border-color: rgb(55 65 81 / var(--tw-border-opacity));
   }
-  .dark\:bg-gray-900{
-    --tw-bg-opacity: 1;
-    background-color: rgb(17 24 39 / var(--tw-bg-opacity));
-  }
   .dark\:bg-gray-800{
     --tw-bg-opacity: 1;
     background-color: rgb(31 41 55 / var(--tw-bg-opacity));
@@ -20365,6 +20338,10 @@ readers do not read off random characters that represent icons */
   .dark\:bg-red-600{
     --tw-bg-opacity: 1;
     background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+  }
+  .dark\:bg-gray-900{
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity));
   }
   .dark\:bg-orange-600{
     --tw-bg-opacity: 1;
@@ -20480,9 +20457,6 @@ readers do not read off random characters that represent icons */
   }
   .sm\:flex{
     display: flex;
-  }
-  .sm\:grid{
-    display: grid;
   }
   .sm\:hidden{
     display: none;

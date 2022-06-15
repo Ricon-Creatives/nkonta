@@ -62,6 +62,7 @@
                         <tbody>
                             @php($subtotal=0)
                             @foreach($trade->items as $index => $item)
+                            @php($discount = $item->total * ($item->discount/100))
 
                             <tr class="bg-white border-b">
                               <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -80,24 +81,26 @@
                                   {{ $item->discount }}
                               </td>
                               <td class="text-sm text-gray-900 px-4 py-2 whitespace-nowrap">
-                                  {{number_format($item->total ,2)}}
+                                  {{number_format($item->total - $discount ,2)}}
                             </td>
                             </tr>
-                            @php($subtotal += $item->total)
+                            @php($subtotal += ($item->total - $discount))
                           @endforeach
+                          @php($vat = number_format($subtotal * ($trade->vat/100),2))
+
                           <tr class="bg-white">
                             <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
                             <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
                               SUBTOTAL
                           </td>
                             <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
                             <td class="text-sm text-gray-900 px-4 py-2 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900 px-4 py-2 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 px-4 py-2 font-bold whitespace-nowrap">
                                 {{number_format($subtotal,2) }}
                           </td>
                           </tr>
@@ -106,14 +109,14 @@
                             </td>
                             <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-bold font-medium text-gray-900">
                              NHIS
                           </td>
                             <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
                             <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-2 font-bold whitespace-nowrap">
                               -
                           </td>
                           </tr>
@@ -122,14 +125,14 @@
                             </td>
                             <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
                              COVID
                           </td>
                             <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
                             <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 bg-white px-4 py-2 font-bold whitespace-nowrap">
                               -
                           </td>
                           </tr>
@@ -138,15 +141,15 @@
                             </td>
                             <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
                               VAT
                           </td>
                             <td class="bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
                             <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900 bg-white px-4 py-2 whitespace-nowrap">
-                                {{ $vat = number_format($subtotal * ($trade->vat/100),2) }}
+                            <td class="text-sm text-gray-900 bg-white px-4 py-2 font-bold whitespace-nowrap">
+                                {{ $vat }}
                           </td>
                           </tr>
                           <tr class="bg-white">
@@ -154,15 +157,15 @@
                             </td>
                             <td class=" bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class=" bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class=" bg-white px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
                               TOTAL
                           </td>
                             <td class=" bg-white px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
                             <td class="text-sm text-gray-900  bg-white px-4 py-2 whitespace-nowrap">
                             </td>
-                            <td class="text-sm text-gray-900  bg-white px-4 py-2 whitespace-nowrap">
-                                {{ number_format($subtotal,2) }}
+                            <td class="text-sm text-gray-900  bg-white px-4 py-2 font-bold whitespace-nowrap">
+                                {{ number_format($subtotal + $vat,2)}}
                           </td>
                           </tr>
                         </tbody>

@@ -30,7 +30,7 @@ class SearchReportController extends Controller
 
         $transactions->appends($data);
 
-        return view('dashboard.reports.revenue',compact('transactions'));
+        return view('dashboard.reports.revenue',compact('transactions','data'));
     }
 
     public function expenseFilter(Request $request)
@@ -47,10 +47,10 @@ class SearchReportController extends Controller
         ->whereBetween('transactions.created_at',[$from,$to])
         ->paginate(10);
 
-        //dd($transactions);
+       // dd($transactions);
         $transactions->appends($data);
 
-        return view('dashboard.reports.expense',compact('transactions'));
+        return view('dashboard.reports.expense',compact('transactions','data'));
     }
 
     public function taxFilter(Request $request)
@@ -69,7 +69,7 @@ class SearchReportController extends Controller
 
         $transactions->appends($data);
 
-        return view('dashboard.reports.tax',compact('transactions'));
+        return view('dashboard.reports.tax',compact('transactions','data'));
     }
 
     public function trialSummaryFilter(Request $request)
@@ -112,10 +112,10 @@ class SearchReportController extends Controller
         ->orderBy('accounts.code')
         ->get();
 
-       // dd($accounts);
-        //$transactions->appends($data);
+        //dd($data);
+       // $accounts->appends($data);
 
-        return view('dashboard.balSheet', compact('accounts'))->with('account');
+        return view('dashboard.balSheet', compact('accounts','data'))->with('account');
     }
 
     public function profitLossFilter(Request $request)
