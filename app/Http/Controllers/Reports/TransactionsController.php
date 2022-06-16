@@ -32,7 +32,7 @@ class TransactionsController extends Controller
         $user = auth()->user();
         $transactions = Transaction::with(['account'])->whereBelongsTo($user)
        // ->whereDate('created_at',Carbon::today())
-        ->oldest()->paginate(10);
+        ->latest()->paginate(10);
         $accounts = Account::get();
 
         return view('dashboard.transactions', compact('transactions','accounts'));
@@ -65,8 +65,8 @@ class TransactionsController extends Controller
          $request->validate([
             'date' => '',
             'amount' => ['required',],
-            'account' => ['required'],
-            'category' => ['required'],
+            'account' => ['required','integer'],
+            'category' => ['required','integer'],
             'description_to_credit' => ['required'],
             'description_to_debit' => ['required'],
             'type' => ['required'],

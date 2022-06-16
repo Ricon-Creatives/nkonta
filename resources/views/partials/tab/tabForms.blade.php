@@ -39,8 +39,9 @@
          <div class="flex w-9/12 mt-1">
             <select class="form-select appearance-none block py-1.5 text-base font-normal text-gray-600
             bg-white bg-no-repeat transition ease-in-out m-0
-            focus:text-gray-600 focus:bg-white focus:outline-none" name="account" id="account" onchange="checkValue(this,'extraField')" required>
-              <option selected>Select Account</option>
+            focus:text-gray-600 focus:bg-white focus:outline-none" name="account" id="account" onchange="checkValue(this,'extraField')"
+             required>
+              <option></option>
               @foreach($accounts as $account)
               @if ($account->type == 'Asset')
               <option value="{{$account->id}}">{{$account->name}}</option>
@@ -70,7 +71,7 @@
             <select class="form-select appearance-none block py-1.5 text-base font-normal text-gray-600
             bg-white bg-no-repeat transition ease-in-out m-0
             focus:text-gray-600 focus:bg-white focus:outline-none" name="category" onchange="checkValue(this,'extraField')" required>
-              <option selected>Select Acount</option>
+              <option></option>
                @foreach($accounts as $account)
               @if ($account->type != 'Asset' )
               <option value="{{$account->id}}">{{$account->name}}</option>
@@ -157,7 +158,7 @@
             <select class="form-select appearance-none block py-1.5 text-base font-normal text-gray-600
             bg-white bg-no-repeat transition ease-in-out m-0
             focus:text-gray-600 focus:bg-white focus:outline-none" name="account" onchange="checkValue(this,'extraField-exp')" required>
-              <option selected>Select Account</option>
+              <option></option>
               @foreach($accounts as $account)
               @if ($account->type == 'Asset')
               <option value="{{$account->id}}">{{$account->name}}</option>
@@ -187,7 +188,7 @@
             <select class="form-select appearance-none block py-1.5 text-base font-normal text-gray-600
             bg-white bg-no-repeat transition ease-in-out m-0
             focus:text-gray-600 focus:bg-white focus:outline-none" name="category" onchange="checkValue(this,'extraField-exp')" required>
-              <option selected>Select Category</option>
+              <option></option>
               @foreach($accounts as $account)
               @if ($account->type != 'Asset' && $account->type != 'Revenue')
               <option value="{{$account->id}}">{{$account->name}}</option>
