@@ -40,7 +40,7 @@
     </div>
 
     <!-- Date Range -->
-        <form method="GET" action="{{ route('profit-loss') }}" class="p-2">
+        <form method="GET" action="{{ route('search.profit-loss') }}" class="p-2">
             @csrf
         <div class="hidden sm:flex sm:items-center sm:justify-between justify-center w-full">
             <div class="sm:flex">
