@@ -25,10 +25,10 @@ class TotalController extends Controller
         //generate the accounts for balance sheet
         $accounts =  DB::table('totals')->where('user_id',$user)
         ->join('accounts', 'totals.account_id', '=', 'accounts.id')
-        ->whereDate('totals.created_at', Carbon::today())
+        //->whereDate('totals.created_at', Carbon::today())
         ->where('accounts.type','!=','Revenue')->where('accounts.type','!=','Expense')
-        //->select('accounts.code',DB::raw('SUM(amount) as amount,accounts.type,accounts.name'))
-        ->orderBy('accounts.code')
+        ->select('accounts.code',DB::raw('SUM(amount) as amount,accounts.type,accounts.name'))
+        ->groupBy('accounts.code')
         ->get();
 
        /* //
