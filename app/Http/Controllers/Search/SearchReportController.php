@@ -108,8 +108,8 @@ class SearchReportController extends Controller
         ->join('accounts', 'totals.account_id', '=', 'accounts.id')
         ->whereBetween('totals.created_at', [$from,$to])
         ->where('accounts.type','!=','Revenue')->where('accounts.type','!=','Expense')
-        //->select(['accounts.code',DB::raw('SUM(amount) as amount')])
-        ->orderBy('accounts.code')
+        ->select('accounts.code',DB::raw('SUM(amount) as amount,accounts.type,accounts.name'))
+        ->groupBy('accounts.code','accounts.type','accounts.name')
         ->get();
 
         //dd($data);
