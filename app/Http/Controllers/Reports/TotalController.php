@@ -28,7 +28,7 @@ class TotalController extends Controller
         //->whereDate('totals.created_at', Carbon::today())
         ->where('accounts.type','!=','Revenue')->where('accounts.type','!=','Expense')
         ->select('accounts.code',DB::raw('SUM(amount) as amount,accounts.type,accounts.name'))
-        ->groupBy('accounts.code','accounts.type')
+        ->groupBy('accounts.code','accounts.type','accounts.name')
         ->get();
 
        /* //
