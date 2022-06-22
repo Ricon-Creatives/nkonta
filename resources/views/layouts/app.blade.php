@@ -23,7 +23,6 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
       <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" ></script>
       <script src="{{ asset('js/app.js') }}" defer></script>
-      <script src="{{ asset('js/init-alpine.js') }}" defer></script>
         <script src="{{ asset('js/index.js') }}"></script>
 
     </head>

@@ -5,20 +5,20 @@
     </x-slot>
 
      <!-- Grid -->
-    <div class="grid grid-cols-1  bg-white">
+    <div class="grid grid-cols-1 bg-white">
         <!-- Link -->
-        <div class="flex justify-between p-4">
-            <button type="button" class="inline-block px-6 py-2.5 bg-purple-900 text-white font-medium text-xs leading-tight rounded shadow-sm hover:bg-purple-700 hover:shadow-lg
+        <div class="sm:flex sm:justify-between p-4">
+            <button type="button" class="inline-block px-6 py-2.5 bg-purple-900 mb-2 text-white font-medium text-xs leading-tight rounded shadow-sm hover:bg-purple-700 hover:shadow-lg
      focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#addModal">
       Add Transaction
       </button>
 
-       <!-- Exports -->
+       <!-- Exports
      <div x-data="{ show: false }"  @click.away="show = false" class="inline-block text-left">
         <button @click="show = ! show" type="button" class="inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 text-white bg-purple-900 text-sm font-medium focus:outline-none
         focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
         Export
-        <!-- Heroicon name: solid/chevron-down -->
+
         <svg class="-mr-1 ml-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
         </svg>
@@ -30,9 +30,9 @@
            </a>
         <!--<a href="#" onclick="htmlToCSV('proloss','Profit-Loss.csv')" class="text-gray-700 block px-4 py-2 text-sm">
              CSV
-        </a>-->
+        </a>
 </div>
-</div>
+</div>-->
 
        <!-- <button type="button" class="inline-block px-6 py-2.5 bg-purple-900  text-white font-bold text-xs leading-tight rounded shadow-sm hover:bg-purple-700 hover:shadow-lg
      focus:shadow-lg focus:outline-none focus:ring-0 border border-black active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#search">
@@ -41,42 +41,17 @@
       </button>-->
           <!--Form-->
     <form method="GET" action="{{ route('search.transaction') }}">
+        <div class="flex flex-row items-center justify-center">
         @csrf
-      <div class="flex flex-row items-center justify-center">
         <x-input id="type" type="text" name="search" class="block w-full rounded border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200
-         focus:ring-opacity-50 py-1 mx-1" placeholder="Search..." required autofocus />
-    <button type="submit" class="inline-block px-6 py-2.5 bg-purple-900 text-white font-medium text-xs leading-tight rounded shadow-sm hover:bg-purple-700 hover:shadow-lg
+         focus:ring-opacity-50 py-1 sm:mx-1" placeholder="Search..." required autofocus />
+    <button type="submit" class="inline-block px-4 py-2.5 bg-purple-900 text-white font-medium text-xs leading-tight rounded shadow-sm hover:bg-purple-700 hover:shadow-lg
         focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out">
-        Search
+        <i class="fa-solid fa-search"></i>
         </button>
     </div>
     </form>
-        </div>
-
-        <!-- Select
-            <div class="flex justify-start px-3">
-                <div class="mb-1">
-                  <select class="form-select appearance-none border-0 block py-1.5 text-base font-normal text-gray-700
-                    bg-white bg-no-repeat transition ease-in-out m-0
-                    focus:text-gray-700 focus:bg-white focus:outline-none" aria-label="Default select example">
-                      <option selected>All transactions</option>
-                      <option value="1">Income</option>
-                      <option value="2">Expense</option>
-                      <option value="3">Transfer</option>
-                  </select>
-                </div>
-              </div>-->
-
-         <!-- Buttons
-         <div class="md:flex md:justify-between p-4 mx-2">
-            <h5 class="text-base">Account Balance</h5>
-            <div class="flex flex-row items-center justify-center">
-                <h6 class="text-base">Balance:  +gh<span class="text-xs">&#8373;</span>50,000</h6>
-                <span class="mx-2">&nbsp;|&nbsp;</span>
-                <h6 class="text-base">Available:  +gh<span class="text-xs">&#8373;</span>55,000</h6>
-
-            </div>
-        </div>-->
+    </div>
 
 
        <!--Table-->

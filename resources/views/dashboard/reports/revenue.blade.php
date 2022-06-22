@@ -16,7 +16,7 @@
   </x-slot>
 
   <!-- Link -->
-  <div class="sm:flex sm:items-center sm:justify-between justify-center sm:p-4">
+  <div class="flex sm:items-center sm:justify-between justify-center p-4">
         <!-- Exports -->
         <div x-data="{ show: false }"  @click.away="show = false" class="inline-block text-left">
             <button @click="show = ! show" type="button" class="inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 text-white bg-purple-900 text-sm font-medium focus:outline-none
@@ -59,12 +59,10 @@
     </div>
 
        <!--Table-->
-       <div class="flex flex-col px-4 ">
+       <div class="flex flex-col px-4">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div class="overflow-hidden">
-
-
             <table class="min-w-full" id="revenues">
                 <thead class="bg-white border-b border-gray-300">
                     <tr>
