@@ -12,12 +12,9 @@ class="px-4 py-3 mt-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 w-5/12
     @csrf
 
     <div
-    class="px-4 py-3 mb-8dark:bg-gray-800">
+    class="px-4 py-3 mb-8 dark:bg-gray-800">
 
     <label class="block mt-4 text-sm">
-      <span class="text-gray-700 dark:text-gray-400">
-        Button right
-      </span>
       <div
         class="relative text-gray-500 focus-within:text-purple-600"
       >

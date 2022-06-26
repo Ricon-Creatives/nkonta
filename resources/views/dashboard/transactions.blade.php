@@ -92,7 +92,7 @@
 
                     <tr class="bg-white border-b">
                       <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                          {{ \Carbon\Carbon::parse( $transaction->date)->format('D d-M-Y') }}
+                          {{ \Carbon\Carbon::parse($transaction->date)->format('D d-M-Y') }}
                       </td>
                       <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                         {{ $transaction->account->code }}

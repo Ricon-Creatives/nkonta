@@ -118,6 +118,15 @@
                 </a>
             </li>
 
+            <li>
+                <a href="{{ route('reconcilation.index') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400 focus:bg-gray-200 focus:shadow-outline">
+                    <span class="text-white text-3xl">
+                <i class="fa-solid fa-balance-scale"></i>
+                    </span>
+                    <span class="">Reconcilation</span>
+                </a>
+            </li>
+
           <!--  <li>
                 <a href="{{ route('employee.index') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400 focus:bg-gray-200 focus:shadow-outline">
                     <span class="text-white text-3xl">

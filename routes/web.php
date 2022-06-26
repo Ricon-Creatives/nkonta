@@ -60,6 +60,8 @@ Route::get('/estimate/{id}', 'Documents\GenerateFileController@estimate')->name(
 Route::get('/profile', function () {
     return view('dashboard.profile.index');
 })->name('profile');
+//
+Route::resource('reconcilation', 'Reports\ReconcileController');
 
 //
 Route::resource('employee', 'User\AddUserController');
@@ -82,7 +84,6 @@ Route::get('/search/reports/profit-loss','Search\SearchReportController@profitLo
 Route::get('/search/transactions','Search\SearchReportController@transactionsFilter')->name('search.transaction');
 Route::get('/search/sales','Search\SearchReportController@sales')->name('search.sales');
 Route::get('/search/purchases','Search\SearchReportController@purchases')->name('search.purchases');
-
 
 });
 

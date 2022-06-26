@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- Grid -->
-    <div class="grid grid-cols-1">
+    <div class="grid grid-cols-1  bg-white">
 
       <!--Heading-->
    <x-slot name="header">
