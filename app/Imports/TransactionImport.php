@@ -29,7 +29,8 @@ class TransactionImport implements ToCollection, WithHeadingRow
     */
     public function collection(Collection $rows)
     {
-        $data = Transaction::whereMonth('date', $this->month)->get();
+        $user = auth()->user();
+        $data = Transaction::with(['account'])->whereBelongsTo($user)->whereMonth('date', $this->month)->get();
         $bank_statement = $rows;
 
         foreach ($bank_statement as $element) {
