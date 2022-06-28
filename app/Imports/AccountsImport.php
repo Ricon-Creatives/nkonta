@@ -16,11 +16,15 @@ class AccountsImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
-        return new Account([
+        $account = Account::updateOrCreate([
+            'code' => $row['code'],
+        ],[
             'code' => $row['code'],
             'name'  => $row['name'],
             'type' => $row['type'],
             'financial_statement' => $row['financial_statement'],
         ]);
+
+        return $account;
     }
 }
