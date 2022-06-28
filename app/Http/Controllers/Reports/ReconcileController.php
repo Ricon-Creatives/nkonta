@@ -20,9 +20,10 @@ class ReconcileController extends Controller
      */
     public function index()
     {
-        $transactions =array();
+        $matched =array();
+        $unmatched =array();
 
-        return view('dashboard.reconcilation.index',compact('transactions'));
+        return view('dashboard.reconcilation.index',compact('matched','unmatched'));
     }
 
     /**
@@ -40,9 +41,10 @@ class ReconcileController extends Controller
         $import->setMonth($month);
 
          Excel::import($import,  $request->file('file'));
-         $transactions = $import->getTransations();
+         $matched = $import->getMatched();
+         $unmatched = $import->getUnMatched();
 
-        return view('dashboard.reconcilation.index',compact('transactions'));
+        return view('dashboard.reconcilation.index',compact('matched','unmatched'));
     }
 
 }

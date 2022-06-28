@@ -11402,9 +11402,6 @@ select{
 .w-20{
   width: 5rem;
 }
-.w-2\/12{
-  width: 16.666667%;
-}
 .min-w-full{
   min-width: 100%;
 }
@@ -11652,14 +11649,14 @@ select{
 .border-r{
   border-right-width: 1px;
 }
-.border-b-2{
-  border-bottom-width: 2px;
-}
 .border-b-0{
   border-bottom-width: 0px;
 }
 .border-t-0{
   border-top-width: 0px;
+}
+.border-b-2{
+  border-bottom-width: 2px;
 }
 .border-solid{
   border-style: solid;
@@ -11697,6 +11694,10 @@ select{
 .border-gray-400{
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+.border-blue-500{
+  --tw-border-opacity: 1;
+  border-color: rgb(59 130 246 / var(--tw-border-opacity));
 }
 .border-b-blue-600{
   --tw-border-opacity: 1;
@@ -20123,6 +20124,9 @@ readers do not read off random characters that represent icons */
 .focus\:z-10:focus{
   z-index: 10;
 }
+.focus\:border-b-2:focus{
+  border-bottom-width: 2px;
+}
 .focus\:border-blue-300:focus{
   --tw-border-opacity: 1;
   border-color: rgb(147 197 253 / var(--tw-border-opacity));
@@ -20147,12 +20151,12 @@ readers do not read off random characters that represent icons */
   --tw-border-opacity: 1;
   border-color: rgb(165 180 252 / var(--tw-border-opacity));
 }
+.focus\:border-transparent:focus{
+  border-color: transparent;
+}
 .focus\:border-gray-900:focus{
   --tw-border-opacity: 1;
   border-color: rgb(17 24 39 / var(--tw-border-opacity));
-}
-.focus\:border-transparent:focus{
-  border-color: transparent;
 }
 .focus\:border-blue-600:focus{
   --tw-border-opacity: 1;
@@ -20269,6 +20273,9 @@ readers do not read off random characters that represent icons */
 }
 .focus\:ring-offset-gray-100:focus{
   --tw-ring-offset-color: #f3f4f6;
+}
+.active\:border-b-2:active{
+  border-bottom-width: 2px;
 }
 .active\:bg-gray-100:active{
   --tw-bg-opacity: 1;
@@ -20413,9 +20420,6 @@ readers do not read off random characters that represent icons */
   }
 }
 @media (min-width: 640px){
-  .sm\:relative{
-    position: relative;
-  }
   .sm\:-mx-6{
     margin-left: -1.5rem;
     margin-right: -1.5rem;
@@ -20578,12 +20582,6 @@ readers do not read off random characters that represent icons */
   }
   .md\:w-64{
     width: 16rem;
-  }
-  .md\:w-10\/12{
-    width: 83.333333%;
-  }
-  .md\:w-2\/12{
-    width: 16.666667%;
   }
   .md\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));

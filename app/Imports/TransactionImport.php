@@ -13,7 +13,8 @@ use Illuminate\Support\Carbon;
 
 class TransactionImport implements ToCollection, WithHeadingRow
 {
-    private $transactions;
+    private $matchedTransactions;
+    private $unmatchedTransactions;
 
     private $month;
 
@@ -32,6 +33,7 @@ class TransactionImport implements ToCollection, WithHeadingRow
         $user = auth()->user();
         $data = Transaction::with(['account'])->whereBelongsTo($user)->whereMonth('date', $this->month)->get();
         $bank_statement = $rows;
+        $matched = collect(array());
 
         foreach ($bank_statement as $element) {
             $statementDate = Carbon::parse($element['date'])->format('Y-m-d');
@@ -40,18 +42,25 @@ class TransactionImport implements ToCollection, WithHeadingRow
             foreach ($data as $key => $value) {
                 if ($statementDate == $value->date &&  $statementAmount == number_format($value->amount,2)) {
                     unset($data[$key]);
+                    $matched->push($value);
                    // print("{$key}:{$value} <br>");
                 }
             }
         }
 
-     return  $this->transactions = $data;
+        $this->matchedTransactions = $matched;
+        $this->unmatchedTransactions = $data;
 
- }
+    }
 
-   public function getTransations()
+   public function getMatched()
     {
-        return $this->transactions;
+        return $this->matchedTransactions;
+    }
+
+    public function getUnMatched()
+    {
+        return $this->unmatchedTransactions;
     }
 
 }
