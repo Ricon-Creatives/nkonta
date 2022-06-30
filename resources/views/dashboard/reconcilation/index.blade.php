@@ -10,7 +10,7 @@
 <form enctype="multipart/form-data"  method="POST" action="{{ route('reconcilation.store') }}">
   @csrf
 <div class="flex flex-row items-center justify-center">
-    <x-input id="month" class="block w-full py-1 rounded-none" type="month" name="to_month" placeholder="e.g june 2022"  required  />
+    <x-input id="month" class="block w-full py-1 rounded-none" type="date" name="to_month" placeholder="e.g june 2022"  required  />
 
   <x-input id="type" type="file" name="file" class="block w-full rounded border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200
    focus:ring-opacity-50 focus:outline-none py-1 mx-1" required autofocus />
