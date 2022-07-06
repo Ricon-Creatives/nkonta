@@ -62,7 +62,7 @@ class TotalController extends Controller
        //dd($accounts);
 
 
-    return view('dashboard.balSheet', compact('accounts'))->with('account');
+    return view('dashboard.reports.balSheet', compact('accounts'))->with('account');
     }
 
      /**

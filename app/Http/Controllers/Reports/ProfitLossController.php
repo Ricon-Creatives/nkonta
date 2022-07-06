@@ -41,7 +41,7 @@ class ProfitLossController extends Controller
      // dd($books);
 
 
-        return view('dashboard.profitLoss',compact('books'));
+        return view('dashboard.reports.profitLoss',compact('books'));
     }
 
 

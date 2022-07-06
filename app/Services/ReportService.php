@@ -5,7 +5,6 @@ use App\Models\Total;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 
-
 class ReportService
 {
 
@@ -30,7 +29,6 @@ class ReportService
             ->get();
                 #sum amount column and merge
                 foreach($transaction as &$acc) {
-
               $transaction->toQuery()->update(['amount' => $acc['amount'] += $input->amount]);
           }
                 #update value
@@ -65,8 +63,9 @@ class ReportService
             'account_id'=> $request->acc_dr,
             'category_id'=> $request->acc_cr,
            // 'description_to_debit'=> $request->description_to_debit,
-            'type'=> ($type == 'Selling') ? "debit" : "credit",
+            'type'=> ($type == 'expense') ? "debit" : "credit",
             'reference_no' => $reference_no,
+            'slug' => $request->slug
         ]);
 
         //if type = income
@@ -77,8 +76,9 @@ class ReportService
                 'account_id'=> $request->acc_cr,
                 'category_id'=> $request->acc_dr,
                 //'description_to_credit'=> $request->description_to_credit,
-                'type'=> ($type == 'Selling') ? "credit" : "debit" ,
+                'type'=> ($type == 'expense') ? "credit" : "debit" ,
                 'reference_no' => $reference_no,
+                'slug' => $request->slug
             ]
         );
 

@@ -96,4 +96,6 @@ class DownloadPDFController extends Controller
 
         return $pdf->download('trialBalance.pdf');
     }
+
+
 }

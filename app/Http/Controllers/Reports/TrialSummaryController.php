@@ -56,7 +56,7 @@ class TrialSummaryController extends Controller
    // dd(collect($transactions));
  //   dd($credits);
 
-    return view('dashboard.summary', compact('debits','credits'));
+    return view('dashboard.reports.summary', compact('debits','credits'));
     }
 
     /**

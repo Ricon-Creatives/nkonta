@@ -92,7 +92,7 @@ class SearchReportController extends Controller
 
         //$transactions->appends($data);
 
-        return view('dashboard.summary',compact('debits','credits','data'));
+        return view('dashboard.reports.summary',compact('debits','credits','data'));
     }
 
     public function balSheetFilter(Request $request)
@@ -115,7 +115,7 @@ class SearchReportController extends Controller
         //dd($data);
        // $accounts->appends($data);
 
-        return view('dashboard.balSheet', compact('accounts','data'))->with('account');
+        return view('dashboard.reports.balSheet', compact('accounts','data'))->with('account');
     }
 
     public function profitLossFilter(Request $request)
@@ -137,7 +137,7 @@ class SearchReportController extends Controller
 
         //$transactions->appends($data);
 
-        return view('dashboard.profitLoss',compact('books'));
+        return view('dashboard.reports.profitLoss',compact('books'));
     }
 
     public function transactionsFilter(Request $request)
@@ -157,7 +157,7 @@ class SearchReportController extends Controller
 
         $transactions->appends($data);
 
-        return view('dashboard.transactions',compact('transactions','accounts'));
+        return view('dashboard.reports.transactions',compact('transactions','accounts'));
     }
 
     public function sales(Request $request)

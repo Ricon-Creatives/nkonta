@@ -58,8 +58,8 @@
                                bg-white bg-no-repeat transition ease-in-out m-0
                                focus:text-gray-600 focus:bg-white focus:outline-none" name="type" id="type" required>
                                  <option disabled>Select Type</option>
-                                 <option value="Buying" selected>Buying</option>
-                                 <option value="Selling" disabled>Selling</option>
+                                 <option value="expense" selected>Buying</option>
+                                 <option value="income" disabled>Selling</option>
                              </select>
                              </div>
                           </div>

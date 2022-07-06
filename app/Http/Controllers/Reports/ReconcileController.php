@@ -35,7 +35,7 @@ class ReconcileController extends Controller
     public function store(Request $request)
     {
         $month = Carbon::parse($request->to_month)->format('m');
-        //dd($request->to_month);
+        //dd($month);
 
         $import = new TransactionImport;
         $import->setMonth($month);

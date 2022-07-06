@@ -4,7 +4,7 @@
  <x-slot name="header">
   </x-slot>
 <!-- Grid -->
-<div class="grid grid-cols-1 bg-white">
+<div class="grid grid-cols-1 bg-white p-2">
 <!-- Link -->
   <div class="flex justify-end p-4">
 <form enctype="multipart/form-data"  method="POST" action="{{ route('reconcilation.store') }}">

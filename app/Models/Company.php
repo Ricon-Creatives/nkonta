@@ -27,7 +27,7 @@ class Company extends Model
         return $this->belongsToMany(User::class);
     }
 
-     /**
+    /**
      * Has-One relation with the user model.
      * This indicates the owner of the team.
      *

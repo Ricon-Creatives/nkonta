@@ -93,6 +93,15 @@ class User extends Authenticatable
         return $this->hasMany(Item::class,);
     }
 
+ /**
+     * Get all of the transactions for the User
+     *
+     */
+    public function payrolls()
+    {
+        return $this->hasMany(Payroll::class,);
+    }
+
     /*
      * The companies that belong to this user
      */

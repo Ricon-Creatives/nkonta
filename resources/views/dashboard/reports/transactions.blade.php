@@ -5,7 +5,7 @@
     </x-slot>
 
      <!-- Grid -->
-    <div class="grid grid-cols-1 bg-white">
+    <div class="grid grid-cols-1 bg-white p-2">
         <!-- Link -->
         <div class="sm:flex sm:justify-between p-4">
             <button type="button" class="inline-block px-6 py-2.5 bg-purple-900 mb-2 text-white font-medium text-xs leading-tight rounded shadow-sm hover:bg-purple-700 hover:shadow-lg

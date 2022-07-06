@@ -1,7 +1,7 @@
 <!-- component -->
 <div class="flex bg-gray-100 w-full h-screen">
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden md:block md:w-1/12 w-6/12">
-    <div class=" bg-indigo-800 p-2 fixed h-full overflow-x-hidden z-50">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:block sm:w-1/12 w-6/12">
+    <div class=" bg-indigo-800 fixed h-full overflow-x-hidden z-50 sm:w-1/12">
         <div class="flex justify-center space-x-2 mb-4">
              <!-- Logo -->
              <div class="shrink-0 flex items-center">
@@ -43,7 +43,7 @@
                 </button>
                 <!--Content-->
                 <div x-show="show" x-cloak class="origin-top-right absolute"
-                role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" style="right: -11px;">
+                role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" style="right: -5px;">
                 <div class="p-2 z-50 fixed rounded-sm shadow-lg bg-indigo-800 focus:outline-none">
                     <ul x-transition:enter="transition-all ease-in-out duration-300"
                     x-transition:enter-start="opacity-25 max-h-0"
@@ -136,20 +136,29 @@
                 </a>
             </li>-->
 
+              <li>
+                <a href="{{ route('payroll.index') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400 focus:bg-gray-200 focus:shadow-outline">
+                    <span class="text-white text-3xl">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </span>
+                    <span class="">Payroll</span>
+                </a>
+            </li>
+
         </ul>
     </div>
     </div>
 
 
     <!-- Page Content -->
-    <div :class="{'w-full': open, 'w-full': ! open}" class="md:w-11/12 w-full">
+    <div :class="{'w-full': open, 'w-full': ! open}" class="sm:w-11/12 w-full">
         <div @click="open = ! open" :class="{'block': open, 'hidden': ! open}" class="hidden absolute h-full bg-black opacity-60 w-full z-10">
 
         </div>
         @include('layouts.navigation')
 
-        <div class="px-2 pt-2 pb-8 text-gray-500">
-            {{ $header }}
+        {{ $header }}
+        <div class="pb-8 my-2">
             <main>
                 {{ $slot }}
             </main>

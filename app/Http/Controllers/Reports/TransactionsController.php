@@ -8,6 +8,7 @@ use App\Models\Transaction;
 use App\Models\Account;
 use App\Services\ReportService;
 use Illuminate\Support\Carbon;
+use App\Http\Requests\Auth\StoreTransactionRequest;
 
 
 class TransactionsController extends Controller
@@ -35,7 +36,7 @@ class TransactionsController extends Controller
         ->latest()->paginate(10);
         $accounts = Account::get();
 
-        return view('dashboard.transactions', compact('transactions','accounts'));
+        return view('dashboard.reports.transactions', compact('transactions','accounts'));
     }
 
     /**
@@ -54,23 +55,13 @@ class TransactionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTransactionRequest $request)
     {
         //
        //$randStr  =  Str::random(2);
        //$randNum = mt_rand(1000, 9999);
         $reference_no =  mt_rand(10000, 99999);
         //dd($reference_no);
-
-         $request->validate([
-            'date' => '',
-            'amount' => ['required',],
-            'account' => ['required','integer'],
-            'category' => ['required','integer'],
-            'description_to_credit' => ['required'],
-            'description_to_debit' => ['required'],
-            'type' => ['required'],
-        ]);
 
         //dd($request);
 

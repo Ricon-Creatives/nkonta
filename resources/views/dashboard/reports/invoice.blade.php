@@ -109,7 +109,7 @@
                             </td>
                             <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
-                          <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-bold font-medium text-gray-900">
+                          <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-bold text-gray-900">
                              NHIS
                           </td>
                             <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">

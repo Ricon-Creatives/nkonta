@@ -88,4 +88,12 @@ function generate(id,filename,header) {
     doc.save(`${filename}.pdf`);
 }
 
+const generatePpagePDF = (id,filename) => {
+    var divContents = document.getElementById(`${id}`).innerHTML;
+    var prnt = window.open('', '', 'height=500, width=400');
+     prnt .document.write(divContents);
+    prnt .document.close();
+    prnt .print();
+}
+
 /********************************************************* */

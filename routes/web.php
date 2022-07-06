@@ -62,10 +62,12 @@ Route::get('/profile', function () {
 })->name('profile');
 //
 Route::resource('reconcilation', 'Reports\ReconcileController');
-
 //
 Route::resource('employee', 'User\AddUserController');
-
+//
+Route::resource('payroll', 'Reports\PayrollController');
+//
+Route::get('/payroll/submit/transactions', 'Reports\SubmitTransactionController@submit')->name('payroll.submit');
 //DownloadPDF
 Route::get('/download/balance-sheet-pdf','Documents\DownloadPDFController@downloadBalSheetPdf')->name('download-pdf');
 Route::get('/download/profit-loss-pdf','Documents\DownloadPDFController@downloadPLPdf')->name('download-profitloss-pdf');
@@ -84,6 +86,8 @@ Route::get('/search/reports/profit-loss','Search\SearchReportController@profitLo
 Route::get('/search/transactions','Search\SearchReportController@transactionsFilter')->name('search.transaction');
 Route::get('/search/sales','Search\SearchReportController@sales')->name('search.sales');
 Route::get('/search/purchases','Search\SearchReportController@purchases')->name('search.purchases');
+Route::get('/search/payroll','Search\SearchReportController@purchases')->name('search.payroll');
+
 
 });
 
