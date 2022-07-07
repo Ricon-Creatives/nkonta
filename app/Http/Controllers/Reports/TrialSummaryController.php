@@ -23,7 +23,7 @@ class TrialSummaryController extends Controller
 
     $transactions =  DB::table('transactions')->where('transactions.user_id',$user)
     ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
-    ->whereDate('created_at',Carbon::today())
+    ->whereDate('transactions.created_at',Carbon::today())
     ->select('accounts.code',DB::raw('SUM(amount) as amount,transactions.type,accounts.name'))
     ->groupBy('accounts.code','transactions.type','accounts.name')
     ->get();
@@ -53,7 +53,7 @@ class TrialSummaryController extends Controller
    // dd(collect($transactions));
  //   dd($credits);
 
-    return view('dashboard.reports.summary', compact('debits','credits'));
+    return view('dashboard.reports.summary', compact('transactions'));
     }
 
     /**
