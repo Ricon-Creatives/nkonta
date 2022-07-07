@@ -21,14 +21,11 @@ class TrialSummaryController extends Controller
 
     $user = auth()->user()->id;
 
-    $credits = Transaction::with('account')->where('user_id',$user)->where('type','credit')
+    $transactions =  DB::table('transactions')->where('transactions.user_id',$user)
+    ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
     ->whereDate('created_at',Carbon::today())
-    ->orderBy('reference_no')
-    ->get();
-
-    $debits = Transaction::with('account')->where('user_id',$user)->where('type','debit')
-    ->whereDate('created_at',Carbon::today())
-    ->orderBy('reference_no')
+    ->select('accounts.code',DB::raw('SUM(amount) as amount,transactions.type,accounts.name'))
+    ->groupBy('accounts.code','transactions.type','accounts.name')
     ->get();
 
   /*  $transactions = [];

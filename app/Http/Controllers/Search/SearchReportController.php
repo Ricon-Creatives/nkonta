@@ -80,19 +80,6 @@ class SearchReportController extends Controller
         $from = Carbon::parse($request->from_date);
         $to = Carbon::parse($request->to_date);
 
-        $credits = Transaction::with('account')->where('user_id',$user)->where('type','credit')
-        ->whereBetween('created_at',[$from,$to])
-        ->select('account_id',DB::raw('SUM(amount) as amount,type'))
-        ->groupBy('account_id','type')
-        ->get();
-
-
-        $debits = Transaction::with('account')->where('user_id',$user)->where('type','debit')
-        ->whereBetween('created_at',[$from,$to])
-        ->select('account_id',DB::raw('SUM(amount) as amount,type'))
-        ->groupBy('account_id','type')
-        ->get();
-
         $transactions =  DB::table('transactions')->where('transactions.user_id',$user)
         ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
         ->whereBetween('transactions.created_at',[$from,$to])
