@@ -58,6 +58,8 @@ class SubmitTransactionController extends Controller
         $this->reportService->storeTransaction($salariesRequest,$type,$salaryAmount);
         $this->reportService->storeTransaction($taxRequest,$type, $taxAmount);
     }
+
+    //Response Message
         return redirect()->route('payroll.index');
     }
 }

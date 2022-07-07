@@ -31,7 +31,7 @@ class TrialSummaryController extends Controller
     ->orderBy('reference_no')
     ->get();
 
-    $transactions = [];
+  /*  $transactions = [];
 
     foreach($debits as $debit) {
         foreach ($credits as $credit) {
@@ -50,7 +50,7 @@ class TrialSummaryController extends Controller
                 ]);
             }
         }
-    }
+    }*/
 
 
    // dd(collect($transactions));

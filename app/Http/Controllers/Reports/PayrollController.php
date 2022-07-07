@@ -67,7 +67,12 @@ class PayrollController extends Controller
             'month' => $month,
         ]);
 
+        if($request->next){
+            return redirect()->route('payroll.create');
+           }else{
+        //Response Message
         return redirect()->route('payroll.index');
+           }
     }
 
     /**

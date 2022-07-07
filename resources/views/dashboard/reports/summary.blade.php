@@ -68,14 +68,11 @@
               <table class="min-w-full" id="trialSummary">
                 <thead class="bg-white border-b border-gray-300">
                   <tr>
-                    <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
-                        REF_NO
+                        <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
+                         Code
                       </th>
                       <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
-                          AMOUNT
-                        </th>
-                        <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
-                          DESC
+                          NAME
                         </th>
                     <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                       DEBIT (GHS)
@@ -83,58 +80,43 @@
                     <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                       CREDIT (GHS)
                     </th>
-                    <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
-                        DESC
-                      </th>
                   </tr>
                 </thead>
                 <tbody>
-                    @php($sum = 0)
-                    @foreach($debits as $debit)
-                    @foreach ($credits as $credit)
-                    @if ($debit->reference_no === $credit->reference_no )
+                    @php($debitSum = 0)
+                    @php($creditSum = 0)
+                    @foreach($transactions as $transaction)
                     <tr class="bg-white border-b">
-                      <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                          {{ $debit->reference_no }}
+                        <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          {{ $transaction->code }}
                       </td>
                       <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                          {{ number_format($debit->amount,2) }}
+                          {{ $transaction->name }}
                         </td>
-                      <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {{ $debit->description_to_debit }}
-                    </td>
                         <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {{ $debit->account->name }}
-                    </td>
+                            {{ ($transaction->type == 'debit' ) ? number_format($transaction->amount,2) :'' }}
+                          </td>
                     <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {{$credit->account->name }}
-                    </td>
-                    <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {{ $credit->description_to_credit }}
+                        {{ ($transaction->type == 'credit' ) ? number_format($transaction->amount,2) :''  }}
                     </td>
                     </tr>
-                    @php($sum += $debit->amount)
-                    @endif
-
-                    @endforeach
+                    @php( ($transaction->type == 'debit' ) ? $debitSum +=  $transaction->amount : '')
+                    @php(($transaction->type == 'credit' ) ? $creditSum += $transaction->amount : '')
 
                   @endforeach
                   <tr class="bg-white border-b">
+                    <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
+                    </td>
                       <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                           Total
                       </td>
                       <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
-                          {{ number_format($sum,2)}}
+                          {{ number_format($debitSum,2)}}
                       </td>
-                      <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
+                        {{ number_format($creditSum,2)}}
                     </td>
                     <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
-                    </td>
-
-                    <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
-                    </td>
-                    <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-
                     </td>
                     </tr>
 

@@ -82,17 +82,28 @@ class SearchReportController extends Controller
 
         $credits = Transaction::with('account')->where('user_id',$user)->where('type','credit')
         ->whereBetween('created_at',[$from,$to])
-        ->orderBy('reference_no')
+        ->select('account_id',DB::raw('SUM(amount) as amount,type'))
+        ->groupBy('account_id','type')
         ->get();
+
 
         $debits = Transaction::with('account')->where('user_id',$user)->where('type','debit')
         ->whereBetween('created_at',[$from,$to])
-        ->orderBy('reference_no')
+        ->select('account_id',DB::raw('SUM(amount) as amount,type'))
+        ->groupBy('account_id','type')
         ->get();
 
+        $transactions =  DB::table('transactions')->where('transactions.user_id',$user)
+        ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
+        ->whereBetween('transactions.created_at',[$from,$to])
+        ->select('accounts.code',DB::raw('SUM(amount) as amount,transactions.type,accounts.name'))
+        ->groupBy('accounts.code','transactions.type','accounts.name')
+        ->get();
+
+        //dd($transactions);
         //$transactions->appends($data);
 
-        return view('dashboard.reports.summary',compact('debits','credits','data'));
+        return view('dashboard.reports.summary',compact('transactions','data'));
     }
 
     public function balSheetFilter(Request $request)
