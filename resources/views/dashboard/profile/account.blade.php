@@ -6,19 +6,22 @@
         Edit Your Profile
     </h6>
     <div class="mx-auto px-4 py-7">
-        <form action="{{ route('payroll.store') }}" method="POST">
+          <!-- Validation Errors -->
+          <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+        <form action="{{ route('account.update',Auth::user()->id) }}" method="POST">
             @csrf
             <!--Row one-->
             <div class="flex flex-wrap -mx-2 mb-6">
                     <!--Name.-->
                 <div class="w-full md:w-1/2  px-1 mb-6 md:mb-0">
                     <x-label for="" :value="__('Name')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                    <x-input id="name" class="mt-1 w-full" type="text" name="name" required autofocus />
+                    <x-input id="name" class="mt-1 w-full" type="text" name="name"  value="{{ Auth::user()->name }}" required autofocus />
                 </div>
                 <!--Username-->
                 <div class="w-full md:w-1/2 px-1">
                     <x-label for="" :value="__('Username')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                    <x-input id="username" class="mt-1 w-full" type="text" name="username" required autofocus />
+                    <x-input id="username" class="mt-1 w-full" type="text" name="username" value="{{ Auth::user()->username }}" required autofocus />
                 </div>
             </div>
             <!--Row one-->
@@ -26,13 +29,13 @@
                 <!--Email-->
               <div class="w-full md:w-1/2  px-1 mb-6 md:mb-0">
                 <x-label for="Empolyee TIN" :value="__('Email')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                <x-input id="email" class="mt-1 w-full" type="email" name="email" required autofocus />
+                <x-input id="email" class="mt-1 w-full" type="email" name="email" value="{{ Auth::user()->email }}" required autofocus />
               </div>
               <!--Phone-->
               <div class="w-full md:w-1/2 px-1">
                 <x-label for="" :value="__('Phone')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                 <x-input id="phone" class="mt-1 w-full" type="tel" name="phone" pattern="[0-3]{3}[0-9]{3}[0-9]{3}[0-9]{3}" placeholder="eg. 233501234567"
-                required autofocus />
+                value="{{ Auth::user()->phone }}" required autofocus />
             </div>
             </div>
             <!--Row one-->
@@ -40,7 +43,7 @@
                 <!--Tin-->
               <div class="w-full md:w-1/2  px-1 mb-6 md:mb-0">
                 <x-label for="" :value="__('Tin Number')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                <x-input id="tin_no" class="mt-1 w-full" type="text" name="tin_no" required autofocus />
+                <x-input id="tin_no" class="mt-1 w-full" type="text" name="tin_no" value="{{ Auth::user()->tin_no }}"  autofocus />
               </div>
             </div>
             <!--Row two-->
@@ -48,7 +51,8 @@
               <!--Company-->
               <div class="w-full md:w-1/2 px-1">
                 <x-label for="" :value="__('Company Name')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                <x-input id="comapany_name" class="mt-1 w-full" type="text" name="comapany_name" required autofocus />
+                <x-input id="company_name" class="mt-1 w-full" type="text" name="company_name"
+                value="{{ Auth::user()->company_name}}" required autofocus />
             </div>
             </div>
 

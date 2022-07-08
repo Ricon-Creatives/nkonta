@@ -56,13 +56,12 @@ Route::get('/create/item', 'Reports\ItemController@create')->name('item.create')
 Route::post('/item/new','Reports\ItemController@store')->name('item.store');
 //
 Route::get('/estimate/{id}', 'Documents\GenerateFileController@estimate')->name('show.estimate');
-//
-Route::get('/profile', function () {
-    return view('dashboard.profile.account');
-})->name('profile');
-Route::get('/profile/account/change-password', function () {
-    return view('dashboard.profile.password');
-})->name('profile.password');
+//User
+Route::get('/profile', 'User\UserController@editProfile')->name('profile');
+Route::get('/profile/account/change-password', 'User\UserController@editPassword')->name('profile.password');
+Route::post('/profile/account/update', 'User\UserController@update')->name('account.update');
+Route::post('/profile/account/update-password', 'User\UserController@updatePassword')->name('profile.password.update');
+
 //
 Route::resource('reconcilation', 'Reports\ReconcileController');
 //

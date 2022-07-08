@@ -7,19 +7,21 @@
         Change Your Password
     </h6>
     <div class="mx-auto px-4 py-7">
-        <form action="{{ route('payroll.store') }}" method="POST">
+         <!-- Validation Errors -->
+         <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <form action="{{ route('profile.password.update') }}" method="POST">
             @csrf
             <!--Row one-->
             <div class="flex flex-wrap -mx-2 my-6">
-                    <!--Name.-->
+                    <!--Current Password'.-->
                 <div class="w-full md:w-1/2  px-1 mb-6 md:mb-0">
                     <x-label for="" :value="__('Current Password')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                    <x-input id="name" class="mt-1 w-full" type="password" name="name" required autofocus />
+                    <x-input id="old_password" class="mt-1 w-full" type="password" name="old_password" required autofocus />
                 </div>
-                <!--Username-->
+                <!--New Password'-->
                 <div class="w-full md:w-1/2 px-1">
                     <x-label for="" :value="__('New Password')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                    <x-input id="username" class="mt-1 w-full" type="password" name="username" required autofocus />
+                    <x-input id="password" class="mt-1 w-full" type="password" name="password" required autofocus />
                 </div>
             </div>
 

@@ -1,3 +1,10 @@
+@if(session()->has('message'))
+<div class="absolute right-0 bottom-0 p-1">
+    <div class="flex items-center px-4 py-2 rounded  text-white bg-green-400" role="alert">
+        <p>{{ session()->get('message') }}</p>
+    </div>
+  </div>
+@endif
 <x-app-layout>
     <!-- Grid -->
     <div class="grid grid-cols-1  sm:grid-cols-4 bg-white h-screen">
