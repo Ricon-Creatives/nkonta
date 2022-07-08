@@ -24,8 +24,8 @@ class TrialSummaryController extends Controller
     $transactions =  DB::table('transactions')->where('transactions.user_id',$user)
     ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
     ->whereDate('transactions.created_at',Carbon::today())
-    ->select('accounts.code',DB::raw('SUM(amount) as amount,transactions.type,accounts.name'))
-    ->groupBy('accounts.code','transactions.type','accounts.name')
+    ->select('accounts.code',DB::raw('SUM(amount) as amount,transactions.type,accounts.name,accounts.group_by_code'))
+    ->groupBy('accounts.group_by_code','accounts.code','transactions.type','accounts.name')
     ->get();
 
   /*  $transactions = [];

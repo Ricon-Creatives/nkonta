@@ -23,6 +23,7 @@ class AccountsImport implements ToModel, WithHeadingRow
             'name'  => $row['name'],
             'type' => $row['type'],
             'financial_statement' => $row['financial_statement'],
+            'group_by_code' => $row['group_by_code'],
         ]);
 
         return $account;
