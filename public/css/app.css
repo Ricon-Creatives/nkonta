@@ -11159,11 +11159,17 @@ select{
 .col-span-4{
   grid-column: span 4 / span 4;
 }
+.col-span-3{
+  grid-column: span 3 / span 3;
+}
 .m-0{
   margin: 0px;
 }
 .m-2{
   margin: 0.5rem;
+}
+.m-1{
+  margin: 0.25rem;
 }
 .my-2{
   margin-top: 0.5rem;
@@ -11188,6 +11194,18 @@ select{
 .mx-2{
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+.my-1{
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.my-4{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.my-6{
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 .ml-3{
   margin-left: 0.75rem;
@@ -11284,6 +11302,9 @@ select{
 }
 .mt-20{
   margin-top: 5rem;
+}
+.mr-4{
+  margin-right: 1rem;
 }
 .block{
   display: block;
@@ -11507,6 +11528,9 @@ select{
 }
 .flex-wrap{
   flex-wrap: wrap;
+}
+.items-start{
+  align-items: flex-start;
 }
 .items-end{
   align-items: flex-end;
@@ -11936,6 +11960,9 @@ select{
 .text-center{
   text-align: center;
 }
+.text-right{
+  text-align: right;
+}
 .align-middle{
   vertical-align: middle;
 }
@@ -12104,6 +12131,10 @@ select{
 .text-indigo-900{
   --tw-text-opacity: 1;
   color: rgb(49 46 129 / var(--tw-text-opacity));
+}
+.text-indigo-800{
+  --tw-text-opacity: 1;
+  color: rgb(55 48 163 / var(--tw-text-opacity));
 }
 .underline{
   -webkit-text-decoration-line: underline;
@@ -20504,6 +20535,12 @@ readers do not read off random characters that represent icons */
   }
   .sm\:grid-cols-9{
     grid-template-columns: repeat(9, minmax(0, 1fr));
+  }
+  .sm\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .sm\:grid-cols-4{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   .sm\:items-center{
     align-items: center;

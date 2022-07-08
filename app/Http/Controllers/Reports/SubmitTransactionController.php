@@ -60,6 +60,6 @@ class SubmitTransactionController extends Controller
     }
 
     //Response Message
-        return redirect()->route('payroll.index');
+        return redirect()->route('payroll.index')->withMessage('Transaction added.');
     }
 }

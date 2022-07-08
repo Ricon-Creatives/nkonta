@@ -58,8 +58,11 @@ Route::post('/item/new','Reports\ItemController@store')->name('item.store');
 Route::get('/estimate/{id}', 'Documents\GenerateFileController@estimate')->name('show.estimate');
 //
 Route::get('/profile', function () {
-    return view('dashboard.profile.index');
+    return view('dashboard.profile.account');
 })->name('profile');
+Route::get('/profile/account/change-password', function () {
+    return view('dashboard.profile.password');
+})->name('profile.password');
 //
 Route::resource('reconcilation', 'Reports\ReconcileController');
 //

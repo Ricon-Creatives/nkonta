@@ -31,13 +31,13 @@
         <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-0 mb-4 justify-center" id="tabs-tab"
         role="tablist">
             <li class="nav-item" role="presentation">
-                <a href="#tabs-matched" class="nav-link block font-medium text-xs focus:outline-none
+                <a href="#tabs-matched" class="nav-link block font-semibold text-xs focus:outline-none
                 uppercase px-6 py-3 my-2 hover:bg-gray-100 active
                 " id="tabs-matched-tab" data-bs-toggle="pill" data-bs-target="#tabs-matched" role="tab" aria-controls="tabs-matched"
                 aria-selected="true">Matched</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a href="#tabs-unmatched" class="nav-link block font-medium text-xs focus:outline-none uppercase
+                <a href="#tabs-unmatched" class="nav-link block font-semibold text-xs focus:outline-none uppercase
                 px-6 py-3 my-2 hover:bg-gray-100" id="tabs-unmatched-tab" data-bs-toggle="pill" data-bs-target="#tabs-unmatched" role="tab"
                 aria-controls="tabs-unmatched" aria-selected="false">Unmatched</a>
             </li>

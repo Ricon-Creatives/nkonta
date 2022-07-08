@@ -68,10 +68,10 @@ class PayrollController extends Controller
         ]);
 
         if($request->next){
-            return redirect()->route('payroll.create');
+            return redirect()->route('payroll.create')->withMessage('Added.');
            }else{
         //Response Message
-        return redirect()->route('payroll.index');
+        return redirect()->route('payroll.index')->withMessage('Added.');
            }
     }
 

@@ -1,5 +1,11 @@
+@if(session()->has('message'))
+<div class="absolute right-0 p-1">
+    <div class="flex items-center px-4 py-4 rounded  text-slate-800 bg-slate-300" role="alert">
+        <p>{{ session()->get('message') }}</p>
+    </div>
+  </div>
+@endif
 <x-app-layout>
-
     <!--Heading-->
     <x-slot name="header">
     </x-slot>
@@ -7,7 +13,7 @@
     <div class="bg-white">
          <!--Form-->
          <div class="flex flex-col justify-center w-full">
-              <div class=" w-full">
+              <div class="w-full">
                 <h6 class="text-base text-left p-3 font-bold text-gray-800">
                     Add Payroll Item
                 </h6>

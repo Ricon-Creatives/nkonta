@@ -52,7 +52,7 @@ class PurchasesController extends Controller
         $title = auth()->user()->titles()->create($data);
 
         //dd($title);
-        return redirect()->route('item.create');
+        return redirect()->route('item.create')->withMessage('Customer Added.');
     }
 
     /**

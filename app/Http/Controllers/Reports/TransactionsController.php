@@ -96,7 +96,7 @@ class TransactionsController extends Controller
          $this->reportService->storeTotals($transactions);
 
 
-        return redirect('/transactions');
+        return redirect('/transactions')->withMessage('Transaction added.');
     }
 
     /**

@@ -76,10 +76,10 @@ class ItemController extends Controller
         $this->reportService->storeTransaction($request,$type,$total);
 
         if($request->next){
-         return redirect()->route('item.create');
+         return redirect()->route('item.create')->withMessage('Item Added.');
         }else{
 
-        return ($type == 'Selling') ? redirect()->route('sales.index'):redirect()->route('purchases.index');
+        return ($type == 'Selling') ? redirect()->route('sales.index'):redirect()->route('purchases.index')->withMessage('Item Added.');
         }
 
 

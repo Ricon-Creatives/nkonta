@@ -45,7 +45,7 @@
                         </x-dropdown-link>
                         @endcan
                         <x-dropdown-link :href="route('profile')">
-                            {{ __('Profile Settings') }}
+                            {{ __('Profile') }}
                         </x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
