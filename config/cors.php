@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*','*.facebook.net/*'],
+    'allowed_origins' => ['*','*.facebook.net/*','www.facebook.com/*'],
 
     'allowed_origins_patterns' => [],
 
