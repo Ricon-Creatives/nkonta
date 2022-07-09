@@ -15,7 +15,8 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie','connect.facebook.net/*','facebook.com/*','facebook.com'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie','connect.facebook.net/*','facebook.com/*','facebook.com',
+    'web.facebook.com'],
 
     'allowed_methods' => ['*'],
 
