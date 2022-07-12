@@ -165,6 +165,7 @@
     js = d.createElement(s);
     js.id = id;
     js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+    js.referrerpolicy ="origin";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script>
