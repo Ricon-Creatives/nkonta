@@ -14,7 +14,7 @@
 
         <ul class="space-y-2 text-sm mb-4">
             <li>
-                <a href="{{ route('home') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400
+                <a href="{{ route('home') }}" class="flex flex-col items-center text-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400
                 {{ request()->routeIs('home') ? ' bg-gray-400' : '' }} focus:shadow-outline">
                     <span class="text-white text-3xl">
                         <i class="fa-solid fa-home"></i>
