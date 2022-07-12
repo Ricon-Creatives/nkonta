@@ -168,6 +168,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Ltsochev\CustomerChat\CustomerChatServiceProvider::class,
 
         /*
          * Application Service Providers...
