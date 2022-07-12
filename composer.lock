@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21765c7a8e14cd24d001bf2e160b3282",
+    "content-hash": "1d3558f563ff628fb51f0794c6c54bde",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1962,60 +1962,6 @@
                 }
             ],
             "time": "2021-11-21T11:48:40+00:00"
-        },
-        {
-            "name": "ltsochev/laravel-fb-chat",
-            "version": "v1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ltsochev-dev/laravel-fb-chat.git",
-                "reference": "011b51ab6ee71536c5f9631c1a20ec2079d85659"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ltsochev-dev/laravel-fb-chat/zipball/011b51ab6ee71536c5f9631c1a20ec2079d85659",
-                "reference": "011b51ab6ee71536c5f9631c1a20ec2079d85659",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1.3"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^3.1",
-                "phpunit/phpunit": "^8.4"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Ltsochev\\CustomerChat\\CustomerChatServiceProvider"
-                    ]
-                },
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Ltsochev\\CustomerChat\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lachezar Tsochev",
-                    "email": "info@ltsochev.com"
-                }
-            ],
-            "description": "A simple Laravel library that wraps the Facebook customer chat plugin in your website.",
-            "support": {
-                "issues": "https://github.com/ltsochev-dev/laravel-fb-chat/issues",
-                "source": "https://github.com/ltsochev-dev/laravel-fb-chat/tree/master"
-            },
-            "time": "2019-11-21T19:53:09+00:00"
         },
         {
             "name": "maatwebsite/excel",
