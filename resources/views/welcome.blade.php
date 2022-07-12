@@ -54,7 +54,7 @@
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
     js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-    console.log(js.parentNode.insertBefore(js, fjs));
+    console.log(fjs.parentNode.insertBefore(js, fjs));
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script>
