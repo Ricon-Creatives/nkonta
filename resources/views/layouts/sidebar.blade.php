@@ -4,7 +4,7 @@
     <div class=" bg-indigo-800 fixed h-full overflow-x-hidden z-50 sm:w-1/12">
         <div class="flex justify-center space-x-2 mb-4">
              <!-- Logo -->
-             <div class="shrink-0 flex items-center">
+             <div class="shrink-0 flex items-center p-1">
                 <a href="{{ url('/') }}" >
                     <img src="{{ asset('img/logo-03.png') }}" class="h-24 w-auto"/>
                 </a>
@@ -12,14 +12,14 @@
 
         </div>
 
-        <ul class="space-y-2 text-sm mb-4">
+        <ul class="space-y-2 text-sm mb-4 p-1">
             <li>
                 <a href="{{ route('home') }}" class="flex flex-col items-center text-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400
                 {{ request()->routeIs('home') ? ' bg-gray-400' : '' }} focus:shadow-outline">
-                    <span class="text-white text-3xl">
+                    <span class="text-white tex-center text-3xl">
                         <i class="fa-solid fa-home"></i>
                     </span>
-                    <span class="">Home</span>
+                    Home
                 </a>
             </li>
             <li>
@@ -28,7 +28,7 @@
                     <span class="text-white text-3xl">
                         <i class="fa-solid fa-wallet"></i>
                     </span>
-                    <span class="">Transactions</span>
+                    Transactions
                 </a>
             </li>
 
@@ -39,7 +39,7 @@
                     <span class="text-white text-3xl">
                      <i class="fa-solid fa-bar-chart"></i>
                     </span>
-                 <span class="">Reports</span>
+                 Reports
                 </button>
                 <!--Content-->
                 <div x-show="show" x-cloak class="origin-top-right absolute"
@@ -106,7 +106,7 @@
                     <span class="text-white text-3xl">
                         <i class="fa-solid fa-chart-line"></i>
                     </span>
-                    <span class="">Sales</span>
+                    Sales
                 </a>
             </li>
             <li>
@@ -114,7 +114,7 @@
                     <span class="text-white text-3xl">
                 <i class="fa-solid fa-coins"></i>
                     </span>
-                    <span class="">Purchases</span>
+                    Purchases
                 </a>
             </li>
 
@@ -123,7 +123,7 @@
                     <span class="text-white text-3xl">
                 <i class="fa-solid fa-balance-scale"></i>
                     </span>
-                    <span class="">Reconcilation</span>
+                    Reconcilation
                 </a>
             </li>
 
@@ -132,7 +132,7 @@
                     <span class="text-white text-3xl">
                 <i class="fa-solid fa-users"></i>
                     </span>
-                    <span class="">Add User</span>
+                    Add User
                 </a>
             </li>-->
 
@@ -141,7 +141,7 @@
                     <span class="text-white text-3xl">
                     <i class="fa-solid fa-file-invoice-dollar"></i>
                     </span>
-                    <span class="">Payroll</span>
+                    Payroll
                 </a>
             </li>
 
