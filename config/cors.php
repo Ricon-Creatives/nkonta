@@ -15,12 +15,12 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie','connect.facebook.net','facebook.net','facebook.com',
+    'paths' => ['api/*', 'sanctum/csrf-cookie','connect.facebook.net','facebook.com',
   'web.facebook.com'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*','connect.facebook.net','facebook.net','facebook.com',
+    'allowed_origins' => ['*','connect.facebook.net','facebook.com',
     'web.facebook.com'],
 
     'allowed_origins_patterns' => [],

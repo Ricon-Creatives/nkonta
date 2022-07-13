@@ -28,8 +28,8 @@ class StoreTransactionRequest extends FormRequest
             'amount' => ['required',],
             'account' => ['required','integer'],
             'category' => ['required','integer'],
-            'description_to_credit' => ['required'],
-            'description_to_debit' => ['required'],
+            'description_to_credit' => ['nullable'],
+            'description_to_debit' => ['nullable'],
             'type' => ['required'],
             'slug' => ['nullable','string'],
         ];

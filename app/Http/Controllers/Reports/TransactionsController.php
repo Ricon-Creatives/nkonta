@@ -8,7 +8,7 @@ use App\Models\Transaction;
 use App\Models\Account;
 use App\Services\ReportService;
 use Illuminate\Support\Carbon;
-use App\Http\Requests\Auth\StoreTransactionRequest;
+use App\Http\Requests\StoreTransactionRequest;
 
 
 class TransactionsController extends Controller
