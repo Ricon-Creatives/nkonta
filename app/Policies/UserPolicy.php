@@ -19,7 +19,7 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        //
+       return $user->isTeamOwner() && $user->hasRole('Manager');
     }
 
     /**

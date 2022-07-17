@@ -32,7 +32,7 @@ class EmployeeController extends Controller
      */
     public function create(User $user)
     {
-        $this->authorize('manage',$user);
+       // $this->authorize('manage',$user);
         $roles = Role::get();
 
         return view('dashboard.employee.create', compact('roles'));
@@ -47,9 +47,9 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('manage',$user);
-
        // $user =  auth()->user();
+       // $this->authorize('manage',$user);
+
         $team = auth()->user()->currentTeam;
          $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -132,7 +132,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id,User $user)
     {
-        $this->authorize('manage',$user);
+      //  $this->authorize('manage',$user);
 
         $employee = User::find($id);
         //Find team

@@ -30,7 +30,7 @@ class OwnerPolicy
      */
     public function manage(User $user)
     {
-       return  $user->isTeamOwner() && $user->hasRole(['Administrator','Manager']);
+       return  $user->isTeamOwner();
     }
 
     /**

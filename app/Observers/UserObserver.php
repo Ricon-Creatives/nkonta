@@ -17,7 +17,7 @@ class UserObserver
      */
     public function created(User $user)
     {
-        if ($user->hasRole(['Manager','Administrator'])) {
+        if ($user->company_name) {
             $team    = new Company();
             $team->owner_id = $user->id;
             $team->name = $user->company_name;
