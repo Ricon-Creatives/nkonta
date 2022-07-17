@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'name' => 'nkonta',
             'username' => 'nkonta11',
             'email' => 'nkonta@gmail.com',
+            'company_name' => 'Nkonta',
             'phone' => '0504628244',
             'password' => Hash::make('nkonta_admin1'),
         ]);
