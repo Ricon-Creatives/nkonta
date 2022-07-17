@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Mpociot\Teamwork\Facades\Teamwork;
-use Mpociot\Teamwork\TeamInvite;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\SendInvite;
 use Illuminate\Support\Str;
@@ -63,8 +62,7 @@ class EmployeeController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => '233'.intval($request->phone),
-            'password' => Hash::make('password123')
-            //,Str::random(8)
+            'password' => Hash::make(Str::random(8))
         ]);
 
         //Assign Role
