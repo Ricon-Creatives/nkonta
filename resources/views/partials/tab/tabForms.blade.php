@@ -43,9 +43,7 @@
              required>
               <option></option>
               @foreach($accounts as $account)
-              @if ($account->type == 'Asset')
               <option value="{{$account->id}}">{{$account->name}}</option>
-              @endif
               @endforeach
           </select>
           </div>
@@ -73,9 +71,7 @@
             focus:text-gray-600 focus:bg-white focus:outline-none" name="category" onchange="checkValue(this,'extraField')" required>
               <option></option>
                @foreach($accounts as $account)
-              @if ($account->type != 'Asset' )
               <option value="{{$account->id}}">{{$account->name}}</option>
-              @endif
               @endforeach
           </select>
           </div>
@@ -160,9 +156,7 @@
             focus:text-gray-600 focus:bg-white focus:outline-none" name="account" onchange="checkValue(this,'extraField-exp')" required>
               <option></option>
               @foreach($accounts as $account)
-              @if ($account->type == 'Asset')
               <option value="{{$account->id}}">{{$account->name}}</option>
-              @endif
               @endforeach
           </select>
           </div>
@@ -190,9 +184,7 @@
             focus:text-gray-600 focus:bg-white focus:outline-none" name="category" onchange="checkValue(this,'extraField-exp')" required>
               <option></option>
               @foreach($accounts as $account)
-              @if ($account->type != 'Asset' && $account->type != 'Revenue')
               <option value="{{$account->id}}">{{$account->name}}</option>
-              @endif
               @endforeach
           </select>
           </div>

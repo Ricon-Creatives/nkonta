@@ -15,7 +15,7 @@ class CreatePayrollsTable extends Migration
     {
         Schema::create('payrolls', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->integer('team_id')->unsigned();
             $table->string('employee_name');
             $table->string('grade');
             $table->integer('staff_no');

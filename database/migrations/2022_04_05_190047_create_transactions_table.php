@@ -15,7 +15,7 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->integer('team_id')->unsigned();
             $table->date('date');
             $table->unsignedBigInteger('account_id');
             $table->double('amount',[15,2]);
@@ -27,10 +27,11 @@ class CreateTransactionsTable extends Migration
             $table->string('company_name')->nullable();
             $table->string('contact_address')->nullable();
             $table->date('expected_payment_date')->nullable();
+            $table->string('slug')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('account_id')->references('id')->on('accounts');
+            $table->foreign('team_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

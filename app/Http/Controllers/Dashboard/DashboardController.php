@@ -16,12 +16,12 @@ class DashboardController extends Controller
     {
         $user = auth()->user()->id;
 
-          $totalRevenue = Transaction::with('account')->where('user_id',$user)
+          $totalRevenue = Transaction::with('account')
           ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
           ->where('accounts.type','Revenue')
           ->sum('transactions.amount');
 
-          $totalExpense = Transaction::with('account')->where('user_id',$user)
+          $totalExpense = Transaction::with('account')
           ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
           ->where('accounts.type','Expense')
           ->sum('transactions.amount');

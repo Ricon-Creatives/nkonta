@@ -15,14 +15,14 @@ class CreateTotalsTable extends Migration
     {
         Schema::create('totals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->integer('team_id')->unsigned();
             $table->unsignedBigInteger('account_id');
             $table->string('type')->nullable();
             $table->string('slug')->unique();
             $table->double('amount',[15,2]);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('team_id')->references('id')->on('companies')->onDelete('cascade');
             $table->foreign('account_id')->references('id')->on('accounts');
         });
     }

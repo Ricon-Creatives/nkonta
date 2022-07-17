@@ -21,7 +21,7 @@ class TrialSummaryController extends Controller
 
     $user = auth()->user()->id;
 
-    $transactions =  DB::table('transactions')->where('transactions.user_id',$user)
+    $transactions =  DB::table('transactions')->where('transactions.team_id',$user)
     ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
     ->whereDate('transactions.created_at',Carbon::today())
     ->select('accounts.code',DB::raw('SUM(amount) as amount,transactions.type,accounts.name,accounts.group_by_code'))

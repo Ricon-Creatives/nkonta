@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Sales;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Title;
+use Mpociot\Teamwork\Facades\Teamwork;
 
-class SalesController extends Controller
+
+class InviteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +16,8 @@ class SalesController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
-        $sales = Title::where('type','income')->latest()->paginate(10);
 
-        return view('dashboard.sales.index',compact('sales'));
+        return view('dashboard.employee.invites');
     }
 
     /**
@@ -28,7 +27,7 @@ class SalesController extends Controller
      */
     public function create()
     {
-        return view('dashboard.sales.create');
+        //
     }
 
     /**
@@ -37,31 +36,16 @@ class SalesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function accept($token)
     {
-         $request->validate([
-            'due_date' => ['required'],
-            'name' => ['required'],
-            'vat' => ['required'],
-            'contact_no' => ['required'],
-            'contact_person' => ['required'],
-            'address' => ['required'],
-            'type' => ['required'],
-        ]);
+        $user = auth()->user();
+        $invite = Teamwork::getInviteFromAcceptToken($token); // Returns a TeamworkInvite model or null
 
-        Title::create([
-            'due_date' => $request->due_date,
-            'name' => $request->name,
-            'vat' => $request->vat,
-            'contact_no' => $request->contact_no,
-            'contact_person' => $request->contact_person,
-            'address' => $request->address,
-            'type' => $request->type,
-            'team_id' => auth()->user()->currentTeam->id,
-        ]);
-
-        //dd($title);
-        return redirect()->route('item.create')->withMessage('Customer Added.');
+        if( $invite ) // valid token found
+        {
+            Teamwork::acceptInvite( $invite );
+        }
+        return redirect()->back();
     }
 
     /**
@@ -70,10 +54,9 @@ class SalesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function deny($token)
     {
-        $trade = Title::find($id);
-        return view('dashboard.reports.invoice' ,compact('trade'));
+        //
     }
 
     /**

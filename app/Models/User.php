@@ -8,12 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Mpociot\Teamwork\Traits\UserHasTeams;
 use Keygen\Keygen;
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,HasRoles;
+    use HasApiTokens, HasFactory, Notifiable,HasRoles,UserHasTeams;
 
     /**
      * The attributes that are mass assignable.
@@ -57,14 +58,14 @@ class User extends Authenticatable
         'locked'
     ];
 
-    /**
+    /*
      * Get all of the transactions for the User
      *
-     */
+
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
-    }
+    }  */
 
     /**
      * Get all of the transactions for the User
@@ -75,23 +76,23 @@ class User extends Authenticatable
         return $this->hasMany(Total::class,);
     }
 
-    /**
+    /*
      * Get all of the titles for the User
-     *
-     */
+
     public function titles()
     {
         return $this->hasMany(Title::class);
     }
+     */
 
-     /**
+     /*
      * Get all of the transactions for the User
      *
-     */
+
     public function items()
     {
         return $this->hasMany(Item::class,);
-    }
+    } */
 
  /**
      * Get all of the transactions for the User
@@ -101,21 +102,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Payroll::class,);
     }
-
-    /*
-     * The companies that belong to this user
-     */
-    public  function company(){
-        return $this->belongsToMany(Company::class);
-    }
-
-    /*
-     * The companies that belong to this user
-     */
-    public  function firm(){
-        return $this->hasOne(Company::class);
-    }
-
 
     public function generateTwoFactorCode()
     {

@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Mpociot\Teamwork\Traits\UsedByTeams;
 
 class Total extends Model
 {
-    use HasFactory;
+    use HasFactory, UsedByTeams;
     /**
      * The attributes that are mass assignable.
      *
@@ -18,7 +19,7 @@ class Total extends Model
         'amount',
         'account_id',
         'type',
-        'user_id',
+        'team_id',
         'slug'
     ];
 

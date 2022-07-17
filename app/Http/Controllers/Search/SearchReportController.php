@@ -22,8 +22,7 @@ class SearchReportController extends Controller
         $from = Carbon::parse($request->from_date);
         $to = Carbon::parse($request->to_date);
 
-        $transactions = Transaction::where('user_id',$user)
-        ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
+        $transactions = Transaction::join('accounts', 'transactions.account_id', '=', 'accounts.id')
         ->where('accounts.type',$request->type)
         ->whereBetween('transactions.created_at',[$from,$to])
         ->paginate(10);
@@ -41,8 +40,7 @@ class SearchReportController extends Controller
         $from = Carbon::parse($request->from_date);
         $to = Carbon::parse($request->to_date);
 
-        $transactions = Transaction::where('user_id',$user)
-        ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
+        $transactions = Transaction::join('accounts', 'transactions.account_id', '=', 'accounts.id')
         ->where('accounts.type','Expense')
         ->whereBetween('transactions.created_at',[$from,$to])
         ->paginate(10);
@@ -61,8 +59,7 @@ class SearchReportController extends Controller
         $from = Carbon::parse($request->from_date);
         $to = Carbon::parse($request->to_date);
 
-        $transactions = Transaction::where('user_id',$user)
-        ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
+        $transactions = Transaction::join('accounts', 'transactions.account_id', '=', 'accounts.id')
         ->where('accounts.type',$request->type)
         ->whereBetween('transactions.created_at',[$from,$to])
         ->paginate(10);
@@ -74,13 +71,13 @@ class SearchReportController extends Controller
 
     public function trialSummaryFilter(Request $request)
     {
-        $user = auth()->user()->id;
+        $companyId = auth()->user()->currentTeam->id;
         $data = $request->all();
 
         $from = Carbon::parse($request->from_date);
         $to = Carbon::parse($request->to_date);
 
-        $transactions =  DB::table('transactions')->where('transactions.user_id',$user)
+        $transactions =  DB::table('transactions')->where('transactions.team_id',$companyId)
         ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
         ->whereBetween('transactions.created_at',[$from,$to])
         ->select('accounts.code',DB::raw('SUM(amount) as amount,transactions.type,accounts.name,accounts.group_by_code'))
@@ -95,14 +92,14 @@ class SearchReportController extends Controller
 
     public function balSheetFilter(Request $request)
     {
-        $user = auth()->user()->id;
+        $companyId = auth()->user()->currentTeam->id;
         $data = $request->all();
 
         $from = Carbon::parse($request->from_date);
         $to = Carbon::parse($request->to_date);
 
         //generate the accounts for balance sheet
-        $accounts = DB::table('totals')->where('user_id',$user)
+        $accounts = DB::table('totals')->where('user_id',$companyId)
         ->join('accounts', 'totals.account_id', '=', 'accounts.id')
         ->whereBetween('totals.created_at', [$from,$to])
         ->where('accounts.type','!=','Revenue')->where('accounts.type','!=','Expense')
@@ -118,15 +115,13 @@ class SearchReportController extends Controller
 
     public function profitLossFilter(Request $request)
     {
-        $user = auth()->user()->id;
         $data = $request->all();
 
         $from = Carbon::parse($request->from_date);
         $to = Carbon::parse($request->to_date);
 
         //generate the accounts for balance sheet
-        $books = Total::where('user_id',$user)
-        ->join('accounts', 'totals.account_id', '=', 'accounts.id')
+        $books = Total::join('accounts', 'totals.account_id', '=', 'accounts.id')
         ->whereBetween('totals.created_at', [$from,$to])
         ->orWhere('accounts.type','Expense')
         ->where('accounts.type','Revenue')
@@ -140,12 +135,11 @@ class SearchReportController extends Controller
 
     public function transactionsFilter(Request $request)
     {
-        $user = auth()->user();
         $data = $request->all();
         $search =\Request::get('search');
 
         //generate the accounts for balance sheet
-        $transactions = Transaction::with(['account'])->whereBelongsTo($user)
+        $transactions = Transaction::with(['account'])
         ->where(function($query) use ($search){
             $query->where('company_name', 'Like',"%$search%")->orWhere('type','Like',"%$search%")
             ->orWhere('amount','Like',"%$search%")->orWhere('reference_no','Like',"%$search%");
@@ -160,12 +154,11 @@ class SearchReportController extends Controller
 
     public function sales(Request $request)
     {
-        $user = auth()->user();
         $data = $request->all();
         $search =\Request::get('search');
 
         //generate the accounts for balance sheet
-        $sales = Title::whereBelongsTo($user)->where('type','Selling')
+        $sales = Title::where('type','Selling')
         ->where(function($query) use ($search){
             $query->where('name', 'Like',"%$search%")->orWhere('vat','Like',"%$search%")
             ->orWhere('address','Like',"%$search%")->orWhere('contact_no','Like',"%$search%")
@@ -181,12 +174,11 @@ class SearchReportController extends Controller
 
     public function purchases(Request $request)
     {
-        $user = auth()->user();
         $data = $request->all();
         $search =\Request::get('search');
 
         //generate the accounts for balance sheet
-        $purchases = Title::whereBelongsTo($user)->where('type','Buying')
+        $purchases = Title::where('type','Buying')
         ->where(function($query) use ($search){
             $query->where('name', 'Like',"%$search%")->orWhere('vat','Like',"%$search%")
             ->orWhere('address','Like',"%$search%")->orWhere('contact_no','Like',"%$search%")

@@ -10,6 +10,7 @@
           <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
         <form action="{{ route('account.update',Auth::user()->id) }}" method="POST">
+            @method('PATCH')
             @csrf
             <!--Row one-->
             <div class="flex flex-wrap -mx-2 mb-6">

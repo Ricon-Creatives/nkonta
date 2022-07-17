@@ -31,7 +31,7 @@ class TransactionImport implements ToCollection, WithHeadingRow
     public function collection(Collection $rows)
     {
         $user = auth()->user();
-        $data = Transaction::with(['account'])->whereBelongsTo($user)->whereMonth('date', $this->month)->get();
+        $data = Transaction::with(['account'])->whereMonth('date', $this->month)->get();
         $bank_statement = $rows;
         $matched = collect(array());
 

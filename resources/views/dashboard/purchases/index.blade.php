@@ -1,15 +1,4 @@
-@if(session()->has('message'))
-<div class="absolute right-0 p-1">
-    <div class="flex items-center px-4 py-4 rounded  text-slate-800 bg-slate-300" role="alert">
-        <p>{{ session()->get('message') }}</p>
-    </div>
-  </div>
-@endif
 <x-app-layout>
-    <!--Heading-->
- <x-slot name="header">
-  </x-slot>
-
     <!-- Grid -->
     <div class="grid grid-cols-1 bg-white p-2">
 

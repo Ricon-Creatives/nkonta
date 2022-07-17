@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Mpociot\Teamwork\Traits\UsedByTeams;
 
 class Title extends Model
 {
-    use HasFactory;
+    use HasFactory, UsedByTeams;
 
     /**
      * The attributes that are mass assignable.
@@ -19,20 +20,19 @@ class Title extends Model
         'address',
         'contact_no',
         'type',
-        'user_id',
+        'team_id',
         'contact_person',
         'vat',
         'due_date'
     ];
 
 
-    /**
-     *
-     */
+    /*
+
     public function user(){
         return $this-> belongsTo(User::class);
       }
-
+  */
        /**
      * Get all of the items for the User
      *

@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Models\Total;
+use App\Models\Transaction;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 
@@ -19,12 +20,12 @@ class ReportService
             $slug = Str::slug($input->account_id.$input->amount.Carbon::today()->format('d-m-Y'));
 
             #find all transaction with same type and account_id on the same day
-            $account = Total::whereBelongsTo($user)->where('account_id',$input->account_id)->where('type',$input->type)
+            $account = Total::where('account_id',$input->account_id)->where('type',$input->type)
             ->whereDate('created_at',Carbon::today())
             ->exists();
 
             if ($account) {
-            $transaction = Total::whereBelongsTo($user)->where('account_id',$input->account_id)->where('type',$input->type)
+            $transaction = Total::where('account_id',$input->account_id)->where('type',$input->type)
             ->whereDate('created_at',Carbon::today())
             ->get();
                 #sum amount column and merge
@@ -36,8 +37,9 @@ class ReportService
         } else {
             #store value
             //dd($input);
-            $data = auth()->user()->totals()->create([
+            $data = Total::create([
                 'account_id'=> $input->account_id,
+                'team_id' =>auth()->user()->currentTeam->id,
                 'type'=> $input->type,
                 'amount' => $input->amount,
                 'slug'=> $slug,
@@ -57,8 +59,9 @@ class ReportService
         $date = Carbon::today();
         $reference_no =  mt_rand(10000, 99999);
 
-        $data = auth()->user()->transactions()->create([
+        $data = Transaction::create([
             'date'=> $date,
+            'team_id' =>auth()->user()->currentTeam->id,
             'amount' => $total,
             'account_id'=> $request->acc_dr,
             'category_id'=> $request->acc_cr,

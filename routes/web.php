@@ -59,13 +59,20 @@ Route::get('/estimate/{id}', 'Documents\GenerateFileController@estimate')->name(
 //User
 Route::get('/profile', 'User\UserController@editProfile')->name('profile');
 Route::get('/profile/account/change-password', 'User\UserController@editPassword')->name('profile.password');
-Route::post('/profile/account/update', 'User\UserController@update')->name('account.update');
-Route::post('/profile/account/update-password', 'User\UserController@updatePassword')->name('profile.password.update');
+Route::get('/profile/my-business/', 'User\CompanyController@edit')->name('my-business');
+Route::patch('/profile/account/update', 'User\UserController@update')->name('account.update');
+Route::patch('/profile/account/update-password', 'User\UserController@updatePassword')->name('profile.password.update');
+Route::patch('/profile/my-business/update', 'User\CompanyController@update')->name('my-business.update');
+
 
 //
 Route::resource('reconcilation', 'Reports\ReconcileController');
 //
-Route::resource('employee', 'User\AddUserController');
+Route::resource('employee', 'User\EmployeeController');
+Route::resource('invites', 'User\InviteController');
+Route::get('/invite/accept/{token}', 'User\InviteController@accept')->name('invite.accept');
+
+
 //
 Route::resource('payroll', 'Reports\PayrollController');
 //

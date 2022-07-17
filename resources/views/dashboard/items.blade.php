@@ -1,24 +1,12 @@
-@if(session()->has('message'))
-<div class="absolute right-0 p-1">
-    <div class="flex items-center px-4 py-4 rounded  text-slate-800 bg-slate-300" role="alert">
-        <p>{{ session()->get('message') }}</p>
-    </div>
-  </div>
-@endif
 <x-app-layout>
     <!-- Grid -->
-    <div class="grid grid-cols-1">
-
-      <!--Heading-->
-   <x-slot name="header">
-    </x-slot>
-
+    <div class="grid grid-cols-1 p-2">
     <!--Form-->
     <div class="flex flex-col px-4">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-2 inline-block sm:min-w-md min-w-full sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white">
-                <div class="mx-auto px-4 py-10">
+                <div class="mx-auto px-4 py-5">
                 <form class="w-full" action="{{ route('item.store') }}" method="Post">
                     @csrf
 

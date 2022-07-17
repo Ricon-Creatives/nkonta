@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Mpociot\Teamwork\Traits\UsedByTeams;
 
 class Payroll extends Model
 {
-    use HasFactory;
+    use HasFactory, UsedByTeams;
 
     /**
      * The attributes that are mass assignable.
@@ -31,7 +32,7 @@ class Payroll extends Model
         'month',
         'total_emoluments',
         'net_taxable_pay',
-        'user_id'
+        'team_id'
     ];
 
       /**

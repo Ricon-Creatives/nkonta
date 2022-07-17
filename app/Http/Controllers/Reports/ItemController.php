@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ItemRequest;
 use App\Models\Account;
 use App\Models\Title;
+use App\Models\Item;
 use App\Services\ReportService;
 use Illuminate\Support\Carbon;
 
@@ -43,7 +44,7 @@ class ItemController extends Controller
     {
         $user = auth()->user();
         $accounts = Account::get();
-        $title = Title::whereBelongsTo($user)->latest()->first();
+        $title = Title::latest()->first();
 
         return view('dashboard.items',compact('accounts','title'));
     }
@@ -58,11 +59,12 @@ class ItemController extends Controller
     {
         //dd($request);
         $user = auth()->user();
-        $title = Title::whereBelongsTo($user)->latest()->first();
+        $title = Title::latest()->first();
         $total = $request->qty * $request->price;
 
-        auth()->user()->items()->create([
+        Item::create([
             'item_name' => $request->item_name,
+            'team_id' => auth()->user()->currentTeam->id,
             'qty'=> $request->qty,
             'price'=> $request->price,
             'acc_dr'=> $request->acc_dr,
@@ -79,7 +81,7 @@ class ItemController extends Controller
          return redirect()->route('item.create')->withMessage('Item Added.');
         }else{
 
-        return ($type == 'Selling') ? redirect()->route('sales.index'):redirect()->route('purchases.index')->withMessage('Item Added.');
+        return ($type == 'income') ? redirect()->route('sales.index'):redirect()->route('purchases.index')->withMessage('Item Added.');
         }
 
 

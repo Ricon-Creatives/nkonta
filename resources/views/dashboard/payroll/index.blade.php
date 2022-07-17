@@ -1,14 +1,4 @@
-@if(session()->has('message'))
-<div class="absolute right-0 p-1">
-    <div class="flex items-center px-4 py-4 rounded  text-slate-800 bg-slate-300" role="alert">
-        <p>{{ session()->get('message') }}</p>
-    </div>
-  </div>
-@endif
 <x-app-layout>
-    <!--Heading-->
-    <x-slot name="header">
-    </x-slot>
     <div class="flex justify-between p-3">
         <!-- Link -->
      <a  href="{{ route('payroll.create') }}" type="button" class="inline-block px-6 py-2.5 bg-purple-900 text-white font-medium text-xs leading-tight rounded shadow-sm hover:bg-purple-700 hover:shadow-lg
@@ -196,7 +186,7 @@
                <div class="py-4 items-center max-w-xs">
                 <ul class="list-none p-3 font-medium" style="list-style: none">
                     <li class="border-b border-gray-300">Date</li>
-                    <li class="order-b border-gray-300">Submitted by</li>
+                    <li class="border-b border-gray-300">Submitted by</li>
                     <li class="border-b border-gray-300">Designation</li>
                   </ul>
             </div>

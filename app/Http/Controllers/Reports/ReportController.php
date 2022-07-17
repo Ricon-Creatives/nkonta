@@ -14,8 +14,7 @@ class ReportController extends Controller
     {
         $user = auth()->user()->id;
 
-        $transactions = Transaction::where('user_id',$user)
-        ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
+        $transactions = Transaction::join('accounts', 'transactions.account_id', '=', 'accounts.id')
         ->where('accounts.type','Revenue')
         ->whereDate('transactions.created_at',Carbon::today())
         ->paginate(10);
@@ -29,8 +28,7 @@ class ReportController extends Controller
     {
         $user = auth()->user()->id;
 
-        $transactions = Transaction::where('user_id',$user)
-        ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
+        $transactions = Transaction::join('accounts', 'transactions.account_id', '=', 'accounts.id')
         ->where('accounts.type','Expense')
         ->whereDate('transactions.created_at',Carbon::today())
         ->paginate(10);
@@ -44,8 +42,7 @@ class ReportController extends Controller
     {
         $user = auth()->user()->id;
 
-        $transactions = Transaction::where('user_id',$user)
-        ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
+        $transactions = Transaction::join('accounts', 'transactions.account_id', '=', 'accounts.id')
         ->where('accounts.type','VAT')
         ->whereDate('transactions.created_at',Carbon::today())
         ->paginate(10);

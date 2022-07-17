@@ -15,7 +15,7 @@ class CreateTitlesTable extends Migration
     {
         Schema::create('titles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->integer('team_id')->unsigned();
             $table->string('name');
             $table->integer('vat');
             $table->string('address')->nullable();
@@ -25,7 +25,7 @@ class CreateTitlesTable extends Migration
             $table->integer('due_date')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('team_id')->references('id')->on('companies')->onDelete('cascade');
 
         });
     }

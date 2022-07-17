@@ -1,11 +1,6 @@
 <x-app-layout>
     <!-- Grid -->
-    <div class="grid grid-cols-1  bg-white">
-
-      <!--Heading-->
-   <x-slot name="header">
-    </x-slot>
-
+    <div class="grid grid-cols-1 bg-white p-2">
         <!--Form-->
         <div class="flex flex-col px-4">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -86,7 +81,7 @@
                             </tr>
                             @php($subtotal += ($item->total - $discount))
                           @endforeach
-                          @php($vat = number_format($subtotal * ($trade->vat/100),2))
+                          @php($vat = $subtotal * ($trade->vat/100))
 
                           <tr class="bg-white">
                             <td class="px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -149,9 +144,10 @@
                             <td class="text-sm text-gray-900 bg-white px-4 py-0 whitespace-nowrap">
                             </td>
                             <td class="text-sm text-gray-900 bg-white px-4 py-0 font-bold whitespace-nowrap">
-                                {{ $vat }}
+                                {{ number_format($vat,2) }}
                           </td>
                           </tr>
+                          @php($total = $subtotal + $vat)
                           <tr class="bg-white">
                             <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>
@@ -165,7 +161,7 @@
                             <td class="text-sm text-gray-900  bg-white px-4 py-0 whitespace-nowrap">
                             </td>
                             <td class="text-sm text-gray-900  bg-white px-4 py-0 font-bold whitespace-nowrap">
-                                {{ number_format($subtotal + $vat,2)}}
+                                {{ number_format($total,2)}}
                           </td>
                           </tr>
                         </tbody>

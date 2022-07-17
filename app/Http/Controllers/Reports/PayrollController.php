@@ -48,7 +48,7 @@ class PayrollController extends Controller
         //Month
         $month = Carbon::today()->format('m');
 
-        auth()->user()->payrolls()->create([
+        Payroll::create([
             'staff_no' => $request->staff_no,
             'employee_name'=> $request->employee_name,
             'grade'=> $request->grade,
@@ -65,6 +65,7 @@ class PayrollController extends Controller
             'total_emoluments'=> $emoluments,
             'net_taxable_pay'=> $taxable_pay,
             'month' => $month,
+            'team_id' => auth()->user()->currentTeam->id,
         ]);
 
         if($request->next){

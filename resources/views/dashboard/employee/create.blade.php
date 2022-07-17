@@ -1,17 +1,14 @@
 <x-app-layout>
+    <!--Heading-->
+ <x-slot name="header">
+  </x-slot>
     <!-- Grid -->
-    <div class="grid grid-cols-1">
-
-      <!--Heading-->
-   <x-slot name="header">
-    </x-slot>
+    <div class="bg-white p-2 h-screen">
     <!--Form-->
-    <div class="flex flex-col sm:px-4">
-        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div class="w-full sm:max-w-3xl mx-auto lg:px-8 bg-white shadow-sm">
-            <div class="overflow-hidden">
-              <h1 class="text-base text-center p-3 font-bold text-gray-800">
-                  Add User
+    <div class="flex flex-col">
+          <div class="w-full">
+              <h1 class="text-base text-left p-3 font-bold text-gray-800">
+                  Add Employee
               </h1>
               <div class="mx-auto px-4 py-9">
               <form method="POST" class="w-full" action="{{ route('employee.store') }}">
@@ -51,7 +48,7 @@
                   </div>
                 </div>
 
-                <div class="flex items-center justify-center mt-5 px-4">
+                <div class="flex items-center justify-start mt-5 px-4">
                     <x-button class="">
                         {{ __('Create') }}
                     </x-button>
@@ -60,8 +57,6 @@
               </form>
             </div>
          </div>
-          </div>
-        </div>
     </div>
 
     </div>

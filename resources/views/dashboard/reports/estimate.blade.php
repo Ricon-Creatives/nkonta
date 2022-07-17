@@ -1,11 +1,6 @@
 <x-app-layout>
     <!-- Grid -->
     <div class="grid grid-cols-1 p-2">
-
-      <!--Heading-->
-   <x-slot name="header">
-    </x-slot>
-
         <!--Form-->
         <div class="flex flex-col">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -74,7 +69,7 @@
                             </tr>
                             @php($subtotal += $item->total)
                           @endforeach
-                          @php($vat = number_format($subtotal * ($trade->vat/100),2))
+                          @php($vat = $subtotal * ($trade->vat/100))
 
                           <tr class="bg-white">
                             <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -97,7 +92,7 @@
                             VAT
                         </td>
                             <td class="text-sm text-gray-900 bg-white font-bold px-4 py-0 whitespace-nowrap">
-                                {{ $vat}}
+                                {{ number_format($vat,2)}}
                           </td>
                           </tr>
                           <tr class="bg-white">

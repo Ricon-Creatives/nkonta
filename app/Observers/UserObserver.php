@@ -2,8 +2,9 @@
 
 namespace App\Observers;
 
-use App\Models\User;
 use Illuminate\Support\Str;
+use App\Models\User;
+use App\Models\Company;
 
 
 class UserObserver
@@ -16,14 +17,16 @@ class UserObserver
      */
     public function created(User $user)
     {
-      /*  $company = $user->company()->create([
-            'user_id' => $user->id,
-            'company_name' => $user->company_name,
-            'slug' => Str::slug($user->company_name),
-        ]);
+        if ($user->hasRole(['Manager','Administrator'])) {
+            $team    = new Company();
+            $team->owner_id = $user->id;
+            $team->name = $user->company_name;
+            $team->save();
 
-        $user->company()->attach($company->id);
-        */
+            // team attach alias
+            $user->attachTeam($team);
+            # code...
+        }
     }
 
     /**

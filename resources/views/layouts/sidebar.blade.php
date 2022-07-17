@@ -127,21 +127,21 @@
                 </a>
             </li>
 
-          <!--  <li>
+
+            <li>
+                <a href="{{ route('payroll.index') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400 focus:bg-gray-200 focus:shadow-outline">
+                    <span class="text-white text-3xl">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </span>
+                    Payroll
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('employee.index') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400 focus:bg-gray-200 focus:shadow-outline">
                     <span class="text-white text-3xl">
                 <i class="fa-solid fa-users"></i>
                     </span>
-                    Add User
-                </a>
-            </li>-->
-
-              <li>
-                <a href="{{ route('payroll.index') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400 focus:bg-gray-200 focus:shadow-outline">
-                    <span class="text-white text-3xl">
-                    <i class="fa-solid fa-file-invoice-dollar"></i>
-                    </span>
-                    Payroll
+                    Employees
                 </a>
             </li>
 
@@ -157,13 +157,21 @@
         </div>
         @include('layouts.navigation')
 
-        {{ $header }}
         <div class="pb-8 my-2">
             <main>
                 {{ $slot }}
             </main>
 
         </div>
+
     </div>
 
+    <!--Messages-->
+    @if(session()->has('message'))
+    <div class="fixed bottom-0 right-0 p-1">
+        <div class="flex items-center px-4 py-2 rounded  text-slate-800 bg-slate-300" role="alert">
+            <p>{{ session()->get('message') }}</p>
+        </div>
+      </div>
+    @endif
 </div>

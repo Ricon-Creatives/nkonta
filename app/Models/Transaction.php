@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Mpociot\Teamwork\Traits\UsedByTeams;
 
 class Transaction extends Model
 {
-    use HasFactory;
+    use HasFactory, UsedByTeams;
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +23,7 @@ class Transaction extends Model
         'description_to_credit',
         'description_to_debit',
         'type',
-        'user_id',
+        'team_id',
         'reference_no',
         'company_name',
         'contact_address',
@@ -31,12 +32,10 @@ class Transaction extends Model
     ];
 
 
-    /**
-     *
-     */
+    /*
     public function user(){
         return $this-> belongsTo(User::class);
-      }
+      }*/
 
 
        /**

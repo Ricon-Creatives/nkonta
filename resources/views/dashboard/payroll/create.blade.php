@@ -6,9 +6,6 @@
   </div>
 @endif
 <x-app-layout>
-    <!--Heading-->
-    <x-slot name="header">
-    </x-slot>
     <!-- Grid -->
     <div class="bg-white">
          <!--Form-->

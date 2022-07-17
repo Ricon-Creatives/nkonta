@@ -9,29 +9,19 @@
     <div class="mx-auto px-4 py-7">
          <!-- Validation Errors -->
          <x-auth-validation-errors class="mb-4" :errors="$errors" />
-        <form action="{{ route('profile.password.update') }}" method="POST">
+        <form action="{{ route('my-business.update', Auth::user()->currentTeam->name) }}" method="POST">
             @method('PATCH')
             @csrf
             <!--Row one-->
             <div class="flex flex-wrap -mx-2 my-6">
-                    <!--Current Password'.-->
+                    <!--My Business Nmae'.-->
                 <div class="w-full md:w-1/2  px-1 mb-6 md:mb-0">
-                    <x-label for="" :value="__('Current Password')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                    <x-input id="old_password" class="mt-1 w-full" type="password" name="old_password" required autofocus />
+                    <x-label for="" :value="__('Company Name')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                    <x-input id="" class="mt-1 w-full" type="text" name="name" value="{{  Auth::user()->currentTeam->name }}" required autofocus />
                 </div>
-                <!--New Password'-->
-                <div class="w-full md:w-1/2 px-1">
-                    <x-label for="" :value="__('New Password')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                    <x-input id="password" class="mt-1 w-full" type="password" name="password" required autofocus />
-                </div>
+
             </div>
 
-            <div class="flex flex-wrap -mx-2 mb-6">
-              <h6>Can't remember your current password?
-                  <a class="underline text-sm text-indigo-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                {{ __('Reset your password') }}
-            </a></h6>
-        </div>
             <!--Button-->
             <div class="left-0 right-0 mt-5">
                 <div class="max-w-5xl mx-auto p-3">
@@ -39,7 +29,7 @@
                             <button type="submit" name="next" value="Next"
                                 class="inline-block px-6 py-2.5 bg-purple-900 text-white font-medium text-xs leading-tight rounded shadow-sm hover:bg-purple-700 hover:shadow-lg
                                 focus:shadow-lg focus:outline-none focus:ring-0">
-                            Update password
+                            Update
                         </button>
                         </div>
                     </div>

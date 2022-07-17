@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Purchases;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Title;
+use App\Models\Item;
 
 class PurchasesController extends Controller
 {
@@ -16,7 +17,7 @@ class PurchasesController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $purchases = Title::whereBelongsTo($user)->where('type','Buying')->latest()->paginate(10);
+        $purchases = Title::where('type','expense')->latest()->paginate(10);
 
         return view('dashboard.purchases.index',compact('purchases'));
     }
@@ -39,7 +40,7 @@ class PurchasesController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+         $request->validate([
             'due_date' => ['required'],
             'name' => ['required'],
             'vat' => ['required'],
@@ -49,7 +50,16 @@ class PurchasesController extends Controller
             'type' => ['required'],
         ]);
 
-        $title = auth()->user()->titles()->create($data);
+        Title::create([
+            'due_date' => $request->due_date,
+            'name' => $request->name,
+            'vat' => $request->vat,
+            'contact_no' => $request->contact_no,
+            'contact_person' => $request->contact_person,
+            'address' => $request->address,
+            'type' => $request->type,
+            'team_id' => auth()->user()->currentTeam->id,
+        ]);
 
         //dd($title);
         return redirect()->route('item.create')->withMessage('Customer Added.');

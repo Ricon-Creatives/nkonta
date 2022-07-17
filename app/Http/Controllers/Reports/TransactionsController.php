@@ -31,7 +31,7 @@ class TransactionsController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $transactions = Transaction::with(['account'])->whereBelongsTo($user)
+        $transactions = Transaction::with(['account'])
        // ->whereDate('created_at',Carbon::today())
         ->latest()->paginate(10);
         $accounts = Account::get();
@@ -65,8 +65,9 @@ class TransactionsController extends Controller
 
         //dd($request);
 
-       $data = auth()->user()->transactions()->create([
+       $data = Transaction::create([
             'date'=> $request->date,
+            'team_id' => auth()->user()->currentTeam->id,
             'amount' => $request->amount,
             'account_id'=> $request->account,
             'category_id'=> $request->category,

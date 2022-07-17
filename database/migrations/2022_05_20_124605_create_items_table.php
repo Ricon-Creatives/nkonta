@@ -15,7 +15,7 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->integer('team_id')->unsigned();
             $table->unsignedBigInteger('title_id');
             $table->string('item_name');
             $table->double('price',[15,2]);
@@ -26,8 +26,7 @@ class CreateItemsTable extends Migration
             $table->double('total',[15,2]);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-        });
+            $table->foreign('team_id')->references('id')->on('companies')->onDelete('cascade');        });
     }
 
     /**

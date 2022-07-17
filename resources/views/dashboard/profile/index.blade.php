@@ -40,22 +40,16 @@
         " id="tabs-profile-tabVertical">
          <i class="fa-solid fa-key mr-2"></i>Password</a>
     </li>
-  <!--  <li class="nav-item flex-grow text-center border-b" role="presentation">
-      <a href="#tabs-messagesVertical" class="
-          block
-          font-semibold
-          text-xs
-          leading-tight
-          uppercase
-          px-6
-          py-3
-          my-1
-          hover:border-transparent hover:bg-gray-100
-        " id="tabs-messages-tabVertical" data-bs-toggle="pill" data-bs-target="#tabs-messagesVertical" role="tab"
-        aria-controls="tabs-messagesVertical" aria-selected="false">
-        <i class="fa-solid fa-shield mr-2"></i> Security
-    </a>
-    </li>-->
+    @can('manage')
+    <li class="nav-item flex-grow text-center border-b {{ request()->routeIs('profile.password') ? 'text-indigo-800' : '' }}
+        hover:border-transparent hover:bg-gray-100 " role="presentation">
+      <a href="{{ route('my-business') }}" class="{{ request()->routeIs('my-business') ? 'text-indigo-800' : '' }}
+          block font-semibold text-xs leading-tight uppercase px-6
+          py-3 my-1 focus:border-transparent
+        " id="tabs-profile-tabVertical">
+         <i class="fa-solid fa-briefcase mr-2"></i>My Business</a>
+    </li>
+    @endcan
   </ul>
     </div>
 

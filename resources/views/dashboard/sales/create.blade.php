@@ -1,11 +1,9 @@
 <x-app-layout>
+    <!--Heading-->
+ <x-slot name="header">
+  </x-slot>
     <!-- Grid -->
-    <div class="grid grid-cols-1">
-
-      <!--Heading-->
-   <x-slot name="header">
-    </x-slot>
-
+    <div class="grid grid-cols-1 p-2">
          <!--Form-->
          <div class="flex flex-col px-4">
           <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
