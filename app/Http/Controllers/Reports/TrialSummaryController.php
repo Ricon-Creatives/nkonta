@@ -19,9 +19,9 @@ class TrialSummaryController extends Controller
     public function index()
     {
 
-    $user = auth()->user()->id;
+    $companyId = auth()->user()->currentTeam->id;
 
-    $transactions =  DB::table('transactions')->where('transactions.team_id',$user)
+    $transactions =  DB::table('transactions')->where('transactions.team_id',$companyId)
     ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
     ->whereDate('transactions.created_at',Carbon::today())
     ->select('accounts.code',DB::raw('SUM(amount) as amount,transactions.type,accounts.name,accounts.group_by_code'))

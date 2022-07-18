@@ -29,7 +29,7 @@ class CompanyController extends Controller
      */
     public function update(Request $request)
     {
-        dd($request);
+        return view('dashboard.profile.company');
     }
 
     /**
