@@ -20,10 +20,10 @@ class TotalController extends Controller
      */
     public function index()
     {
-        $user = auth()->user()->id;
+        $companyId = auth()->user()->currentTeam->id;
 
         //generate the accounts for balance sheet
-        $accounts =  DB::table('totals')->where('totals.team_id',$user)
+        $accounts =  DB::table('totals')->where('totals.team_id',$companyId)
         ->join('accounts', 'totals.account_id', '=', 'accounts.id')
         ->whereDate('totals.created_at', Carbon::today())
         ->where('accounts.type','!=','Revenue')->where('accounts.type','!=','Expense')

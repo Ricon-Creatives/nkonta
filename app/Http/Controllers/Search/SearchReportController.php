@@ -99,7 +99,7 @@ class SearchReportController extends Controller
         $to = Carbon::parse($request->to_date);
 
         //generate the accounts for balance sheet
-        $accounts = DB::table('totals')->where('team_id',$companyId)
+        $accounts = DB::table('totals')->where('totals.team_id',$companyId)
         ->join('accounts', 'totals.account_id', '=', 'accounts.id')
         ->whereBetween('totals.created_at', [$from,$to])
         ->where('accounts.type','!=','Revenue')->where('accounts.type','!=','Expense')
@@ -158,7 +158,7 @@ class SearchReportController extends Controller
         $search =\Request::get('search');
 
         //generate the accounts for balance sheet
-        $sales = Title::where('type','Selling')
+        $sales = Title::where('type','income')
         ->where(function($query) use ($search){
             $query->where('name', 'Like',"%$search%")->orWhere('vat','Like',"%$search%")
             ->orWhere('address','Like',"%$search%")->orWhere('contact_no','Like',"%$search%")
@@ -178,7 +178,7 @@ class SearchReportController extends Controller
         $search =\Request::get('search');
 
         //generate the accounts for balance sheet
-        $purchases = Title::where('type','Buying')
+        $purchases = Title::where('type','expense')
         ->where(function($query) use ($search){
             $query->where('name', 'Like',"%$search%")->orWhere('vat','Like',"%$search%")
             ->orWhere('address','Like',"%$search%")->orWhere('contact_no','Like',"%$search%")
