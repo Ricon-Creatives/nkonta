@@ -68,7 +68,7 @@ Import</a>
         {{ ($transaction->type == 'credit') ? number_format($transaction->amount,2) : "" }}
     </td>
     <td class="px-4 py-3 text-sm">
-        {{ $transaction->user->name }}
+        {{ $transaction->team->name }}
     </td>
        <td class="px-4 py-3">
          <div class="flex items-center space-x-4 text-sm">
