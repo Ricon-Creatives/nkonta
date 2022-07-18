@@ -99,7 +99,7 @@ class SearchReportController extends Controller
         $to = Carbon::parse($request->to_date);
 
         //generate the accounts for balance sheet
-        $accounts = DB::table('totals')->where('user_id',$companyId)
+        $accounts = DB::table('totals')->where('team_id',$companyId)
         ->join('accounts', 'totals.account_id', '=', 'accounts.id')
         ->whereBetween('totals.created_at', [$from,$to])
         ->where('accounts.type','!=','Revenue')->where('accounts.type','!=','Expense')
