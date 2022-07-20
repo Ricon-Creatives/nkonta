@@ -91,26 +91,26 @@
                     @foreach($transactions as $transaction)
 
                     <tr class="bg-white border-b">
-                      <td class="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                           {{ \Carbon\Carbon::parse($transaction->date)->format('D d-M-Y') }}
                       </td>
-                      <td class="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                         {{ $transaction->account->code }}
                     </td>
-                    <td class="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <td class="py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                         {{ $transaction->account->name }}
                     </td>
-                      <td class="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                           {{ $transaction->reference_no }}
                       </td>
-                      <td class="text-sm text-gray-900 py-2 whitespace-nowrap">
+                      <td class="text-sm text-gray-900 py-1 whitespace-nowrap">
                        {{($transaction->type == 'debit') ? $transaction->description_to_debit : $transaction->description_to_credit}}
                       </td>
 
-                      <td class="text-sm text-gray-900 py-2 whitespace-nowrap text-right">
+                      <td class="text-sm text-gray-900 py-1 whitespace-nowrap text-right">
                           {{ ($transaction->type == 'debit') ? number_format($transaction->amount,2) : "" }}
                     </td>
-                    <td class="text-sm text-gray-900 py-2 whitespace-nowrap text-right">
+                    <td class="text-sm text-gray-900 py-1 whitespace-nowrap text-right">
                         {{ ($transaction->type == 'credit') ? number_format($transaction->amount,2)  : "" }}
                       </td>
                     </tr>

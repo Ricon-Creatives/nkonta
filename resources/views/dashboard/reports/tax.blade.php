@@ -77,7 +77,7 @@
                           <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                               DESC
                           </th>
-                      <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
+                      <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-right">
                           AMOUNT (GHS)
                       </th>
                       </tr>
@@ -87,19 +87,19 @@
                       @foreach ($transactions as $tax)
 
                       <tr class="bg-white border-b">
-                          <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                              {{ $tax->reference_no}}
                           </td>
-                          <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                              {{ $tax->code}}
                           </td>
-                          <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                               {{ $tax->name }}
                           </td>
-                          <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                              {{ $tax->description_to_debit}}
                       </td>
-                      <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900 text-right">
                          {{ number_format($tax->amount,2)}}
                       </td>
 
@@ -116,7 +116,7 @@
                           <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
                               Total
                       </td>
-                      <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
+                      <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900 text-right">
                          {{ number_format($total,2)}}
                       </td>
 

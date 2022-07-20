@@ -61,7 +61,7 @@
        <!--Table-->
        <div class="flex flex-col px-4">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="py-2 inline-block min-w-full sm:px-4 lg:px-8">
             <div class="overflow-hidden">
             <table class="min-w-full" id="revenues">
                 <thead class="bg-white border-b border-gray-300">
@@ -78,7 +78,7 @@
                         <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-4 text-left">
                             DESC
                         </th>
-                    <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-4 text-left">
+                    <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-4 text-right">
                         AMOUNT (GHS)
                     </th>
                     </tr>
@@ -88,19 +88,19 @@
                     @foreach ($transactions as $revenue)
 
                     <tr class="bg-white border-b">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                            {{ $revenue->reference_no}}
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                            {{ $revenue->code}}
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                             {{ $revenue->name }}
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                            {{ $revenue->description_to_credit}}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900 text-right">
                        {{ number_format($revenue->amount,2)}}
                     </td>
 
@@ -108,16 +108,16 @@
                     @php($total += $revenue->amount)
                     @endforeach
                     <tr class="bg-white border-b">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-bold text-gray-900">
                             Total
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">
+                    <td class="px-4 py-1 whitespace-nowrap text-sm font-bold text-gray-900 text-right">
                        {{  number_format($total,2)}}
                     </td>
 

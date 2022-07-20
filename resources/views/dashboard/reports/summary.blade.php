@@ -87,16 +87,16 @@
                     @php($creditSum = 0)
                     @foreach($transactions as $transaction)
                     <tr class="bg-white border-b">
-                        <td class="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                           {{ $transaction->code }}
                       </td>
-                      <td class="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                           {{ $transaction->name }}
                         </td>
-                        <td class="py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-right">
+                        <td class="py-1 whitespace-nowrap text-sm font-medium text-gray-900 text-right">
                             {{ ($transaction->type == 'debit' ) ? number_format($transaction->amount,2) :'' }}
                           </td>
-                    <td class="py-2 whitespace-nowrap text-sm font-medium text-gray-900 text-right">
+                    <td class="py-1 whitespace-nowrap text-sm font-medium text-gray-900 text-right">
                         {{ ($transaction->type == 'credit' ) ? number_format($transaction->amount,2) :''  }}
                     </td>
                     </tr>
@@ -105,18 +105,18 @@
 
                   @endforeach
                   <tr class="bg-white border-b">
-                    <td class="py-2 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
+                    <td class="py-1 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
                     </td>
-                      <td class="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                           Total
                       </td>
-                      <td class="py-2 whitespace-nowrap text-right font-bold text-gray-900 underline decoration-double">
+                      <td class="py-1 whitespace-nowrap text-right font-bold text-gray-900 underline decoration-double">
                           {{ number_format($debitSum,2)}}
                       </td>
-                      <td class="py-2 whitespace-nowrap text-right font-bold text-gray-900 underline decoration-double">
+                      <td class="py-1 whitespace-nowrap text-right font-bold text-gray-900 underline decoration-double">
                         {{ number_format($creditSum,2)}}
                     </td>
-                    <td class="py-2 whitespace-nowrap text-sm font-bold text-gray-900">
+                    <td class="py-1 whitespace-nowrap text-sm font-bold text-gray-900">
                     </td>
                     </tr>
 

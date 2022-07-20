@@ -75,10 +75,10 @@
                     <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
                         BF
                     </th>
-                    <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
+                    <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-right">
                        DEBIT (GHS)
                     </th>
-                    <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-left">
+                    <th scope="col" class="text-sm font-bold text-gray-900 px-4 py-2 text-right">
                         CREDIT (GHS)
                     </th>
                   </tr>
@@ -91,18 +91,18 @@
                     <!--Income-->
                     @if ($book->type == 'Revenue')
                     <tr class="bg-white border-b">
-                        <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                                  {{ $book->code }}
                         </td>
-                        <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                           {{ $book->name }}
                       </td>
-                      <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
 
                     </td>
-                      <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                       </td>
-                      <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900 text-right">
                           {{  ($book->type == 'Revenue') ? number_format($book->amount,2)  : '' }}
                       </td>
                       </tr>
@@ -111,18 +111,18 @@
                     @endif
                     @endforeach
                     <tr class="bg-white border-b">
-                        <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
 
                         </td>
-                        <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-bold text-gray-900">
                              Total Sales
                       </td>
-                      <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
 
                     </td>
-                      <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
+                      <td class="px-4 py-1 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
                     </td>
-                    <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
+                    <td class="px-4 py-1 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double text-right">
                           {{ number_format($sumSales,2) }}
                       </td>
                       </tr>
@@ -131,19 +131,19 @@
                       @foreach ($books as $book)
                       @if ($book->type == 'Expense')
                       <tr class="bg-white border-b">
-                          <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                                    {{ $book->code }}
                           </td>
-                          <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                             {{ $book->name }}
                         </td>
-                        <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
 
                         </td>
-                        <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900 text-right">
                             {{ ($book->type == 'Expense') ? number_format($book->amount,2) : ''  }}
                         </td>
-                        <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                         </td>
                     </tr>
 
@@ -151,19 +151,19 @@
                     @endif
                     @endforeach
                     <tr class="bg-white border-b">
-                          <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
 
                         </td>
-                        <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-bold text-gray-900">
                                Total
                         </td>
-                        <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
 
                       </td>
-                        <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double text-right">
                             {{number_format($sumLoss,2) }}
                         </td>
-                        <td class="px-4 py-2 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
+                        <td class="px-4 py-1 whitespace-nowrap text-sm font-bold text-gray-900 underline decoration-double">
                         </td>
                         </tr>
                 </tbody>
