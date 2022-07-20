@@ -9,7 +9,7 @@ use App\Models\Account;
 use App\Services\ReportService;
 use Illuminate\Support\Carbon;
 use App\Http\Requests\StoreTransactionRequest;
-
+use Illuminate\Support\Facades\DB;
 
 class TransactionsController extends Controller
 {
@@ -57,13 +57,10 @@ class TransactionsController extends Controller
      */
     public function store(StoreTransactionRequest $request)
     {
-        //
-       //$randStr  =  Str::random(2);
-       //$randNum = mt_rand(1000, 9999);
+        DB::transaction(function () use ($request): void {
+
         $reference_no =  mt_rand(10000, 99999);
         //dd($reference_no);
-
-        //dd($request);
 
        $data = Transaction::create([
             'date'=> $request->date,
@@ -90,12 +87,11 @@ class TransactionsController extends Controller
         );
 
         $copy->save();
-         //($copy);
 
          $transactions = [$data,$copy];
-
+         //
          $this->reportService->storeTotals($transactions);
-
+     });
 
         return redirect('/transactions')->withMessage('Transaction added.');
     }

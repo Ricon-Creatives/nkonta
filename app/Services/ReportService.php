@@ -16,10 +16,10 @@ class ReportService
 
         foreach ($transactions as $input) {
 
-            //acountId-amount-date
+            //AcountId-amount-date
             $slug = Str::slug($input->account_id.$input->amount.Carbon::today()->format('d-m-Y'));
 
-            #find all transaction with same type and account_id on the same day
+            #Find all transaction with same type and account_id on the same day
             $account = Total::where('account_id',$input->account_id)->where('type',$input->type)
             ->whereDate('created_at',Carbon::today())
             ->exists();
@@ -28,15 +28,14 @@ class ReportService
             $transaction = Total::where('account_id',$input->account_id)->where('type',$input->type)
             ->whereDate('created_at',Carbon::today())
             ->get();
-                #sum amount column and merge
+                #Sum amount column and merge
                 foreach($transaction as &$acc) {
               $transaction->toQuery()->update(['amount' => $acc['amount'] += $input->amount]);
           }
                 #update value
 
         } else {
-            #store value
-            //dd($input);
+            #Store value
             $data = Total::create([
                 'account_id'=> $input->account_id,
                 'team_id' =>auth()->user()->currentTeam->id,
@@ -47,8 +46,6 @@ class ReportService
 
             $data->save();
         }
-
-
 
         }
     }

@@ -2,9 +2,9 @@
 
 namespace App\Observers;
 
-use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Company;
+use Illuminate\Support\Facades\DB;
 
 
 class UserObserver
@@ -17,6 +17,7 @@ class UserObserver
      */
     public function created(User $user)
     {
+        DB::transaction(function () use ($request): void {
         if ($user->company_name) {
             $team    = new Company();
             $team->owner_id = $user->id;
@@ -27,6 +28,7 @@ class UserObserver
             $user->attachTeam($team);
             # code...
         }
+       });
     }
 
     /**

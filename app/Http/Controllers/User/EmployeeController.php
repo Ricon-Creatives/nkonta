@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
-use Mpociot\Teamwork\Facades\Teamwork;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\SendInvite;
 use Illuminate\Support\Str;
@@ -47,17 +47,19 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-       // $user =  auth()->user();
-       // $this->authorize('manage',$user);
+        DB::transaction(function () use ($request): void {
+        //Generate Password
        $password = Str::random(8);
+       //Get Team
         $team = auth()->user()->currentTeam;
+
          $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required'],
             'role' => ['required'],
         ]);
-
+        //Create User
        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -74,7 +76,7 @@ class EmployeeController extends Controller
         // Send email to user / let them know that they got invited
         Notification::send($user, new SendInvite($details));
 
-        //$user->company()->attach($company->id);
+         });
 
         return redirect()->route('employee.index');
     }

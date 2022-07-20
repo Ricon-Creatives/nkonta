@@ -10,7 +10,7 @@ use App\Models\Title;
 use App\Models\Item;
 use App\Services\ReportService;
 use Illuminate\Support\Carbon;
-
+use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
@@ -57,9 +57,12 @@ class ItemController extends Controller
      */
     public function store(ItemRequest $request)
     {
-        //dd($request);
+
+        DB::transaction(function () use ($request): void {
+            //Authenticated User
         $user = auth()->user();
         $title = Title::latest()->first();
+        //Get Total
         $total = $request->qty * $request->price;
 
         Item::create([
@@ -75,7 +78,9 @@ class ItemController extends Controller
         ]);
 
         $type = $title->type;
+        //Store Transactions
         $this->reportService->storeTransaction($request,$type,$total);
+    });
 
         if($request->next){
          return redirect()->route('item.create')->withMessage('Item Added.');
