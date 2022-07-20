@@ -49,7 +49,7 @@ class EmployeeController extends Controller
     {
        // $user =  auth()->user();
        // $this->authorize('manage',$user);
-
+       $password = Str::random(8);
         $team = auth()->user()->currentTeam;
          $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -62,7 +62,7 @@ class EmployeeController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => '233'.intval($request->phone),
-            'password' => Hash::make(Str::random(8))
+            'password' => Hash::make($password)
         ]);
 
         //Assign Role
@@ -70,7 +70,7 @@ class EmployeeController extends Controller
         //Assign Team
         $user->attachTeam($team);
 
-        $details = ['from' => $team->name,'type' => 'invite'];
+        $details = ['from' => $team->name,'type' => 'invite','password' => $password];
         // Send email to user / let them know that they got invited
         Notification::send($user, new SendInvite($details));
 

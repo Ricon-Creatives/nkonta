@@ -43,9 +43,9 @@ class SendInvite extends Notification
     {
         return (new MailMessage)
                     ->line($this->details['from'].' welcomes you to their team.')
-                    ->line('A new account has been created with your email '.$notifiable->email.' and a temporary password.')
-                    ->line('Please reset your password to login.')
-                    ->action('Reset password', url('/forgot-password'))
+                    ->line('A new account has been created with your email '.$notifiable->email.' and password '.$this->details['password'])
+                    ->line('Please click the button to login.')
+                    ->action('Login here', url('/login'))
                     ->line('Thank you for using Nkonta!');
     }
 
