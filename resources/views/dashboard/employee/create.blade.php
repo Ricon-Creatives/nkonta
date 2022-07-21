@@ -11,18 +11,19 @@
                   Add Employee
               </h1>
               <div class="mx-auto px-4 py-9">
+                <x-auth-validation-errors class="mb-4" :errors="$errors" />
               <form method="POST" class="w-full" action="{{ route('employee.store') }}">
                 @csrf
 
                 <div class="flex flex-wrap -mx-2 mb-6">
                     <!-- Name -->
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                      <x-label for="Name" :value="__('Name')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                      <x-label for="Name" :value="__('Name *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                       <x-input id="name" class="mt-1 w-full" type="text" name="name" required autofocus />
                     </div>
                     <!-- Email Address -->
                     <div class="w-full md:w-1/2 px-3">
-                      <x-label for="email" :value="__('Email')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                      <x-label for="email" :value="__('Email *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                       <x-input id="email" class="mt-1 w-full" type="email" name="email" required autofocus />
                   </div>
                 </div>
@@ -34,7 +35,7 @@
                       <x-input id="phone" class="mt-1 w-full" type="text" name="phone" required autofocus />
                     </div>
                     <div class="w-full md:w-1/2 px-3">
-                        <x-label for="phone" :value="__('Role')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                        <x-label for="phone" :value="__('Role *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                         <select class="form-select appearance-none block py-1.5 text-base font-normal text-gray-600
                         bg-white bg-no-repeat transition ease-in-out m-0
                         focus:text-gray-600 focus:bg-white focus:outline-none" name="role" required>

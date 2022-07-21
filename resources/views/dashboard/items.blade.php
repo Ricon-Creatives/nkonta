@@ -7,6 +7,7 @@
           <div class="py-2 inline-block sm:min-w-md min-w-full sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white">
                 <div class="mx-auto px-4 py-5">
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
                 <form class="w-full" action="{{ route('item.store') }}" method="Post">
                     @csrf
 
@@ -33,11 +34,11 @@
                       <!--Item Name & Quantity-->
                     <div class="flex flex-wrap -mx-2 mb-6">
                         <div class="w-full md:w-1/2 px-3">
-                            <x-label for="address" :value="__('Item Name')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                            <x-label for="address" :value="__('Item Name *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                             <x-input  class="block w-full sm:w-9/12" type="text" name="item_name" required autofocus />
                         </div>
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                            <x-label for="contact_no" :value="__('Quantity')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                            <x-label for="contact_no" :value="__('Quantity *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                             <x-input  class="block w-full sm:w-9/12" type="number" name="qty" required autofocus />
                         </div>
                     </div>
@@ -45,7 +46,7 @@
                     <!--Price & Discount-->
                     <div class="flex flex-wrap -mx-2 mb-6">
                           <div class="w-full md:w-1/2 px-3">
-                            <x-label for="price" :value="__('Price')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                            <x-label for="price" :value="__('Price *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                             <x-input  class="block w-full sm:w-9/12" type="number" name="price"  step="any" required autofocus />
                         </div>
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -57,7 +58,7 @@
                     <!--Accounts-->
                     <div class="flex flex-wrap -mx-2 mb-6">
                       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <x-label for="account" :value="__('Account To Debit')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"/>
+                        <x-label for="account" :value="__('Account To Debit *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"/>
                         <div class="flex w-9/12 mt-1">
                            <select class="form-select appearance-none block py-1.5 text-base font-normal text-gray-600
                            bg-white bg-no-repeat transition ease-in-out m-0
@@ -70,7 +71,7 @@
                          </div>
                       </div>
                       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                            <x-label for="account" :value="__('Account To Credit')" class="block uppercase tracking-wnamee text-gray-700 text-xs font-bold mb-2"/>
+                            <x-label for="account" :value="__('Account To Credit *')" class="block uppercase tracking-wnamee text-gray-700 text-xs font-bold mb-2"/>
                             <div class="flex w-9/12 mt-1">
                                <select class="form-select appearance-none block py-1.5 text-base font-normal text-gray-600
                                bg-white bg-no-repeat transition ease-in-out m-0

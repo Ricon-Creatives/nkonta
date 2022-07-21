@@ -9,41 +9,41 @@
           <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 inline-block sm:min-w-md min-w-full sm:px-6 lg:px-8">
               <div class="overflow-hidden bg-white">
-                <h1 class="text-lg text-center p-3 font-bold text-gray-800">
+                <h1 class="text-lg text-right p-3 font-bold text-gray-800">
                     Add Sales
                 </h1>
                 <div class="mx-auto px-4 py-10">
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <form class="w-full" action="{{ route('sales.store') }}" method="POST">
                         @csrf
-
                         <div class="flex flex-wrap -mx-2 mb-6">
                           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                            <x-label for="Name" :value="__('Name')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                            <x-label for="Name" :value="__('Name *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                             <x-input id="name" class="mt-1 w-full sm:w-9/12" type="text" name="name" required autofocus />
                           </div>
                           <div class="w-full md:w-1/2 px-3">
-                            <x-label for="address" :value="__('Contact Address')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                            <x-label for="address" :value="__('Contact Address *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                             <x-input id="address" class="mt-1 w-full sm:w-9/12" type="text" name="address" required autofocus />
                         </div>
                         </div>
                         <div class="flex flex-wrap -mx-2 mb-6">
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                <x-label for="contact_no" :value="__('Contact No.')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                                <x-label for="contact_no" :value="__('Contact No. *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                                 <x-input id="contact_no" class="block mt-1 w-9/12" type="tel" name="contact_no"
                                  placeholder="eg. 233501234567" required autofocus pattern="[0-3]{3}[0-9]{3}[0-9]{3}[0-9]{3}"/>
                             </div>
                               <div class="w-full md:w-1/2 px-3">
-                                <x-label for="contact_person" :value="__('Contact Person')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                                <x-label for="contact_person" :value="__('Contact Person *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                                 <x-input id="contact_person" class="block mt-1 w-9/12" type="text" name="contact_person" required autofocus />
                             </div>
                         </div>
                         <div class="flex flex-wrap -mx-2 mb-6">
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                <x-label for="due_date" :value="__('Due Date  (in days)')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                                <x-label for="due_date" :value="__('Due Date  (in days) *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                                 <x-input id="due_date" class="block mt-1 w-9/12" type="number" name="due_date" step="any" required autofocus />
                             </div>
                           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                            <x-label for="vat" :value="__('VAT')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                            <x-label for="vat" :value="__('VAT *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                              <x-input id="vat" class="block mt-1 w-9/12" type="number" name="vat"  step="any" required autofocus />
                           </div>
                         </div>

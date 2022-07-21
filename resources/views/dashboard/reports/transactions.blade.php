@@ -85,6 +85,9 @@
                       CREDIT
                       (GHS)
                     </th>
+                    <th scope="col" class="text-sm font-bold text-gray-900 py-2 text-center">
+                       ACTION
+                      </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -112,6 +115,8 @@
                     </td>
                     <td class="text-sm text-gray-900 py-1 whitespace-nowrap text-right">
                         {{ ($transaction->type == 'credit') ? number_format($transaction->amount,2)  : "" }}
+                      </td>
+                      <td class="text-sm text-gray-900 py-1 whitespace-nowrap text-center">
                       </td>
                     </tr>
 

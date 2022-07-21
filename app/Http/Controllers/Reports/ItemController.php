@@ -57,30 +57,31 @@ class ItemController extends Controller
      */
     public function store(ItemRequest $request)
     {
+        //Authenticated User
+    $user = auth()->user();
+    $title = Title::latest()->first();
+    $type = $title->type;
+    $titleId =  $title->id;
 
-        DB::transaction(function () use ($request): void {
-            //Authenticated User
-        $user = auth()->user();
-        $title = Title::latest()->first();
-        //Get Total
-        $total = $request->qty * $request->price;
+    DB::transaction(function () use ($request,$user,$type,$titleId): void {
+    //Get Total
+    $total = $request->qty * $request->price;
 
-        Item::create([
-            'item_name' => $request->item_name,
-            'team_id' => auth()->user()->currentTeam->id,
-            'qty'=> $request->qty,
-            'price'=> $request->price,
-            'acc_dr'=> $request->acc_dr,
-            'acc_cr'=> $request->acc_cr,
-            'total' => $total,
-            'title_id'=> $title->id,
-            'discount' => $request->discount,
-        ]);
+    Item::create([
+        'item_name' => $request->item_name,
+        'team_id' => $user->currentTeam->id,
+        'qty'=> $request->qty,
+        'price'=> $request->price,
+        'acc_dr'=> $request->acc_dr,
+        'acc_cr'=> $request->acc_cr,
+        'total' => $total,
+        'title_id'=> $titleId,
+        'discount' => $request->discount,
+    ]);
 
-        $type = $title->type;
-        //Store Transactions
-        $this->reportService->storeTransaction($request,$type,$total);
-    });
+    //Store Transactions
+    $this->reportService->storeTransaction($request,$type,$total);
+ });
 
         if($request->next){
          return redirect()->route('item.create')->withMessage('Item Added.');

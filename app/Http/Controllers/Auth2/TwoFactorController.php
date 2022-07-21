@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth2;
 use App\Http\Controllers\Controller;
 use App\Traits\SendSms;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class TwoFactorController extends Controller
@@ -20,11 +21,12 @@ class TwoFactorController extends Controller
     {
 
         $user = auth()->user();
-
+        DB::transaction(function () use ($user): void {
         //generate
         $user->generateTwoFactorCode();
         //send sms
         $this->sendSmS($user->phone,$user->token);
+        });
 
         return view('2FA.verify');
     }
@@ -35,15 +37,15 @@ class TwoFactorController extends Controller
             'token' => 'required',
         ]);
 
+        DB::transaction(function () use ($request) {
         $user = auth()->user();
-
         if($request->input('token') == $user->token)
         {
             $user->resetTwoFactorCode();
 
             return redirect()->route('home');
         }
-
+    });
         return redirect()->back()
             ->withMessage('The code you have entered does not match');
     }

@@ -11,19 +11,19 @@
                         <!--Invoice-->
                         <div class="w-full bg-white">
                             <ul class="font-bold">
-                                <li class="flex justify-between p-3">
+                                <li class="flex justify-between p-2">
                                     Invoice No. {{$trade->id}}
                                    <span>
                                     Contact Person: {{ $trade->contact_person }}
                                    </span>
                                 </li>
-                                <li class="flex justify-between p-3">
+                                <li class="flex justify-between p-2">
                                   Supplier Name: {{ $trade->name }}
                                   <span>
                                     Contact No: {{ $trade->contact_no}}
                                </span>
                                 </li>
-                                <li class="flex items-center justify-between p-3">
+                                <li class="flex items-center justify-between p-2">
                                     Contact Address: {{ $trade->address }}
                                     <span class="px-2 py-1 text-sm">
                                         Date: {{  \Carbon\Carbon::parse($trade->created_at)->format('D d-M-Y') }}
@@ -137,7 +137,7 @@
                             <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                           </td>
                           <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-bold text-gray-900">
-                              VAT
+                              VAT({{ $trade->vat }}%)
                           </td>
                             <td class="bg-white px-4 py-0 whitespace-nowrap text-sm font-medium text-gray-900">
                             </td>

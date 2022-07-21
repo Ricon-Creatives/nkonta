@@ -30,7 +30,7 @@
 
                 <div class="flex justify-between mx-1">
                     <x-button>
-                        {{ __('SEND') }}
+                        {{ __('VERIFY') }}
                     </x-button>
 
                     <a href="{{ route('verify.resend') }}" class="inline-block px-6 py-2.5 bg-purple-900 text-white font-medium text-xs leading-tight rounded-md shadow-sm hover:bg-purple-700 hover:shadow-lg
