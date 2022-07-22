@@ -17,35 +17,35 @@ class ReportService
         foreach ($transactions as $input) {
 
             //AcountId-amount-date
-            $slug = Str::slug($input->account_id.$input->amount.Carbon::today()->format('d-m-Y'));
+           // $slug = Str::slug($input->account_id.$input->amount.Carbon::today()->format('d-m-Y'));
 
             #Find all transaction with same type and account_id on the same day
-            $account = Total::where('account_id',$input->account_id)->where('type',$input->type)
-            ->whereDate('created_at',Carbon::today())
+           /*# $account = Total::where('account_id',$input->account_id)->where('type',$input->type)
+           # ->whereDate('created_at',Carbon::today())
             ->exists();
 
-            if ($account) {
+           # if ($account) {
             $transaction = Total::where('account_id',$input->account_id)->where('type',$input->type)
             ->whereDate('created_at',Carbon::today())
             ->get();
                 #Sum amount column and merge
                 foreach($transaction as &$acc) {
               $transaction->toQuery()->update(['amount' => $acc['amount'] += $input->amount]);
-          }
+          }*/
                 #update value
 
-        } else {
+        //} else {
             #Store value
             $data = Total::create([
                 'account_id'=> $input->account_id,
-                'team_id' =>auth()->user()->currentTeam->id,
+                'team_id' => auth()->user()->currentTeam->id,
                 'type'=> $input->type,
                 'amount' => $input->amount,
-                'slug'=> $slug,
+                'transaction_id' => $input->id,
             ]);
 
             $data->save();
-        }
+       // }
 
         }
     }

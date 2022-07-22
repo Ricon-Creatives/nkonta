@@ -119,7 +119,7 @@
           <div class="sm:text-center lg:text-left">
             <h1 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl md:text-5xl">
               <span class="block xl:inline">Join this </span>
-              <span class="block text-indigo-600 xl:inline"> Community of West African</span>
+              <span class="block text-indigo-600 xl:inline"> Community of West Africans</span>
               and gain enormous advantages
             </h1>
             <p class="mt-3 text-base text-gray-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">

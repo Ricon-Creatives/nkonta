@@ -72,7 +72,7 @@ Import</a>
     </td>
        <td class="px-4 py-3">
          <div class="flex items-center space-x-4 text-sm">
-            <form method="get" action="{{route('transaction.edit',$transaction->id)}}">
+            <form method="get" action="{{route('transactions.edit',$transaction->id)}}">
                 @csrf
            <button
              class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"

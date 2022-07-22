@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Reports;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use App\Models\Total;
 use App\Models\Account;
 use App\Services\ReportService;
 use Illuminate\Support\Carbon;
@@ -36,7 +37,7 @@ class TransactionsController extends Controller
         ->latest()->paginate(10);
         $accounts = Account::get();
 
-        return view('dashboard.reports.transactions', compact('transactions','accounts'));
+        return view('dashboard.transactions.index', compact('transactions','accounts'));
     }
 
     /**
@@ -57,7 +58,7 @@ class TransactionsController extends Controller
      */
     public function store(StoreTransactionRequest $request)
     {
-        DB::transaction(function () use ($request): void {
+       DB::transaction(function () use ($request): void {
 
         $reference_no =  mt_rand(10000, 99999);
         //dd($reference_no);
@@ -93,7 +94,7 @@ class TransactionsController extends Controller
          $this->reportService->storeTotals($transactions);
      });
 
-        return redirect('/transactions')->withMessage('Transaction added.');
+        return redirect()->route('transaction.index')->withMessage('Transaction added.');
     }
 
     /**
@@ -113,9 +114,10 @@ class TransactionsController extends Controller
      * @param  \App\Models\Transaction  $transactions
      * @return \Illuminate\Http\Response
      */
-    public function edit(Transaction $transactions)
+    public function edit(Transaction $transaction)
     {
-        //
+        $accounts = Account::get();
+        return view('dashboard.transactions.edit',compact('transaction','accounts'));
     }
 
     /**
@@ -125,9 +127,18 @@ class TransactionsController extends Controller
      * @param  \App\Models\Transaction  $transactions
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transaction $transactions)
+    public function update(Request $request, Transaction $transaction)
     {
-        //
+       DB::transaction(function () use ($request,$transaction): void {
+       $companyId = auth()->user()->currentTeam->id;
+        //Upate Transaction
+       $transaction->update($request->all());
+        //Find Total an Update
+        Total::where('transaction_id',$transaction->id)->where('team_id',$companyId)
+        ->update(['amount' => $transaction->amount,'account_id' => $transaction->account_id ]);
+        });
+
+        return redirect()->route('transaction.index');
     }
 
     /**
@@ -136,8 +147,18 @@ class TransactionsController extends Controller
      * @param  \App\Models\Transaction  $transactions
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transaction $transactions)
+    public function destroy(Transaction $transaction)
     {
-        //
+        DB::transaction(function () use ($transaction): void {
+        //delete transaction
+        Transaction::where('id',$transaction->id)->first()->delete();
+        //delete total
+        $record  = Total::where('transaction_id',$transaction->id)->first();
+        if($record){
+            $record->delete();
+        }
+    });
+
+        return redirect()->route('transaction.index')->withMessage('Transaction deleted successfully.');
     }
 }

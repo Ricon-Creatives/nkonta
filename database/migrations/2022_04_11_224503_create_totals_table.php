@@ -18,7 +18,6 @@ class CreateTotalsTable extends Migration
             $table->integer('team_id')->unsigned();
             $table->unsignedBigInteger('account_id');
             $table->string('type')->nullable();
-            $table->string('slug')->unique();
             $table->double('amount',[15,2]);
             $table->timestamps();
 

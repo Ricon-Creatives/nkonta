@@ -23,8 +23,8 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('transactions') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400
-                {{ request()->routeIs('transactions') ? ' bg-gray-400' : '' }} focus:shadow-outline">
+                <a href="{{ route('transaction.index') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400
+                {{ request()->routeIs('transaction.index') ? ' bg-gray-400' : '' }} focus:shadow-outline">
                     <span class="text-white text-3xl">
                         <i class="fa-solid fa-wallet"></i>
                     </span>

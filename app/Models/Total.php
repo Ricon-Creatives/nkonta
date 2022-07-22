@@ -20,7 +20,7 @@ class Total extends Model
         'account_id',
         'type',
         'team_id',
-        'slug'
+        'transaction_id'
     ];
 
      /**

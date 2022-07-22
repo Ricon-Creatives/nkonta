@@ -116,7 +116,56 @@
                     <td class="text-sm text-gray-900 py-1 whitespace-nowrap text-right">
                         {{ ($transaction->type == 'credit') ? number_format($transaction->amount,2)  : "" }}
                       </td>
-                      <td class="text-sm text-gray-900 py-1 whitespace-nowrap text-center">
+                      <td class="text-sm text-gray-900 whitespace-nowrap text-center">
+                        <!-- Edit -->
+                        <div x-data="{ show: false }"  @click.away="show = false" class="inline-block text-left">
+                        <a @click="show = ! show" class="inline-flex justify-center px-3 py-2 text-sm font-medium focus:outline-none" href="#">
+                            <i class="fa-solid fa-ellipsis-h"></i>
+                        </a>
+                        <div x-show="show" x-transition x-cloak class="absolute bg-white z-10 shadow-md w-24">
+                            <form method="get" action="{{route('transaction.edit', $transaction->id)}}">
+                            <button  href="" class="text-gray-700 block px-4 py-2 w-full text-sm hover:bg-gray-600 hover:text-white">
+                                        Edit
+                            </button>
+                            </form>
+                         <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-600 hover:text-white"
+                         data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                Delete
+                                </a>
+                        </div>
+
+                         <!--Model-->
+                        <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="deleteModal" tabindex="-1" aria-labelledby="addModal" aria-modal="true" role="dialog">
+                            <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
+                            <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+
+                                <div class="modal-body relative p-4">
+                                    <div class="text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                        <span class="font-medium bg-yellow-100 text-center rounded-full p-2">
+                                                <i class="fa-solid fa-warning text-yellow-500 text-xl"></i>
+                                        </span>
+                                        <div class="mt-2">
+                                        <p class="text-base text-gray-700">Are you sure you want to delete this transaction?
+                                        </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between border-t py-2 px-4">
+                                    <x-button class="" data-bs-dismiss="modal" aria-label="Close">
+                                        {{ __('Cancel') }}
+                                    </x-button>
+                                    <form method="post" action="{{ route('transaction.destroy', $transaction->id) }}">
+                                        @method('DELETE')
+                                        @csrf
+                                    <x-button class="bg-red-500 hover:bg-red-300">
+                                        {{ __('Yes') }}
+                                    </x-button>
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                       </td>
                     </tr>
 
@@ -157,6 +206,5 @@
           </div>
         </div>
       </div>
-
 
 </x-app-layout>

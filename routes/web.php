@@ -34,9 +34,7 @@ Route::get('/home','Dashboard\DashboardController@income')->name('home');
 
 Route::get('/income-statement','Reports\ProfitLossController@index')->name('profit-loss');
 
-Route::get('/transactions','Reports\TransactionsController@index')->name('transactions');
-
-Route::post('/transaction','Reports\TransactionsController@store')->name('add.transaction');
+Route::resource('transaction', 'Reports\TransactionsController');
 
 Route::get('/trial-summary','Reports\TrialSummaryController@index')->name('summary');
 Route::get('/balance-sheet','Reports\TotalController@index')->name('bal-sheet');

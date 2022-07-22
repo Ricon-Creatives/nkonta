@@ -1,5 +1,5 @@
     <!--Form-->
-    <form method="POST" action="{{ route('add.transaction') }}">
+    <form method="POST" action="{{ route('transaction.store') }}">
         @csrf
 
         <div class=" flex-row items-center justify-center mt-2">

@@ -17,7 +17,7 @@
 <div class="tab-content" id="tabs-tabContent">
  <div class="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
      <!--Form-->
- <form method="POST" action="{{ route('add.transaction') }}">
+ <form method="POST" action="{{ route('transaction.store') }}">
      @csrf
 
      <div class=" flex-row items-center justify-center mt-2 hidden">
@@ -132,7 +132,7 @@
  </div>
  <div class="tab-pane fade" id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
      <!--Expense Form-->
- <form method="POST" action="{{ route('add.transaction') }}">
+ <form method="POST" action="{{ route('transaction.store') }}">
     @csrf
 
     <div class=" flex-row items-center justify-center mt-2 hidden">

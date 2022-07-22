@@ -9,7 +9,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('account', 'Admin\Account\AccountController');
-Route::resource('transaction', 'Admin\Report\TransactionController');
+Route::resource('transactions', 'Admin\Report\TransactionController');
 Route::resource('user', 'Admin\User\UserController');
 Route::resource('role', 'Admin\Tools\RoleController');
 Route::resource('trade', 'Admin\Report\TradeController');

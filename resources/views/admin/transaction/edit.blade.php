@@ -125,4 +125,5 @@ class="px-4 py-3 mt-4 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 w-5/12
 
     </div>
 </form>
+</div>
 @endsection
