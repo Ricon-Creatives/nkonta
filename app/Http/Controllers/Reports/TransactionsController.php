@@ -138,7 +138,7 @@ class TransactionsController extends Controller
         ->update(['amount' => $transaction->amount,'account_id' => $transaction->account_id ]);
         });
 
-        return redirect()->route('transaction.index');
+        return redirect()->route('transaction.index')->withMessage('Transaction updated.');
     }
 
     /**
