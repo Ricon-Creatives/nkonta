@@ -20,8 +20,8 @@ class TwoFactorController extends Controller
     public function index()
     {
 
+        DB::transaction(function (){
         $user = auth()->user();
-        DB::transaction(function () use ($user): void {
         //generate
         $user->generateTwoFactorCode();
         //send sms
@@ -37,15 +37,17 @@ class TwoFactorController extends Controller
             'token' => 'required',
         ]);
 
-        DB::transaction(function () use ($request) {
         $user = auth()->user();
+        //DB::transaction(function () use ($request) {
+
         if($request->input('token') == $user->token)
         {
             $user->resetTwoFactorCode();
 
             return redirect()->route('home');
         }
-    });
+    //});
+
         return redirect()->back()
             ->withMessage('The code you have entered does not match');
     }

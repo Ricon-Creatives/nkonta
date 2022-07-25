@@ -32,7 +32,7 @@
                 <div class="flex flex-wrap -mx-2 mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                       <x-label for="phone" :value="__('Phone')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                      <x-input id="phone" class="mt-1 w-full" type="text" name="phone" required autofocus />
+                      <x-input id="phone" class="mt-1 w-full" type="text" name="phone" pattern="[0-1]{1}[0-9]{3}[0-9]{3}[0-9]{3}" placeholder="eg. 0201234567" required autofocus />
                     </div>
                     <div class="w-full md:w-1/2 px-3">
                         <x-label for="phone" :value="__('Role *')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
