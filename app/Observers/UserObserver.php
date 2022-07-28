@@ -19,9 +19,10 @@ class UserObserver
     {
         DB::transaction(function () use ($request): void {
         if ($user->company_name) {
-            $team    = new Company();
+            $team   = new Company();
             $team->owner_id = $user->id;
             $team->name = $user->company_name;
+            $team->industry_id = $user->industry;
             $team->save();
 
             // team attach alias

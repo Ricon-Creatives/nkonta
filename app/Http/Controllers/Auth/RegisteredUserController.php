@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Auth\RegisterRequest;
-
+use App\Models\Industry;
 
 class RegisteredUserController extends Controller
 {
@@ -21,7 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $industries = Industry::get();
+        return view('auth.register',compact('industries'));
     }
 
     /**
@@ -37,7 +38,7 @@ class RegisteredUserController extends Controller
 
         $user = User::create([
             'name' => $request->name,
-            'username' => $request->username,
+            'industry' => $request->industry,
             'email' => $request->email,
             'company_name' => $request->company_name,
             'tin_no' => $request->tin,

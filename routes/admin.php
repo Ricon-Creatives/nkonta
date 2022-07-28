@@ -8,11 +8,14 @@ Route::get('/dashboard', function () {
     return view('admin.layouts.index');
 })->name('dashboard');
 
+Route::resource('industry', 'Admin\Account\IndustryController');
 Route::resource('account', 'Admin\Account\AccountController');
 Route::resource('transactions', 'Admin\Report\TransactionController');
 Route::resource('user', 'Admin\User\UserController');
 Route::resource('role', 'Admin\Tools\RoleController');
 Route::resource('trade', 'Admin\Report\TradeController');
+Route::resource('company', 'Admin\User\CompanyController');
+
 //
 Route::put('/user/account/status/{id}', 'Admin\User\UnlockUsuerController@__invoke')->name('account.status');
 

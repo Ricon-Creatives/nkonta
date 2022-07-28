@@ -47,15 +47,6 @@
                 <x-input id="tin_no" class="mt-1 w-full" type="text" name="tin_no" value="{{ Auth::user()->tin_no }}"  autofocus />
               </div>
             </div>
-            <!--Row two-->
-            <div class="flex flex-wrap -mx-2 mb-6">
-              <!--Company-->
-              <div class="w-full md:w-1/2 px-1">
-                <x-label for="" :value="__('Company Name')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                <x-input id="company_name" class="mt-1 w-full" type="text" name="company_name"
-                value="{{ Auth::user()->company_name}}" required autofocus />
-            </div>
-            </div>
 
             <!--Button-->
             <div class="left-0 right-0 mt-4">

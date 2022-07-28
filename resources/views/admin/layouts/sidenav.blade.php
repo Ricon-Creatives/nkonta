@@ -38,6 +38,20 @@
    <ul>
      <li class="relative px-6 py-3">
         <span
+        class="{{ request()->routeIs('industry.index') ? 'absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg' : '' }}"
+        aria-hidden="true"
+        ></span>
+        <a
+        class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200
+        {{ request()->routeIs('industry.index') ? ' text-gray-800 dark:text-gray-100' : '' }}"
+        href="{{ route('industry.index') }}"
+      >
+        <i class="fa-solid fa-building"></i>
+         <span class="ml-4">Industries</span>
+       </a>
+     </li>
+     <li class="relative px-6 py-3">
+        <span
         class="{{ request()->routeIs('account.index') ? 'absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg' : '' }}"
         aria-hidden="true"
         ></span>
@@ -48,6 +62,20 @@
       >
         <i class="fa-solid fa-thumb-tack"></i>
          <span class="ml-4">Accounts</span>
+       </a>
+     </li>
+     <li class="relative px-6 py-3">
+        <span
+        class="{{ request()->routeIs('company.index') ? 'absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg' : '' }}"
+        aria-hidden="true"
+        ></span>
+        <a
+        class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200
+        {{ request()->routeIs('company.index') ? ' text-gray-800 dark:text-gray-100' : '' }}"
+        href="{{ route('company.index') }}"
+      >
+        <i class="fa-solid fa-briefcase"></i>
+         <span class="ml-4">Companies</span>
        </a>
      </li>
      <li class="relative px-6 py-3">

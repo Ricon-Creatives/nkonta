@@ -15,7 +15,7 @@ class Account extends Model
      *
      * @var array
      */
-    protected $fillable = ['code', 'name','type','financial_statement','group_by_code'];
+    protected $fillable = ['code', 'name','type','financial_statement','group_by_code','industry_id'];
 
     /**
      * Get all of the comments for the Category
@@ -35,9 +35,14 @@ class Account extends Model
         return $this->hasMany(Total::class)->orderBy('code','asc');
     }
 
-    public function ScopeAccouttype($query,$type)
+    /**
+     * The industries that belong to the Account
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function industries()
     {
-        return $query->where('type',$type);
+        return $this->belongsToMany(Industry::class);
     }
 
 }

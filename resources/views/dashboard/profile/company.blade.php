@@ -9,7 +9,7 @@
     <div class="mx-auto px-4 py-7">
          <!-- Validation Errors -->
          <x-auth-validation-errors class="mb-4" :errors="$errors" />
-        <form action="{{ route('my-business.update', Auth::user()->currentTeam->name) }}" method="POST">
+        <form action="{{ route('my-business.update', Auth::user()->currentTeam->id) }}" method="POST">
             @method('PATCH')
             @csrf
             <!--Row one-->
@@ -18,6 +18,16 @@
                 <div class="w-full md:w-1/2  px-1 mb-6 md:mb-0">
                     <x-label for="" :value="__('Company Name')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
                     <x-input id="" class="mt-1 w-full" type="text" name="name" value="{{  Auth::user()->currentTeam->name }}" required autofocus />
+                </div>
+
+            </div>
+
+             <!--Row one-->
+            <div class="flex flex-wrap -mx-2 my-6">
+                    <!--My Business Nmae'.-->
+                <div class="w-full md:w-1/2  px-1 mb-6 md:mb-0">
+                    <x-label for="" :value="__('Company Email')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                    <x-input id="" class="mt-1 w-full" type="email" name="company_email" value="{{  Auth::user()->currentTeam->company_email }}" required autofocus />
                 </div>
 
             </div>

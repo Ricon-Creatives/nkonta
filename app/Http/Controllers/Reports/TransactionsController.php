@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Total;
 use App\Models\Account;
+use App\Models\Industry;
 use App\Services\ReportService;
 use Illuminate\Support\Carbon;
 use App\Http\Requests\StoreTransactionRequest;
@@ -31,11 +32,11 @@ class TransactionsController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
         $transactions = Transaction::with(['account'])
        // ->whereDate('created_at',Carbon::today())
         ->latest()->paginate(10);
-        $accounts = Account::get();
+        $industries = Industry::find(auth()->user()->currentTeam->industry_id);
+        $accounts = $industries->accounts;
 
         return view('dashboard.transactions.index', compact('transactions','accounts'));
     }
@@ -116,7 +117,9 @@ class TransactionsController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        $accounts = Account::get();
+        $industries = Industry::find(auth()->user()->currentTeam->industry_id);
+        $accounts = $industries->accounts;
+
         return view('dashboard.transactions.edit',compact('transaction','accounts'));
     }
 

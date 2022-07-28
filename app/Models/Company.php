@@ -11,15 +11,27 @@ class Company extends TeamworkTeam
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
+     *
+     */
 
     protected $fillable = [
-        'company_name',
+        'name',
+        'owner_id',
+        'industry_id',
+        'slug',
         'company_email',
         'comapny_phone',
         'logo',
-        'user_id',
-        'slug',
-        'location'
-    ]; */
+    ];
+
+    /**
+     * Get the industry associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function industry(): HasOne
+    {
+        return $this->hasOne(Industry::class);
+    }
 
 }

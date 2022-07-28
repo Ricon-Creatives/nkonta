@@ -22,10 +22,17 @@
 
                 <!--Username -->
             <div>
-                <x-label for="username" :value="__('Username')" />
-
-                <x-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus />
-            </div>
+                <x-label for="" :value="__('Industry')" />
+                <select class="form-select appearance-none block text-base font-normal text-gray-600
+                    bg-white bg-no-repeat transition ease-in-out mt-1 w-full
+                    focus:text-gray-600 focus:bg-white focus:outline-none" name="industry" required>
+                      <option>Choose your industry</option>
+                       @foreach($industries as $industry)
+                       <option value="{{$industry->id }}"}>
+                        {{ $industry->name }}
+                       </option>
+                      @endforeach
+                </select></div>
 
             </div>
 

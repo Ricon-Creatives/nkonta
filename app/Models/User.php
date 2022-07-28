@@ -23,7 +23,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'username',
+        'industry',
         'email',
         'phone',
         'password',
@@ -84,15 +84,6 @@ class User extends Authenticatable
         return $this->hasMany(Title::class);
     }
      */
-
-     /*
-     * Get all of the transactions for the User
-     *
-
-    public function items()
-    {
-        return $this->hasMany(Item::class,);
-    } */
 
  /**
      * Get all of the transactions for the User
