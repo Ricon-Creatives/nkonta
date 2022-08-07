@@ -17,6 +17,7 @@ class AccountsImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         $account = Account::updateOrCreate([
+            'name' => $row['name'],
             'code' => $row['code'],
         ],[
             'code' => $row['code'],

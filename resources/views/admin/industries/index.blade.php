@@ -92,7 +92,7 @@ Add Industry
    <!-- Pagination -->
    <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
        <nav aria-label="Table navigation">
-           {{ $industries->links() }}
+
      </nav>
    </span>
  </div>

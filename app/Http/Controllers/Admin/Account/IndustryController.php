@@ -18,7 +18,7 @@ class IndustryController extends Controller
      */
     public function index()
     {
-        $industries = Industry::withCount('accounts')->orderBy('name','asc')->paginate(15);
+        $industries = Industry::withCount('accounts')->orderBy('name','asc')->get();
 
         return view('admin.industries.index',compact('industries'));
 
@@ -33,6 +33,19 @@ class IndustryController extends Controller
     {
         $accounts = Account::get();
         return view('admin.industries.create',compact('accounts'));
+    }
+
+      /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $industry = Industry::find($id);
+        $accounts = Account::get();
+        return view('admin.industries.edit',compact('industry','accounts'));
     }
 
     /**
@@ -71,7 +84,7 @@ class IndustryController extends Controller
           // Delete all accounts from the industry...
          $industry->delete();
 
-        return redirect()->route('account.index');
+        return redirect()->route('industry.index');
     }
 
 }
