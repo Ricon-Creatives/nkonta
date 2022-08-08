@@ -15,7 +15,7 @@ class Account extends Model
      *
      * @var array
      */
-    protected $fillable = ['code', 'name','type','financial_statement','group_by_code','industry_id'];
+    protected $fillable = ['code', 'name','type','financial_statement','group_by_code'];
 
     /**
      * Get all of the comments for the Category

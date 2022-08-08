@@ -14,7 +14,7 @@ class AddGroupByToAccountsTable extends Migration
     public function up()
     {
         Schema::table('accounts', function (Blueprint $table) {
-            $table->integer('group_by_code')->after('financial_statement');
+            $table->integer('group_by_code')->nullable()->after('financial_statement');
         });
     }
 

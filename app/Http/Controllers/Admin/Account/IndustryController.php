@@ -44,7 +44,7 @@ class IndustryController extends Controller
     public function edit($id)
     {
         $industry = Industry::find($id);
-        $accounts = Account::get();
+        $accounts = Account::orderBy('code')->get();
         return view('admin.industries.edit',compact('industry','accounts'));
     }
 
@@ -70,6 +70,26 @@ class IndustryController extends Controller
 
     }
 
+ /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $industry = Industry::find($id);
+
+        $industry->update($request->all());
+        $industry->save();
+
+        $industry->accounts()->attach($request->accounts);
+
+        return redirect()->back();
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -85,6 +105,22 @@ class IndustryController extends Controller
          $industry->delete();
 
         return redirect()->route('industry.index');
+    }
+
+     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function remove(Request $request, $id)
+    {
+        //dd($request);
+         $industry = Industry::find($request->industryId);
+        // Detach all accounts from the industry...
+         $industry->accounts()->detach($id);
+
+        return redirect()->back();
     }
 
 }

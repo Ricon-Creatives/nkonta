@@ -18,6 +18,8 @@ Route::resource('company', 'Admin\User\CompanyController');
 
 //
 Route::put('/user/account/status/{id}', 'Admin\User\UnlockUsuerController@__invoke')->name('account.status');
+//
+Route::post('/industry/account/remove/{id}', 'Admin\Account\IndustryController@remove')->name('account.remove');
 
 //
 Route::get('file-import-export', 'Admin\Account\ExportImportController@fileImportExport')->name('file-import-export');
