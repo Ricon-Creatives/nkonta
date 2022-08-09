@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Reports;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ItemRequest;
-use App\Models\Account;
+use App\Models\Industry;
 use App\Models\Title;
 use App\Models\Item;
 use App\Services\ReportService;
@@ -43,7 +43,8 @@ class ItemController extends Controller
     public function create()
     {
         $user = auth()->user();
-        $accounts = Account::get();
+        $industries = Industry::find($user->currentTeam->industry_id);
+        $accounts = $industries->accounts;
         $title = Title::latest()->first();
 
         return view('dashboard.items',compact('accounts','title'));
