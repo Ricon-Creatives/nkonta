@@ -59,6 +59,10 @@ function Sales() {
                     Cash
                      <span>{formatter.format(points.revenue)}</span>
                     </li>
+                    <li className='flex justify-between'>
+                    Total
+                     <span>{formatter.format(points.revenue + points.recievables)}</span>
+                    </li>
             </ul>
         </div>
         <div className="p-2 mx-1">

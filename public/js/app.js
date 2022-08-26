@@ -11526,7 +11526,7 @@ function IncomeExpenditure() {
         'X-CSRF-TOKEN': laravelToken
       }
     }).then(function (res) {
-      //console.log(res.data.result)
+      console.log(res.data.result);
       var result = groupBy(res.data.result, 'type');
       setCredit(result.credit);
       setDebit(result.debit);
@@ -11679,7 +11679,9 @@ function Sales() {
     className: "flex justify-between"
   }, "Credit", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, formatter.format(points.recievables))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
     className: "flex justify-between"
-  }, "Cash", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, formatter.format(points.revenue))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, "Cash", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, formatter.format(points.revenue))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    className: "flex justify-between"
+  }, "Total", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, formatter.format(points.revenue + points.recievables))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "p-2 mx-1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
     className: "font-bold text-center text-lg"

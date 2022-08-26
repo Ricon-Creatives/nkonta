@@ -142,7 +142,7 @@ function IncomeExpenditure() {
       useEffect(() => {
         axios.get('/income/home', {headers:{ 'X-CSRF-TOKEN':laravelToken }})
         .then((res) => {
-            //console.log(res.data.result)
+            console.log(res.data.result)
             let result = groupBy(res.data.result,'type')
             setCredit(result.credit)
             setDebit(result.debit)
