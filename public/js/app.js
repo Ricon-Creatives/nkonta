@@ -11192,9 +11192,13 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();
 
+__webpack_require__(/*! ./components/Cash */ "./resources/js/components/Cash.js");
+
 __webpack_require__(/*! ./components/IncomeExpenditure */ "./resources/js/components/IncomeExpenditure.js");
 
 __webpack_require__(/*! ./components/Search */ "./resources/js/components/Search.js");
+
+__webpack_require__(/*! ./components/Sales */ "./resources/js/components/Sales.js");
 
 /***/ }),
 
@@ -11234,6 +11238,105 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/components/Cash.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/Cash.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var chart_js_auto__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! chart.js/auto */ "./node_modules/chart.js/auto/auto.esm.js");
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+var Cash = function Cash() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      points = _useState2[0],
+      setPoints = _useState2[1];
+
+  var formatter = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/cash/home').then(function (res) {
+      setPoints(res.data);
+      setOne(points.bank1);
+    })["catch"](function (error) {
+      // handle error
+      console.log(error);
+    });
+  }, []);
+  var labels = ['Bank 1 ', 'Bank 2', 'Petty Cash'];
+  var data = {
+    labels: labels,
+    datasets: [{
+      label: '',
+      data: [points.bank1, points.bank2, points.cash],
+      borderColor: 'rgb(53, 162, 235)',
+      backgroundColor: 'rgba(53, 162, 235, 0.5)'
+    }]
+  };
+  var options = {
+    responsive: true
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "p-2 justify-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+    className: "list-disc p-3 mt-5"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    className: "flex justify-between "
+  }, "Bank 1", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, formatter.format(points.bank1))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    className: "flex justify-between "
+  }, "Bank 2", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, formatter.format(points.bank2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    className: "flex justify-between "
+  }, "Petty Cash", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, formatter.format(points.cash))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "col-span-2 p-4 mx-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+    className: "font-bold text-center text-lg"
+  }, "Cash"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "flex items-center justify-center mt-4 border-r sm:border-r-0"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "w-full"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__.Bar, {
+    data: data,
+    options: options
+  })))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Cash);
+
+if (document.getElementById('cash')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Cash, null), document.getElementById('cash'));
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/IncomeExpenditure.js":
 /*!******************************************************!*\
   !*** ./resources/js/components/IncomeExpenditure.js ***!
@@ -11248,24 +11351,167 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var chart_js_auto__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! chart.js/auto */ "./node_modules/chart.js/auto/auto.esm.js");
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
 
 
 
 
 
 function IncomeExpenditure() {
-  var labels = ['Jan ', 'Feb', 'Mar', 'Apr', 'May', ' Jun', 'Jul', 'Aug', 'Sep', ' Oct', 'Nov', 'Dec'];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      points = _useState2[0],
+      setPoints = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      credit = _useState4[0],
+      setCredit = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      debit = _useState6[0],
+      setDebit = _useState6[1];
+
+  var formatter = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+
+  function groupBy(arr, property) {
+    return arr.reduce(function (acc, cur) {
+      acc[cur[property]] = [].concat(_toConsumableArray(acc[cur[property]] || []), [cur]);
+      return acc;
+    }, {});
+  }
+
+  function difference(myFirstObjArray, mySecondObjArray) {
+    var firstArray = [];
+    myFirstObjArray.forEach(function (obj) {
+      var match = false;
+      mySecondObjArray.map(function (ele) {
+        if (obj.name === ele.name) {
+          match = true;
+          return;
+        }
+      });
+
+      if (!match) {
+        firstArray.push({
+          'name': obj.name,
+          'total': obj.total,
+          'type': obj.type
+        });
+      }
+    });
+    return firstArray;
+  } //console.log(arr);
+
+
+  function mergeArrayObjects(arr, debit, credit) {
+    var tempArr = arr.map(function (item) {
+      return {
+        name: item.name,
+        credit: item.type == 'credit' ? item.total : 0,
+        debit: item.type == 'debit' ? item.total : 0
+      };
+    });
+    var left = debit.map(function (item) {
+      return {
+        name: item.name,
+        debit: item.total
+      };
+    }); //Create newn dormant object
+
+    var right = credit.map(function (item) {
+      return {
+        name: item.name,
+        credit: item.total
+      };
+    });
+    var map = new Map();
+    tempArr.forEach(function (item) {
+      return map.set(item.name, item);
+    });
+    left.forEach(function (item) {
+      return map.set(item.name, _objectSpread(_objectSpread({}, map.get(item.name)), item));
+    });
+    right.forEach(function (item) {
+      return map.set(item.name, _objectSpread(_objectSpread({}, map.get(item.name)), item));
+    });
+    var mergedArr = Array.from(map.values());
+    return mergedArr;
+  } // let newArray = mergeArrayObjects(arr,debit,credit)
+  //console.log(newArray)
+
+
+  var labelPoints = [];
+  var revenuePoints = [];
+  var expensePoints = [];
+
+  var setLabels = function setLabels() {
+    points.map(function (ele) {
+      //console.log(ele.name)
+      labelPoints.push(ele.name);
+    });
+  };
+
+  var setRevenue = function setRevenue() {
+    points.map(function (ele) {
+      revenuePoints.push(ele.debit); //console.log(ele.name)
+    });
+  };
+
+  var setExpense = function setExpense() {
+    points.map(function (ele) {
+      expensePoints.push(ele.credit); //console.log(ele.name)
+    });
+  };
+
+  setLabels();
+  setExpense();
+  setRevenue();
+  var labels = labelPoints;
   var data = {
     labels: labels,
     datasets: [{
-      label: '2021',
-      data: [3, 1, 21, 3, 12, 11, 30, 50],
+      label: 'Revenue',
+      data: revenuePoints,
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)'
     }, {
-      label: '2022',
-      data: [13, 51, 50, 30, 28, 45, 10],
+      label: 'Expense',
+      data: expensePoints,
       borderColor: 'rgb(255, 99, 132)',
       backgroundColor: 'rgba(255, 99, 132, 0.5)'
     }]
@@ -11273,16 +11519,184 @@ function IncomeExpenditure() {
   var options = {
     responsive: true
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__.Line, {
+  var laravelToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/income/home', {
+      headers: {
+        'X-CSRF-TOKEN': laravelToken
+      }
+    }).then(function (res) {
+      //console.log(res.data.result)
+      var result = groupBy(res.data.result, 'type');
+      setCredit(result.credit);
+      setDebit(result.debit);
+      var arr = [].concat(_toConsumableArray(difference(result.credit, result.debit)), _toConsumableArray(difference(result.debit, result.credit)));
+      var newArray = mergeArrayObjects(arr, result.debit, result.credit); //console.log(newArray)
+
+      setPoints(newArray);
+    })["catch"](function (error) {
+      // handle error
+      console.log(error);
+    });
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "p-2 items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "py-2 inline-block min-w-full sm:px-6 lg:px-8"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "overflow-hidden"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", {
+    className: "min-w-full"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", {
+    className: "bg-white border-b border-gray-300"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+    className: "text-sm font-bold text-gray-900 py-2 text-left"
+  }), labelPoints.map(function (ele, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+      key: i,
+      className: "text-sm font-bold text-gray-900 py-2 text-left"
+    }, ele);
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", {
+    className: "bg-white border-b"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
+    className: "py-1 whitespace-nowrap text-sm font-medium text-gray-900"
+  }, "Revenue (GHS)"), revenuePoints.map(function (ele, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+      key: i,
+      className: "text-sm font-bold text-gray-900 py-2 text-left"
+    }, formatter.format(ele));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", {
+    className: "bg-white border-b"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
+    className: "py-1 whitespace-nowrap text-sm font-medium text-gray-900"
+  }, "Expense (GHS)"), expensePoints.map(function (ele, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+      key: i,
+      className: "text-sm font-bold text-gray-900 py-2 text-left"
+    }, formatter.format(ele));
+  }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "p-2 mx-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+    className: "font-bold text-center text-lg"
+  }, "Revenue / Expense"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "flex items-center justify-center mt-4 border-r sm:border-r-0"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "w-full"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__.Line, {
     data: data,
     options: options
-  });
+  })))));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IncomeExpenditure);
 
 if (document.getElementById('inc-exp')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(IncomeExpenditure, null), document.getElementById('inc-exp'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Sales.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Sales.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var chart_js_auto__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! chart.js/auto */ "./node_modules/chart.js/auto/auto.esm.js");
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+function Sales() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      points = _useState2[0],
+      setPoints = _useState2[1];
+
+  var formatter = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+  var labels = ['Credit', 'Cash'];
+  var data = {
+    labels: labels,
+    datasets: [{
+      label: 'Revenue',
+      data: [points.recievables, points.revenue],
+      backgroundColor: ['rgba(53, 162, 235, 0.5)', 'rgba(253, 180 ,92, 100)']
+    }]
+  };
+  var options = {
+    responsive: true
+  };
+  var laravelToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/income/home', {
+      headers: {
+        'X-CSRF-TOKEN': laravelToken
+      }
+    }).then(function (res) {
+      //console.log(res.data.result)
+      console.log(res.data.data);
+      setPoints(res.data.data);
+    })["catch"](function (error) {
+      // handle error
+      console.log(error);
+    });
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "p-2 items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+    className: "font-bold text-center text-lg"
+  }, "Sales(GHS)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+    className: "list-disc p-3 mt-5"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    className: "flex justify-between"
+  }, "Credit", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, formatter.format(points.recievables))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    className: "flex justify-between"
+  }, "Cash", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, formatter.format(points.revenue))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "p-2 mx-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+    className: "font-bold text-center text-lg"
+  }, "Sales"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "flex items-center justify-center mt-4 border-r sm:border-r-0"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "w-full"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__.Pie, {
+    data: data,
+    options: options
+  })))));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Sales);
+
+if (document.getElementById('sales')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Sales, null), document.getElementById('sales'));
 }
 
 /***/ }),

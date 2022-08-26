@@ -6,6 +6,7 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-
+require('./components/Cash');
 require('./components/IncomeExpenditure');
 require('./components/Search');
+require('./components/Sales');

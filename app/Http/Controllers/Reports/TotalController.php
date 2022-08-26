@@ -74,14 +74,14 @@ class TotalController extends Controller
     {
 
          //Sum total credits
-        $credit = Transaction::with('account')->where('user_id',$user)->where('type','credit')
+        $credit = Transaction::with('account')->where('type','credit')
         ->select("account_id", DB::raw('SUM(amount) as total'))
         ->groupBy("account_id")
         ->havingRaw('SUM(amount) > ?', [1])
         ->get();
 
         //Sum total debits
-        $debit = Transaction::with('account')->where('user_id',$user)->where('type','debit')
+        $debit = Transaction::with('account')->where('type','debit')
         ->select("account_id", DB::raw('SUM(amount) as total'))
         ->groupBy("account_id")
         ->havingRaw('SUM(amount) > ?', [1])

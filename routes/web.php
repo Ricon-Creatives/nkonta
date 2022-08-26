@@ -30,7 +30,10 @@ Route::get('/verify-code','Auth2\TwoFactorController@index')->name('verify.index
 Route::post('/verify-code/check','Auth2\TwoFactorController@store')->name('verify.send');
 Route::get('verify/resend', 'Auth2\TwoFactorController@resend')->name('verify.resend');
 //
-Route::get('/home','Dashboard\DashboardController@income')->name('home');
+Route::get('/home','Dashboard\DashboardController@index')->name('home');
+Route::get('/income/home','Dashboard\DashboardController@income');
+Route::get('/cash/home','Dashboard\DashboardController@cash');
+
 
 Route::get('/income-statement','Reports\ProfitLossController@index')->name('profit-loss');
 
