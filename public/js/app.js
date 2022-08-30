@@ -11279,12 +11279,12 @@ var Cash = function Cash() {
       points = _useState2[0],
       setPoints = _useState2[1];
 
-  var formatter = new Intl.NumberFormat('en-US', {
+  var formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   });
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/cash/home').then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_3___default().get("/cash/home").then(function (res) {
       setPoints(res.data);
       setOne(points.bank1);
     })["catch"](function (error) {
@@ -11292,14 +11292,14 @@ var Cash = function Cash() {
       console.log(error);
     });
   }, []);
-  var labels = ['Bank 1 ', 'Bank 2', 'Petty Cash'];
+  var labels = ["Bank 1 ", "Bank 2", "Petty Cash"];
   var data = {
     labels: labels,
     datasets: [{
-      label: '',
+      label: "",
       data: [points.bank1, points.bank2, points.cash],
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)'
+      borderColor: "rgb(53, 162, 235)",
+      backgroundColor: "rgba(53, 162, 235, 0.5)"
     }]
   };
   var options = {
@@ -11331,8 +11331,8 @@ var Cash = function Cash() {
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Cash);
 
-if (document.getElementById('cash')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Cash, null), document.getElementById('cash'));
+if (document.getElementById("cash")) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Cash, null), document.getElementById("cash"));
 }
 
 /***/ }),
@@ -11403,7 +11403,7 @@ function IncomeExpenditure() {
       debit = _useState6[0],
       setDebit = _useState6[1];
 
-  var formatter = new Intl.NumberFormat('en-US', {
+  var formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   });
@@ -11428,9 +11428,9 @@ function IncomeExpenditure() {
 
       if (!match) {
         firstArray.push({
-          'name': obj.name,
-          'total': obj.total,
-          'type': obj.type
+          name: obj.name,
+          total: obj.total,
+          type: obj.type
         });
       }
     });
@@ -11442,8 +11442,8 @@ function IncomeExpenditure() {
     var tempArr = arr.map(function (item) {
       return {
         name: item.name,
-        credit: item.type == 'credit' ? item.total : 0,
-        debit: item.type == 'debit' ? item.total : 0
+        credit: item.type == "credit" ? item.total : 0,
+        debit: item.type == "debit" ? item.total : 0
       };
     });
     var left = debit.map(function (item) {
@@ -11505,29 +11505,29 @@ function IncomeExpenditure() {
   var data = {
     labels: labels,
     datasets: [{
-      label: 'Revenue',
+      label: "Revenue",
       data: revenuePoints,
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)'
+      borderColor: "rgb(53, 162, 235)",
+      backgroundColor: "rgba(53, 162, 235, 0.5)"
     }, {
-      label: 'Expense',
+      label: "Expense",
       data: expensePoints,
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)'
+      borderColor: "rgb(255, 99, 132)",
+      backgroundColor: "rgba(255, 99, 132, 0.5)"
     }]
   };
   var options = {
     responsive: true
   };
-  var laravelToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  var laravelToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/income/home', {
+    axios__WEBPACK_IMPORTED_MODULE_3___default().get("/income/home", {
       headers: {
-        'X-CSRF-TOKEN': laravelToken
+        "X-CSRF-TOKEN": laravelToken
       }
     }).then(function (res) {
       console.log(res.data.result);
-      var result = groupBy(res.data.result, 'type');
+      var result = groupBy(res.data.result, "type");
       setCredit(result.credit);
       setDebit(result.debit);
       var arr = [].concat(_toConsumableArray(difference(result.credit, result.debit)), _toConsumableArray(difference(result.debit, result.credit)));
@@ -11590,8 +11590,8 @@ function IncomeExpenditure() {
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IncomeExpenditure);
 
-if (document.getElementById('inc-exp')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(IncomeExpenditure, null), document.getElementById('inc-exp'));
+if (document.getElementById("inc-exp")) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(IncomeExpenditure, null), document.getElementById("inc-exp"));
 }
 
 /***/ }),
@@ -11638,27 +11638,27 @@ function Sales() {
       points = _useState2[0],
       setPoints = _useState2[1];
 
-  var formatter = new Intl.NumberFormat('en-US', {
+  var formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   });
-  var labels = ['Credit', 'Cash'];
+  var labels = ["Credit", "Cash"];
   var data = {
     labels: labels,
     datasets: [{
-      label: 'Revenue',
+      label: "Revenue",
       data: [points.recievables, points.revenue],
-      backgroundColor: ['rgba(53, 162, 235, 0.5)', 'rgba(253, 180 ,92, 100)']
+      backgroundColor: ["rgba(53, 162, 235, 0.5)", "rgba(253, 180 ,92, 100)"]
     }]
   };
   var options = {
     responsive: true
   };
-  var laravelToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  var laravelToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/income/home', {
+    axios__WEBPACK_IMPORTED_MODULE_3___default().get("/income/home", {
       headers: {
-        'X-CSRF-TOKEN': laravelToken
+        "X-CSRF-TOKEN": laravelToken
       }
     }).then(function (res) {
       //console.log(res.data.result)
@@ -11697,8 +11697,8 @@ function Sales() {
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Sales);
 
-if (document.getElementById('sales')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Sales, null), document.getElementById('sales'));
+if (document.getElementById("sales")) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Sales, null), document.getElementById("sales"));
 }
 
 /***/ }),
