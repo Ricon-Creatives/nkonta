@@ -19,7 +19,7 @@
         <div class="self-center">
             <div class="max-w-sm rounded overflow-hidden p-2 border-r">
                 <div class="px-6 py-4">
-                  <div class="text-sm mb-1 text-center">TOTAL EXPENSES</div>
+                  <div class="text-sm mb-1 text-center">Bank 2</div>
                   <p class="font-bold text-gray-700 text-3xl text-center">
                     GHS {{ number_format($bank2,2) }}
                   </p>
@@ -30,7 +30,7 @@
         <div class="">
             <div class="max-w-sm rounded overflow-hidden p-2">
                 <div class="px-6 py-4">
-                  <div class="text-sm mb-1 text-center">DEBTS DUE</div>
+                  <div class="text-sm mb-1 text-center">Petty Cash</div>
                   <p class="font-bold text-gray-700 text-3xl text-center">
                     GHS - {{ number_format($pettyCash,2) }}
                 </p>
