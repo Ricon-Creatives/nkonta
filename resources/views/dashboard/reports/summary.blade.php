@@ -85,7 +85,7 @@
                 <tbody>
                     @php($debitSum = 0)
                     @php($creditSum = 0)
-                    @foreach($transactions as $transaction)
+                    @foreach($newTransactions as $transaction)
                     <tr class="bg-white border-b">
                         <td class="py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                           {{ $transaction->code }}
