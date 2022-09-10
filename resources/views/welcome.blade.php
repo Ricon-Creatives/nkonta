@@ -139,8 +139,17 @@
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 ">
       <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"  src="{{asset('img/IMG-20220706-WA0005.jpg') }}" alt="">
     </div>
-        <!-- Messenger Chat Plugin Code -->
-    </div>
+ </div>
+
+ <!--Footer-->
+    <footer class="bg-gray-200 text-center lg:text-left">
+        <div class="text-gray-700 text-center p-4" style="">
+            © 2022 Copyright:
+            <a class="text-gray-800" href="https://nkonta.com/">Nkonta</a>
+        </div>
+    </footer>
+
+<!-- Messenger Chat Plugin Code -->
     <div id="fb-root"></div>
 
     <!-- Your Chat Plugin code -->
