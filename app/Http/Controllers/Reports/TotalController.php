@@ -65,11 +65,8 @@ class TotalController extends Controller
     return view('dashboard.reports.balSheet', compact('accounts'))->with('account');
     }
 
-     /**
-     * Store all debits and credits totals
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+     /*
+
     public function store($user)
     {
 
@@ -113,6 +110,6 @@ class TotalController extends Controller
               }
         }
     }
-
+  */
 
 }

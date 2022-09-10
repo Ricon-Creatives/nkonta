@@ -63,11 +63,11 @@
                 <a href="{{ url('/home') }}" class="text-gray-500 font-medium dark:text-gray-500">Home</a>
             @else
             @endauth
-                <a href="{{ url('/pricing') }}" class="text-gray-500 font-medium dark:text-gray-500">Pricing</a>
+                <a href="{{ url('/pricing') }}" class="ml-3 text-gray-500 font-medium dark:text-gray-500">Pricing</a>
               @guest
-                <a href="{{ route('login') }}" class="text-gray-500 font-medium dark:text-gray-500">Log in</a>
+                <a href="{{ route('login') }}" class="ml-3 text-gray-500 font-medium dark:text-gray-500">Log in</a>
                @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="ml-4 text-gray-500 font-medium dark:text-gray-500">Register</a>
+                <a href="{{ route('register') }}" class="ml-3 text-gray-500 font-medium dark:text-gray-500">Register</a>
                @endif
               @endguest
              @endif
@@ -137,12 +137,12 @@
       </div>
     </div>
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 ">
-      <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"  src="{{asset('img/IMG-20220706-WA0005.jpg') }}" alt="">
+      <img class="h-52 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"  src="{{asset('img/IMG-20220706-WA0005.jpg') }}" alt="">
     </div>
  </div>
 
  <!--Footer-->
-    <footer class="bg-gray-200 text-center lg:text-left">
+    <footer class="bg-gray-200 text-center lg:text-left block">
         <div class="text-gray-700 text-center p-4" style="">
             © 2022 Copyright:
             <a class="text-gray-800" href="https://nkonta.com/">Nkonta</a>

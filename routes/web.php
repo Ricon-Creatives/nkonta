@@ -65,7 +65,6 @@ Route::patch('/profile/account/update', 'User\UserController@update')->name('acc
 Route::patch('/profile/account/update-password', 'User\UserController@updatePassword')->name('profile.password.update');
 Route::patch('/profile/my-business/update', 'User\CompanyController@update')->name('my-business.update');
 
-
 //
 Route::resource('reconcilation', 'Reports\ReconcileController');
 //

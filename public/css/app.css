@@ -11375,8 +11375,8 @@ select{
 .h-20{
   height: 5rem;
 }
-.h-56{
-  height: 14rem;
+.h-52{
+  height: 13rem;
 }
 .max-h-0{
   max-height: 0px;
@@ -11824,6 +11824,10 @@ select{
 .bg-indigo-600{
   --tw-bg-opacity: 1;
   background-color: rgb(79 70 229 / var(--tw-bg-opacity));
+}
+.bg-gray-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 .bg-orange-100{
   --tw-bg-opacity: 1;

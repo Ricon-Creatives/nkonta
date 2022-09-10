@@ -3,7 +3,6 @@
     <div class="grid grid-cols-1 bg-white p-2">
 
       <!--Heading-->
-   <x-slot name="header">
     <div class="bg-white p-4 mb-3">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center" id="">
             {{   Str::upper(Auth::user()->company_name) }} TAX REPORT
@@ -14,7 +13,6 @@
         </p>
     </div>
     <input class="hidden" id="header" value="TAX REPORT"/>
-    </x-slot>
 
     <!-- Link -->
     <div class="flex justify-between p-4">

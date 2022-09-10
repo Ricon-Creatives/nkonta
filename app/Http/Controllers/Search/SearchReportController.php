@@ -9,11 +9,22 @@ use Illuminate\Support\Carbon;
 use App\Models\Total;
 use App\Models\Title;
 use App\Models\Account;
+use App\Services\SummaryService;
 use DB;
 
 
 class SearchReportController extends Controller
 {
+     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(SummaryService $summaryService)
+    {
+        $this->summaryService = $summaryService;
+    }
+
     public function revenueFilter(Request $request)
     {
         $user = auth()->user()->id;
@@ -84,92 +95,15 @@ class SearchReportController extends Controller
         ->groupBy('accounts.group_by_code','accounts.code','transactions.type','accounts.name')
         ->get()->toArray();
 
-       $exists_array = [];
-        foreach ($transactions as $current_key => $current_array) {
-        //echo "current key: $current_key<br>";
-        foreach ($transactions as $search_key => $search_array) {
-            if ($search_array->code == $current_array->code) {
-                if ($search_key != $current_key) {
-               array_push($exists_array,$search_array);
-                }
-            }
-        }
-        }
+        //Find duplicate accounts
+        $exists_array = $this->summaryService->FindDuplicate($transactions);
+         //Find Net of accounts with same codes
+        $resultArray = $this->summaryService->diffArray($exists_array,$exists_array);
+         //Remove duplicates
+        $uniqueArray = $this->summaryService->unique_multidimensional_array($transactions, 'code');
+        //Merge Same account codes after finding the difference
+        $newTransactions =  array_merge($uniqueArray,$resultArray);
 
-        function diffArray($arr1, $arr2) {
-            $result = [];
-            for ($i=0; $i < count($arr1) ; $i++) {
-                for ($j=0; $j <  count($arr1); $j++) {
-                    # code...
-                }
-            }
-            foreach($arr1 as &$value1) {
-                foreach($arr2 as &$value2) {
-                    if ($value1->code == $value2->code && $value1->type != $value2->type) {
-                        if ($value1->type == 'debit') {
-                            if (@$value1->checked != 1  || $value2->checked != 1) {
-                                $minus = $value1->amount - $value2->amount;
-                                $value1->type =   ($minus>0) ? 'debit' : 'credit';
-                                $value1->amount = abs($minus);
-                                $value1->checked = 1;
-                                $value2->checked = 1;
-                                \array_push($result,$value1);
-                            }
-
-                        } else{
-                            if (@$value1->checked != 1 || $value2->checked != 1) {
-                            $minus = $value2->amount - $value1->amount;
-                            $value1->type =  ($minus>0) ? 'debit' : 'credit';
-                            $value1->amount = abs($minus);
-                            $value1->checked = 1;
-                            $value2->checked = 1;
-                            \array_push($result,$value1);
-                            }
-                        }
-                    }
-                }
-            }
-            return $result;
-        }
-
-        function trackMerge ($toMerge,$merger) {
-            $result = [];
-            foreach ($toMerge as $currentValue) {
-                foreach ($merger as $compareValue) {
-                    if ($compareValue->code == $currentValue->code) {
-                       array_push($result,$compareValue);
-                    }else{
-                        array_push($result,$currentValue);
-                    }
-                }
-                }
-                return $result;
-        }
-
-        function unique_multidimensional_array($array, $key) {
-            $temp_array = array();
-            $i = 0;
-            $key_array = array();
-
-            foreach($array as $val) {
-                if (!in_array($val->$key, $key_array)) {
-                    $key_array[$i] = $val->$key;
-                    $temp_array[$i] = $val;
-                }else if (in_array($val->$key, $key_array)){
-                    unset($temp_array[$i-1]);
-                }
-                $i++;
-            }
-            return $temp_array;
-        }
-
-        $resultArray = diffArray($exists_array,$exists_array);
-        $uniqueArray = unique_multidimensional_array($transactions, 'code');
-       $newTransactions =  array_merge($uniqueArray,$resultArray);
-       //dd($newTransactions);
-        //$newTransactions = trackMerge($uniqueArray,$resultArray);
-         // dd($transactions);
-        //
 
         return view('dashboard.reports.summary',compact('newTransactions','data'));
     }
