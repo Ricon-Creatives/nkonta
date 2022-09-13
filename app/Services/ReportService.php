@@ -63,7 +63,7 @@ class ReportService
             'account_id'=> $request->acc_dr,
             'category_id'=> $request->acc_cr,
            // 'description_to_debit'=> $request->description_to_debit,
-            'type'=> ($type == 'expense') ? "debit" : "credit",
+            'type'=> ($type == 'income') ? "debit" : "credit",
             'reference_no' => $reference_no,
             'slug' => $request->slug
         ]);
@@ -76,7 +76,7 @@ class ReportService
                 'account_id'=> $request->acc_cr,
                 'category_id'=> $request->acc_dr,
                 //'description_to_credit'=> $request->description_to_credit,
-                'type'=> ($type == 'expense') ? "credit" : "debit" ,
+                'type'=> ($type == 'income') ? "credit" : "debit" ,
                 'reference_no' => $reference_no,
                 'slug' => $request->slug
             ]

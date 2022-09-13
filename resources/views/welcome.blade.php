@@ -63,11 +63,11 @@
                 <a href="{{ url('/home') }}" class="text-gray-500 font-medium dark:text-gray-500">Home</a>
             @else
             @endauth
-                <a href="{{ url('/pricing') }}" class="ml-3 text-gray-500 font-medium dark:text-gray-500">Pricing</a>
+                <a href="{{ url('/pricing') }}" class="ml-2 text-gray-500 font-medium dark:text-gray-500">Pricing</a>
               @guest
-                <a href="{{ route('login') }}" class="ml-3 text-gray-500 font-medium dark:text-gray-500">Log in</a>
+                <a href="{{ route('login') }}" class="ml-2 text-gray-500 font-medium dark:text-gray-500">Log in</a>
                @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="ml-3 text-gray-500 font-medium dark:text-gray-500">Register</a>
+                <a href="{{ route('register') }}" class="ml-2 text-gray-500 font-medium dark:text-gray-500">Register</a>
                @endif
               @endguest
              @endif
@@ -116,7 +116,7 @@
           </div> -->
         </div>
 
-        <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+        <main class="mt-10 mx-auto max-w-7xl px-3 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
           <div class="sm:text-center lg:text-left">
             <h1 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl md:text-5xl">
               <span class="block xl:inline">Join this </span>
@@ -137,11 +137,12 @@
       </div>
     </div>
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 ">
-      <img class="h-52 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"  src="{{asset('img/IMG-20220706-WA0005.jpg') }}" alt="">
+      <img class="h-52 w-full object-cover sm:h-48 md:h-96 lg:w-full lg:h-full"  src="{{asset('img/IMG-20220706-WA0005.jpg') }}" alt="">
     </div>
  </div>
-
- <!--Footer-->
+   @include('partials.services')
+   @include('partials.contact')
+<!--Footer-->
     <footer class="bg-gray-200 text-center lg:text-left block">
         <div class="text-gray-700 text-center p-4" style="">
             © 2022 Copyright:
@@ -192,5 +193,5 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
-    </body>
+</body>
 </html>
