@@ -19,15 +19,14 @@ class UserObserver
     {
         DB::transaction(function () use ($user): void {
         if ($user->company_name) {
-            $team   = new Company();
-            $team->owner_id = $user->id;
-            $team->name = $user->company_name;
-            $team->industry_id = $user->industry;
-            $team->save();
+            $company   = new Company();
+            $company->owner_id = $user->id;
+            $company->name = $user->company_name;
+            $company->industry_id = $user->industry;
+            $company->save();
 
-            // team attach alias
-            $user->attachTeam($team);
-            # code...
+            // company attach alias
+            $user->attachTeam($company);
         }
        });
     }

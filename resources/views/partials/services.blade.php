@@ -7,7 +7,7 @@
           <div class="w-full px-4">
              <div class="text-center justify-center mx-auto mb-12 lg:mb-20 max-w-[510px]">
                 <span class="font-semibold text-lg text-indigo-600 mb-2 block">
-                Our Services
+                Our Features
                 </span>
                 <h2
                 class="
@@ -64,7 +64,7 @@
                    </svg>
                 </div>
                 <h4 class="font-semibold text-xl text-dark mb-3">
-                   Refreshing Design
+                    No. User License
                 </h4>
                 <p class="text-body-color">
                    We dejoy working with discerning clients, people for whom
@@ -119,7 +119,7 @@
                    </svg>
                 </div>
                 <h4 class="font-semibold text-xl text-dark mb-3">
-                   Based on Tailwind CSS
+                    Financial Transactions
                 </h4>
                 <p class="text-body-color">
                    We dejoy working with discerning clients, people for whom
@@ -178,7 +178,7 @@
                    </svg>
                 </div>
                 <h4 class="font-semibold text-xl text-dark mb-3">
-                   100+ Components
+                    Dashboard
                 </h4>
                 <p class="text-body-color">
                    We dejoy working with discerning clients, people for whom
@@ -237,7 +237,7 @@
                    </svg>
                 </div>
                 <h4 class="font-semibold text-xl text-dark mb-3">
-                   Speed Optimized
+                    Financial Reporting
                 </h4>
                 <p class="text-body-color">
                    We dejoy working with discerning clients, people for whom
@@ -284,7 +284,7 @@
                    </svg>
                 </div>
                 <h4 class="font-semibold text-xl text-dark mb-3">
-                   Fully Customizable
+                    Payroll
                 </h4>
                 <p class="text-body-color">
                    We dejoy working with discerning clients, people for whom

@@ -55,19 +55,18 @@
                   </div>-->
                 </div>
               </div>
-              <div class="md:block md:ml-10 md:pr-4 md:space-x-8">
-
+              <div class="md:block md:ml-10 md:pr-4 md:space-x-6">
                 @if (Route::has('login'))
-
             @auth
                 <a href="{{ url('/home') }}" class="text-gray-500 font-medium dark:text-gray-500">Home</a>
             @else
             @endauth
-                <a href="{{ url('/pricing') }}" class="ml-2 text-gray-500 font-medium dark:text-gray-500">Pricing</a>
+                <a href="{{ url('/pricing') }}" class="ml-1 text-gray-500 font-medium dark:text-gray-500">Pricing</a>
+                <a href="{{ url('/about') }}" class="ml-1 text-gray-500 font-medium dark:text-gray-500">About</a>
               @guest
-                <a href="{{ route('login') }}" class="ml-2 text-gray-500 font-medium dark:text-gray-500">Log in</a>
+                <a href="{{ route('login') }}" class="ml-1 text-gray-500 font-medium dark:text-gray-500">Log in</a>
                @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="ml-2 text-gray-500 font-medium dark:text-gray-500">Register</a>
+                <a href="{{ route('register') }}" class="ml-1 text-gray-500 font-medium dark:text-gray-500">Register</a>
                @endif
               @endguest
              @endif
@@ -141,7 +140,6 @@
     </div>
  </div>
    @include('partials.services')
-   @include('partials.contact')
 <!--Footer-->
     <footer class="bg-gray-200 text-center lg:text-left block">
         <div class="text-gray-700 text-center p-4" style="">

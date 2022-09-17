@@ -20,6 +20,10 @@ Route::get('/', function () {
 Route::get('/pricing', function () {
     return view('pricing');
 });
+Route::get('/about', function () {
+    return view('about');
+});
+
 
 //Route::resource('verify', 'Auth\TwoFactorController')->only(['index', 'store']);
 require 'admin.php';
