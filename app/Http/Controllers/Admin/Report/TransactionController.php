@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Report;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
-use App\Models\Company;
+use App\Models\CompanyAccount;
 use App\Models\Industry;
 use DB;
 class TransactionController extends Controller
@@ -17,10 +17,10 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = DB::table('transactions')->join('accounts', 'transactions.account_id', '=', 'accounts.id')
+        $transactions = DB::table('transactions')->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
         //->join('companies', 'transactions.team_id', '=', 'companies.id')
         ->select('transactions.id','transactions.type','transactions.reference_no','transactions.description_to_debit','transactions.description_to_credit',
-        'transactions.date','transactions.created_at','transactions.amount','accounts.code','accounts.name',)
+        'transactions.date','transactions.created_at','transactions.amount','companyaccount.code','companyaccount.name',)
         ->latest('transactions.created_at')->paginate(10);
 
        // dd($transactions);
@@ -68,12 +68,8 @@ class TransactionController extends Controller
     public function edit($id)
     {
         $transaction = Transaction::find($id);
-        //Find Company
-        $company = Company::find($transaction->team_id);
-        //Find Industry
-        $industries = Industry::find($company->industry_id);
         //Get Accounts from company's industry
-        $accounts = $industries->accounts;
+        $accounts = CompanyAccount::where('company_id',auth()->user()->current_team_id)->get();
 
         return view('admin.transaction.edit', compact('transaction','accounts'));
     }

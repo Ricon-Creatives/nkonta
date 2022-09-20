@@ -14,20 +14,23 @@ class DashboardController extends Controller
 
     public function index()
     {
-         $user = auth()->user()->id;
-         $bank1 = Transaction::with('account')
-         ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
-         ->where('accounts.name','Bank Acount 1')
+         $user = auth()->user();
+         $bank1 = Transaction::with('companyaccount')
+         ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+         ->where('companyaccount.company_id',$user->current_team_id)
+         ->where('companyaccount.name','Bank Acount 1')
          ->sum('transactions.amount');
 
          $bank2 = Transaction::with('account')
-         ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
-         ->where('accounts.name','Bank Acount 2')
+         ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+         ->where('companyaccount.company_id',$user->current_team_id)
+         ->where('companyaccount.name','Bank Acount 2')
          ->sum('transactions.amount');
 
          $pettyCash = Transaction::with('account')
-         ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
-         ->where('accounts.name','Petty Cash')
+         ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+         ->where('companyaccount.company_id',$user->current_team_id)
+         ->where('companyaccount.name','Petty Cash')
          ->sum('transactions.amount');
 
         //dd($query);
@@ -37,24 +40,27 @@ class DashboardController extends Controller
 
     public function income()
     {
-        $user = auth()->user()->id;
+        $user = auth()->user();
 
-        $query = Transaction::with('account')
-        ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
-        ->where('accounts.type','Revenue')->orWhere('accounts.type','Expense')
-        ->select("transactions.type", DB::raw('SUM(amount) as total,accounts.name,transactions.type'))
-        ->groupBy(["transactions.type","accounts.name"])
-       /// ->orderBy('accounts.name','asc')
+        $query = Transaction::with('companyaccount')
+        ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+        ->where('companyaccount.company_id',$user->current_team_id)
+        ->where('companyaccount.type','Revenue')->orWhere('companyaccount.type','Expense')
+        ->select("transactions.type", DB::raw('SUM(amount) as total,companyaccount.name,transactions.type'))
+        ->groupBy(["transactions.type","companyaccount.name"])
+       /// ->orderBy('companyaccount.name','asc')
         ->get();
 
-        $receivables = Transaction::with('account')
-        ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
-        ->where('accounts.name','Accounts Receivable')
+        $receivables = Transaction::with('companyaccount')
+        ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+        ->where('companyaccount.company_id',$user->current_team_id)
+        ->where('companyaccount.name','Accounts Receivable')
         ->sum('transactions.amount');
 
-       $revenue = Transaction::with('account')
-       ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
-       ->where('accounts.name','Revenue')
+       $revenue = Transaction::with('companyaccount')
+       ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+       ->where('companyaccount.company_id',$user->current_team_id)
+       ->where('companyaccount.name','Revenue')
        ->sum('transactions.amount');
 
        return response()->json([
@@ -66,21 +72,24 @@ class DashboardController extends Controller
 
     public function cash()
     {
-        $user = auth()->user()->id;
+        $user = auth()->user();
 
-          $bank1 = Transaction::with('account')
-          ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
-          ->where('accounts.name','Bank Acount 1')
+          $bank1 = Transaction::with('companyaccount')
+          ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+          ->where('companyaccount.company_id',$user->current_team_id)
+          ->where('companyaccount.name','Bank Acount 1')
           ->sum('transactions.amount');
 
-          $bank2 = Transaction::with('account')
-          ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
-          ->where('accounts.name','Bank Acount 2')
+          $bank2 = Transaction::with('companyaccount')
+          ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+          ->where('companyaccount.company_id',$user->current_team_id)
+          ->where('companyaccount.name','Bank Acount 2')
           ->sum('transactions.amount');
 
-          $pettyCash = Transaction::with('account')
-          ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
-          ->where('accounts.name','Petty Cash')
+          $pettyCash = Transaction::with('companyaccount')
+          ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+          ->where('companyaccount.company_id',$user->current_team_id)
+          ->where('companyaccount.name','Petty Cash')
           ->sum('transactions.amount');
 
        // dd($totalRevenue);

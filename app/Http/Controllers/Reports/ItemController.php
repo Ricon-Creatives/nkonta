@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Reports;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ItemRequest;
-use App\Models\Industry;
 use App\Models\Title;
 use App\Models\Item;
+use App\Models\CompanyAccount;
 use App\Services\ReportService;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
@@ -43,8 +42,8 @@ class ItemController extends Controller
     public function create()
     {
         $user = auth()->user();
-        $industries = Industry::find($user->currentTeam->industry_id);
-        $accounts = $industries->accounts;
+        $company = Company::find(auth()->user()->current_team_id);
+        $accounts = CompanyAccount::where('company_id',auth()->user()->current_team_id)->get();
         $title = Title::latest()->first();
 
         return view('dashboard.items',compact('accounts','title'));

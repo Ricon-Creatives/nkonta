@@ -4,6 +4,8 @@ namespace App\Observers;
 
 use App\Models\User;
 use App\Models\Company;
+use App\Models\Industry;
+use App\Models\CompanyAccount;
 use Illuminate\Support\Facades\DB;
 
 
@@ -27,6 +29,20 @@ class UserObserver
 
             // company attach alias
             $user->attachTeam($company);
+            // Find accounts
+            $industry = Industry::find($user->industry);
+            $accounts = $industry->accounts;
+            // assign accounts to company
+            foreach ($accounts as $account) {
+                CompanyAccount::create([
+                 'company_id' => $company->id,
+                 'code' => $account->code,
+                 'name' =>$account->name,
+                 'type' => $account->type,
+                 'financial_statement' => $account->financial_statement,
+                 'group_by_code' =>  $account->group_by_code
+                ]);
+            }
         }
        });
     }

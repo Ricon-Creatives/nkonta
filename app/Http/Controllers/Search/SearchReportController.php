@@ -8,7 +8,7 @@ use App\Models\Transaction;
 use Illuminate\Support\Carbon;
 use App\Models\Total;
 use App\Models\Title;
-use App\Models\Account;
+use App\Models\CompanyAccount;
 use App\Services\SummaryService;
 use DB;
 
@@ -27,14 +27,15 @@ class SearchReportController extends Controller
 
     public function revenueFilter(Request $request)
     {
-        $user = auth()->user()->id;
+        $user = auth()->user();
         $data = $request->all();
 
         $from = Carbon::parse($request->from_date);
         $to = Carbon::parse($request->to_date);
 
-        $transactions = Transaction::join('accounts', 'transactions.account_id', '=', 'accounts.id')
-        ->where('accounts.type',$request->type)
+        $transactions = Transaction::join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+        ->where('companyaccount.company_id',$user->current_team_id)
+        ->where('companyaccount.type',$request->type)
         ->whereBetween('transactions.created_at',[$from,$to])
         ->paginate(10);
 
@@ -45,14 +46,15 @@ class SearchReportController extends Controller
 
     public function expenseFilter(Request $request)
     {
-        $user = auth()->user()->id;
+        $user = auth()->user();
         $data = $request->all();
 
         $from = Carbon::parse($request->from_date);
         $to = Carbon::parse($request->to_date);
 
-        $transactions = Transaction::join('accounts', 'transactions.account_id', '=', 'accounts.id')
-        ->where('accounts.type','Expense')
+        $transactions = Transaction::join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+        ->where('companyaccount.company_id',$user->current_team_id)
+        ->where('companyaccount.type','Expense')
         ->whereBetween('transactions.created_at',[$from,$to])
         ->paginate(10);
 
@@ -64,14 +66,15 @@ class SearchReportController extends Controller
 
     public function taxFilter(Request $request)
     {
-        $user = auth()->user()->id;
+        $user = auth()->user();
         $data = $request->all();
 
         $from = Carbon::parse($request->from_date);
         $to = Carbon::parse($request->to_date);
 
-        $transactions = Transaction::join('accounts', 'transactions.account_id', '=', 'accounts.id')
-        ->where('accounts.type',$request->type)
+        $transactions = Transaction::join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+        ->where('companyaccount.company_id',$user->current_team_id)
+        ->where('companyaccount.type',$request->type)
         ->whereBetween('transactions.created_at',[$from,$to])
         ->paginate(10);
 
@@ -89,10 +92,11 @@ class SearchReportController extends Controller
         $to = Carbon::parse($request->to_date);
 
         $transactions =  DB::table('transactions')->where('transactions.team_id',$companyId)
-        ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
+        ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+        ->where('companyaccount.company_id',auth()->user()->current_team_id)
         ->whereBetween('transactions.created_at',[$from,$to])
-        ->select('accounts.code',DB::raw('SUM(amount) as amount,transactions.type,accounts.name,accounts.group_by_code'))
-        ->groupBy('accounts.group_by_code','accounts.code','transactions.type','accounts.name')
+        ->select('companyaccount.code',DB::raw('SUM(amount) as amount,transactions.type,companyaccount.name,companyaccount.group_by_code'))
+        ->groupBy('companyaccount.group_by_code','companyaccount.code','transactions.type','companyaccount.name')
         ->get()->toArray();
 
         //Find duplicate accounts
@@ -118,11 +122,12 @@ class SearchReportController extends Controller
 
         //generate the accounts for balance sheet
         $accounts = DB::table('totals')->where('totals.team_id',$companyId)
-        ->join('accounts', 'totals.account_id', '=', 'accounts.id')
+        ->join('companyaccount', 'totals.account_id', '=', 'companyaccount.id')
+        ->where('companyaccount.company_id',auth()->user()->current_team_id)
         ->whereBetween('totals.created_at', [$from,$to])
-        ->where('accounts.type','!=','Revenue')->where('accounts.type','!=','Expense')
-        ->select('accounts.code',DB::raw('SUM(amount) as amount,accounts.type,accounts.name'))
-        ->groupBy('accounts.code','accounts.type','accounts.name')
+        ->where('companyaccount.type','!=','Revenue')->where('companyaccount.type','!=','Expense')
+        ->select('companyaccount.code',DB::raw('SUM(amount) as amount,companyaccount.type,companyaccount.name'))
+        ->groupBy('companyaccount.code','companyaccount.type','companyaccount.name')
         ->get();
 
         //dd($data);
@@ -139,10 +144,11 @@ class SearchReportController extends Controller
         $to = Carbon::parse($request->to_date);
 
         //generate the accounts for balance sheet
-        $books = Total::join('accounts', 'totals.account_id', '=', 'accounts.id')
+        $books = Total::join('companyaccount', 'totals.account_id', '=', 'companyaccount.id')
+        ->where('companyaccount.company_id',auth()->user()->current_team_id)
         ->whereBetween('totals.created_at', [$from,$to])
-        ->orWhere('accounts.type','Expense')
-        ->where('accounts.type','Revenue')
+        ->orWhere('companyaccount.type','Expense')
+        ->where('companyaccount.type','Revenue')
         ->orderBy('totals.created_at')
         ->get();
 
@@ -157,13 +163,13 @@ class SearchReportController extends Controller
         $search =\Request::get('search');
 
         //generate the accounts for balance sheet
-        $transactions = Transaction::with(['account'])
+        $transactions = Transaction::with(['companyaccount'])
         ->where(function($query) use ($search){
             $query->where('company_name', 'Like',"%$search%")->orWhere('type','Like',"%$search%")
             ->orWhere('amount','Like',"%$search%")->orWhere('reference_no','Like',"%$search%");
             })->paginate(10);
 
-            $accounts = Account::get();
+       $accounts = CompanyAccount::where('company_id',auth()->user()->current_team_id)->get();
 
         $transactions->appends($data);
 
@@ -175,7 +181,6 @@ class SearchReportController extends Controller
         $data = $request->all();
         $search =\Request::get('search');
 
-        //generate the accounts for balance sheet
         $sales = Title::where('type','income')
         ->where(function($query) use ($search){
             $query->where('name', 'Like',"%$search%")->orWhere('vat','Like',"%$search%")

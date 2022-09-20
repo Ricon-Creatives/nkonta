@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Mpociot\Teamwork\TeamworkTeam;
 class Company extends TeamworkTeam
 {
-     /*
+     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -32,6 +32,16 @@ class Company extends TeamworkTeam
     public function industry(): HasOne
     {
         return $this->hasOne(Industry::class);
+    }
+
+      /**
+     * The industries that belong to the Account
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function companyaccount()
+    {
+        return $this->belongsToMany(CompanyAccount::class)->orderBy('name','asc');
     }
 
 }

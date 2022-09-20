@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Reports;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Payroll;
-use App\Models\Account;
+use App\Models\CompanyAccount;
 use App\Models\Transaction;
 use App\Services\ReportService;
 use Illuminate\Support\Carbon;
@@ -32,9 +32,12 @@ class SubmitTransactionController extends Controller
         $salaryAmount = Payroll::whereBelongsTo($user)->whereMonth('created_at',$month)->sum('salary');
         $taxAmount = Payroll::whereBelongsTo($user)->whereMonth('created_at',$month)->sum('tax_deductable');
         //Get account ids for salary and tax (Salary - Bank Account)(Tax - Bank Account)
-        $slarayId = Account::where('code','6070')->get();
-        $bankId = Account::select('id','code','name')->where('code','1010')->get();
-        $taxId = Account::select('id','code','name')->where('code','7200')->get();
+        $slarayId = CompanyAccount::where('company_id',auth()->user()->current_team_id)->where('code','6070')->get();
+        $bankId =  CompanyAccount::select('id','code','name')->where('company_id',auth()->user()->current_team_id)
+                  ->where('code','1010')->get();
+        $taxId =   CompanyAccount::select('id','code','name')->where('code','7200')
+                ->where('company_id',auth()->user()->current_team_id)
+                ->get();
 
         //Create a request
         $salariesRequest = new Request([

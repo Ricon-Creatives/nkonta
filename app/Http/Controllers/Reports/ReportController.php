@@ -14,8 +14,9 @@ class ReportController extends Controller
     {
         $user = auth()->user()->id;
 
-        $transactions = Transaction::join('accounts', 'transactions.account_id', '=', 'accounts.id')
-        ->where('accounts.type','Revenue')
+        $transactions = Transaction::join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+        ->where('companyaccount.company_id',auth()->user()->current_team_id)
+        ->where('companyaccount.type','Revenue')
         ->whereDate('transactions.created_at',Carbon::today())
         ->paginate(10);
 
@@ -28,8 +29,9 @@ class ReportController extends Controller
     {
         $user = auth()->user()->id;
 
-        $transactions = Transaction::join('accounts', 'transactions.account_id', '=', 'accounts.id')
-        ->where('accounts.type','Expense')
+        $transactions = Transaction::join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+        ->where('companyaccount.company_id',auth()->user()->current_team_id)
+        ->where('companyaccount.type','Expense')
         ->whereDate('transactions.created_at',Carbon::today())
         ->paginate(10);
 
@@ -42,8 +44,9 @@ class ReportController extends Controller
     {
         $user = auth()->user()->id;
 
-        $transactions = Transaction::join('accounts', 'transactions.account_id', '=', 'accounts.id')
-        ->where('accounts.type','VAT')
+        $transactions = Transaction::join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
+        ->where('companyaccount.company_id',auth()->user()->current_team_id)
+        ->where('companyaccount.type','VAT')
         ->whereDate('transactions.created_at',Carbon::today())
         ->paginate(10);
 

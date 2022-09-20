@@ -20,10 +20,11 @@ class ProfitLossController extends Controller
     {
         $user = auth()->user()->id;
 
-        $books = Total::join('accounts', 'totals.account_id', '=', 'accounts.id')
+        $books = Total::join('companyaccount', 'totals.account_id', '=', 'companyaccount.id')
+        ->where('companyaccount.company_id',auth()->user()->current_team_id)
         ->whereDate('totals.created_at', Carbon::today())
-        ->orWhere('accounts.type','Expense')
-        ->where('accounts.type','Revenue')
+        ->orWhere('companyaccount.type','Expense')
+        ->where('companyaccount.type','Revenue')
         ->orderBy('totals.created_at')
         ->get();
 

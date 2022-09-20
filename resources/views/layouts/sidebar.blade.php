@@ -144,6 +144,14 @@
                     Employees
                 </a>
             </li>
+            <li>
+                <a href="{{ route('company-accounts.index') }}" class="flex flex-col items-center space-x-3 text-white p-2 rounded-md font-medium hover:bg-gray-400 focus:bg-gray-200 focus:shadow-outline">
+                    <span class="text-white text-3xl">
+                <i class="fa-solid fa-tags"></i>
+                    </span>
+                    Accounts
+                </a>
+            </li>
 
         </ul>
     </div>

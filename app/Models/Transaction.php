@@ -42,9 +42,9 @@ class Transaction extends Model
        * Get the account that owns the Transactions
        *
        */
-      public function account()
+      public function companyaccount()
       {
-          return $this->belongsTo(Account::class);
+          return $this->belongsTo(CompanyAccount::class,'account_id');
       }
 
 

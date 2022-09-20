@@ -33,10 +33,10 @@ class TrialSummaryController extends Controller
     $companyId = auth()->user()->currentTeam->id;
 
     $transactions =  DB::table('transactions')->where('transactions.team_id',$companyId)
-    ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
+    ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
     ->whereDate('transactions.created_at',Carbon::today())
-    ->select('accounts.code',DB::raw('SUM(amount) as amount,transactions.type,accounts.name,accounts.group_by_code'))
-    ->groupBy('accounts.group_by_code','accounts.code','transactions.type','accounts.name')
+    ->select('companyaccount.code',DB::raw('SUM(amount) as amount,transactions.type,companyaccount.name,companyaccount.group_by_code'))
+    ->groupBy('companyaccount.group_by_code','companyaccount.code','transactions.type','companyaccount.name')
     ->get();
 
     //Find duplicate accounts

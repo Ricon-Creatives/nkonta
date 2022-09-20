@@ -98,10 +98,10 @@
                           {{ \Carbon\Carbon::parse($transaction->date)->format('D d-M-Y') }}
                       </td>
                       <td class="py-1 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {{ $transaction->account->code }}
+                        {{ $transaction->companyaccount->code }}
                     </td>
                     <td class="py-1 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {{ $transaction->account->name }}
+                        {{ $transaction->companyaccount->name }}
                     </td>
                       <td class="py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                           {{ $transaction->reference_no }}
