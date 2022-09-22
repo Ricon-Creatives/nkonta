@@ -122,7 +122,7 @@ const Account = () => {
                         bg-white bg-no-repeat transition ease-in-out m-0
                         focus:text-gray-600 focus:bg-white focus:outline-none" value={type}
                         onChange={e => accountsType(e.target.value)} required>
-                          <option disabled>Select Type</option>
+                          <option>Select Type</option>
                           <option value="Asset">Asset</option>
                           <option value="Liability">Liability</option>
                           <option value="Equity">Equity</option>
@@ -141,7 +141,7 @@ const Account = () => {
                         bg-white bg-no-repeat transition ease-in-out m-0
                         focus:text-gray-600 focus:bg-white focus:outline-none" name="type" id="type"
                         onChange={e => generateCode(e.target.value)} required>
-                          <option disabled>Which Should It Follow</option>
+                          <option>Which Should It Follow</option>
                           {data.map((account,i) => (
                               <option key={i} value={account.code}>{account.name} - {account.code}</option>
                           ))}

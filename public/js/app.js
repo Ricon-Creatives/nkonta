@@ -11357,9 +11357,7 @@ var Account = function Account() {
       return accountsType(e.target.value);
     },
     required: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-    disabled: true
-  }, "Select Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Select Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
     value: "Asset"
   }, "Asset"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
     value: "Liability"
@@ -11383,9 +11381,7 @@ var Account = function Account() {
       return generateCode(e.target.value);
     },
     required: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-    disabled: true
-  }, "Which Should It Follow"), data.map(function (account, i) {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Which Should It Follow"), data.map(function (account, i) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
       key: i,
       value: account.code
