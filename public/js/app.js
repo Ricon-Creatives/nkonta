@@ -11240,7 +11240,17 @@ var Account = function Account() {
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState12 = _slicedToArray(_useState11, 2),
       statement = _useState12[0],
-      setStatement = _useState12[1]; //
+      setStatement = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState14 = _slicedToArray(_useState13, 2),
+      isActive = _useState14[0],
+      setIsActive = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState16 = _slicedToArray(_useState15, 2),
+      codeExist = _useState16[0],
+      setCodeExist = _useState16[1]; //
 
 
   var accountsType = function accountsType(val) {
@@ -11253,7 +11263,20 @@ var Account = function Account() {
 
 
   var generateCode = function generateCode(arg) {
-    setCode((0,lodash__WEBPACK_IMPORTED_MODULE_3__.parseInt)(arg) + 1);
+    var newCode = (0,lodash__WEBPACK_IMPORTED_MODULE_3__.parseInt)(arg) + 1;
+    console.log(newCode); //go through data
+
+    var isCode = data.find(function (ele) {
+      return (0,lodash__WEBPACK_IMPORTED_MODULE_3__.parseInt)(ele.code) == newCode;
+    });
+    setCodeExist(isCode); //check if code exist
+
+    if (isCode) {
+      generateCode(newCode);
+    } else {
+      setCode(newCode);
+    }
+
     getStatement();
   }; //
 
@@ -11286,12 +11309,21 @@ var Account = function Account() {
         text: "Select which account it should follow ",
         icon: "warning"
       });
+    } else if (codeExist) {
+      sweetalert__WEBPACK_IMPORTED_MODULE_4___default()({
+        text: "Account code already exist",
+        icon: "warning"
+      });
     }
   }; //
 
 
+  var checkCode = function checkCode(newCode) {}; //
+
+
   var submit = function submit(e) {
     validate();
+    setIsActive(true);
     e.preventDefault();
     var data = {
       name: name,
@@ -11307,6 +11339,7 @@ var Account = function Account() {
         text: "New Account added",
         icon: "success"
       });
+      setIsActive(false);
     })["catch"](function (err) {
       console.log("Something went wrong", err, "warning");
     });
@@ -11406,17 +11439,17 @@ var Account = function Account() {
     className: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
   }, "New Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     id: "code",
-    className: "rounded border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50mt-1 w-full",
+    className: "rounded border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 w-full",
     type: "text",
     value: code,
     required: true,
-    autoFocus: true,
-    readOnly: true
+    autoFocus: true
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "flex items-center justify-between mt-5 px-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "inline-block px-6 py-2.5 bg-purple-900 text-white font-medium text-xs leading-tight rounded shadow-sm hover:bg-purple-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out",
-    onClick: submit
+    onClick: submit,
+    disabled: isActive
   }, "Finish")))));
 };
 

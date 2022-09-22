@@ -76,9 +76,10 @@ Route::resource('employee', 'User\EmployeeController');
 Route::resource('invites', 'User\InviteController');
 Route::get('/invite/accept/{token}', 'User\InviteController@accept')->name('invite.accept');
 //
-Route::get('company-accounts/accounts', 'Account\CompanyAccountsController@account');
-Route::post('company-accounts/account', 'Account\CompanyAccountsController@store');
 Route::resource('company-accounts', 'Account\CompanyAccountsController');
+Route::get('company-accounts/accounts', 'Account\CompanyAccountsController@account');
+//Route::delete('company-accounts/accounts/{id}', 'Account\CompanyAccountsController@destroy');
+Route::post('company-accounts/account', 'Account\CompanyAccountsController@store');
 
 //
 Route::resource('payroll', 'Reports\PayrollController');

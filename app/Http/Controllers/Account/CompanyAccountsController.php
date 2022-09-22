@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\CompanyAccount;
-
-
-
+use DB;
 
 class CompanyAccountsController extends Controller
 {
@@ -20,7 +18,7 @@ class CompanyAccountsController extends Controller
     public function index()
     {
         $accounts = CompanyAccount::where('company_id',auth()->user()->current_team_id)
-        ->orderBy('code')->get();
+        ->orderBy('code')->paginate(15);
 
         return view('dashboard.accounts.index', compact('accounts'));
     }
@@ -107,6 +105,8 @@ class CompanyAccountsController extends Controller
      */
     public function destroy($id)
     {
-        //
+     CompanyAccount::where('id',$id)->delete();
+
+     return redirect()->route('company-accounts.index')->withMessage('Account deleted successfully.');
     }
 }

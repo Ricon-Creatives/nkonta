@@ -11,6 +11,8 @@ const Account = () => {
     const [type, setType] = useState('')
     const [code, setCode] = useState(0)
     const [statement, setStatement] = useState('')
+    const [isActive, setIsActive] = useState(false)
+    const [codeExist, setCodeExist] = useState()
 
     //
     const accountsType = (val) =>{
@@ -23,7 +25,20 @@ const Account = () => {
 
     //
     const generateCode = (arg) => {
-        setCode(parseInt(arg) +1)
+      let newCode = parseInt(arg) +1
+      console.log(newCode)
+        //go through data
+      let isCode = data.find((ele) => {
+        return  parseInt(ele.code) == newCode
+          })
+
+          setCodeExist(isCode)
+      //check if code exist
+      if (isCode) {
+        generateCode(newCode)
+      }else{
+        setCode(newCode)
+      }
         getStatement()
     }
 
@@ -35,7 +50,6 @@ const Account = () => {
         setStatement('Income Statement')
        }
     }
-
 
   const clearFields = () =>{
    setName('')
@@ -57,11 +71,22 @@ const Account = () => {
             text: "Select which account it should follow ",
             icon: "warning",
           });
+    }else if(codeExist){
+      swal({
+        text: "Account code already exist",
+        icon: "warning",
+      });
     }
+  }
+
+  //
+  const checkCode = (newCode) => {
+
   }
     //
     const submit = (e) => {
-        validate()
+      validate()
+      setIsActive(true)
         e.preventDefault()
         let data = {
         name,code,type,
@@ -77,6 +102,7 @@ const Account = () => {
                 text: "New Account added",
                 icon: "success",
               });
+              setIsActive(false)
         })
         .catch((err) => {
           console.log("Something went wrong", err, "warning");
@@ -163,14 +189,14 @@ const Account = () => {
                         New Code
                         </label>
                        <input id="code" className="rounded border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200
-                       focus:ring-opacity-50mt-1 w-full" type="text" value={code} required autoFocus readOnly/>
+                       focus:ring-opacity-50 mt-1 w-full" type="text" value={code} required autoFocus/>
                    </div>
                 </div>
 
                 <div className="flex items-center justify-between mt-5 px-4">
                     <button className="inline-block px-6 py-2.5 bg-purple-900 text-white font-medium text-xs leading-tight rounded shadow-sm hover:bg-purple-700 hover:shadow-lg
                              focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out"
-                             onClick={submit}>
+                             onClick={submit} disabled={isActive}>
                         Finish
                     </button>
                 </div>
