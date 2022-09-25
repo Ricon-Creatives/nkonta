@@ -45,7 +45,7 @@
               </tr>
             </thead>
             <tbody>
-                @forelse ( $accounts as $account)
+                @foreach ($accounts as $account)
                 <tr class="bg-white border-b">
                     <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                         {{ $account->code }}
@@ -60,29 +60,16 @@
                     {{$account->financial_statement }}
                 </td>
                 <td class="flex flex-row px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                    @if(Auth::user()->isTeamOwner() || Auth::user()->hasRole('Manager'))
                     <form method="get" action="{{route('company-accounts.edit',$account->id)}}">
                         @csrf
-                    <button class="mx-2">
+                    <button>
                         <i class="fa-solid fa-edit text-purple-900"></i>
                     </button>
                     </form>
-                    <span>|</span>
-                    <form method="post" action="{{route('company-accounts.destroy',$account->id)}}">
-                        @method('DELETE')
-                        @csrf
-                    <button class="mx-2">
-                        <i class="fa-solid fa-trash text-purple-900"></i>
-                    </button>
-                    </form>
-                    @endif
+
                 </td>
-
                 </tr>
-                @empty
-
-                @endforelse
-
+                @endforeach
             </tbody>
             {{ $accounts->links() }}
           </table>
