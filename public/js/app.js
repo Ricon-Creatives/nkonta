@@ -11318,9 +11318,6 @@ var Account = function Account() {
   }; //
 
 
-  var checkCode = function checkCode(newCode) {}; //
-
-
   var submit = function submit(e) {
     validate();
     setIsActive(true);
@@ -11346,7 +11343,7 @@ var Account = function Account() {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/company-accounts/accounts").then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/company-accounts/accounts/all").then(function (res) {
       setAccounts(res.data);
       setData(res.data); // console.log(res.data)
     })["catch"](function (error) {

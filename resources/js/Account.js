@@ -79,10 +79,6 @@ const Account = () => {
     }
   }
 
-  //
-  const checkCode = (newCode) => {
-
-  }
     //
     const submit = (e) => {
       validate()
@@ -111,7 +107,7 @@ const Account = () => {
 
     useEffect(() => {
         axios
-            .get("/company-accounts/accounts")
+            .get("/company-accounts/accounts/all")
             .then((res) => {
                 setAccounts(res.data);
                 setData(res.data)

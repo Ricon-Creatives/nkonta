@@ -11615,9 +11615,6 @@ select{
 .items-center{
   align-items: center;
 }
-.items-baseline{
-  align-items: baseline;
-}
 .justify-start{
   justify-content: flex-start;
 }
@@ -11629,9 +11626,6 @@ select{
 }
 .justify-between{
   justify-content: space-between;
-}
-.justify-items-end{
-  justify-items: end;
 }
 .space-x-4 > :not([hidden]) ~ :not([hidden]){
   --tw-space-x-reverse: 0;
@@ -20855,9 +20849,6 @@ readers do not read off random characters that represent icons */
     --tw-space-x-reverse: 0;
     margin-right: calc(1.5rem * var(--tw-space-x-reverse));
     margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
-  }
-  .md\:border{
-    border-width: 1px;
   }
   .md\:border-r{
     border-right-width: 1px;

@@ -77,7 +77,7 @@ Route::resource('invites', 'User\InviteController');
 Route::get('/invite/accept/{token}', 'User\InviteController@accept')->name('invite.accept');
 //
 Route::resource('company-accounts', 'Account\CompanyAccountsController');
-Route::get('company-accounts/accounts', 'Account\CompanyAccountsController@account');
+Route::get('company-accounts/accounts/all', 'Account\CompanyAccountsController@account');
 //Route::delete('company-accounts/accounts/{id}', 'Account\CompanyAccountsController@destroy');
 Route::post('company-accounts/account', 'Account\CompanyAccountsController@store');
 
