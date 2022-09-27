@@ -43,9 +43,14 @@
                     </select>
                 </div>
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <x-label for="phone" :value="__('Financial Statement')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
-                        <x-input id="phone" class="mt-1 w-full" type="text" name="financial_statement" value="{{ $account->financial_statement }}" required autofocus />
-                      </div>
+                                <x-label :value="__('Financial Statement')" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" />
+                                <select class="form-select appearance-none block py-1.5 text-base font-normal text-gray-600
+                                bg-white bg-no-repeat transition ease-in-out m-0 w-full
+                                focus:text-gray-600 focus:bg-white focus:outline-none" name="financial_statement" required>
+                                  <option value="Asset" {{ $account->financial_statement == 'Balance Sheet' ? 'selected' :'' }}>Balance Sheet</option>
+                                  <option value="Liability" {{ $account->financial_statement == 'Income Statement' ? 'selected' :'' }}>Income Statement</option>
+                              </select>
+                        </div>
                 </div>
 
                 <div class="flex items-center justify-between mt-5 px-4">
