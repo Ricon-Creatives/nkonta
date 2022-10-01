@@ -55,10 +55,10 @@
  <!-- ====== Team Section Start -->
  <section class="pb-12 lg:pb-[90px] overflow-hidden">
     <div class="container">
-       <div class="flex flex-wrap justify-center items-center -mx-4">
+       <div class="flex flex-wrap justify-left items-center -mx-4">
           <div class="w-full lg:w-1/2 xl:w-11/12 px-4">
              <div class="mt-10 lg:mt-0">
-                <span class="font-semibold text-lg text-center text-indigo-600 mb-2 block">
+                <span class="font-semibold text-lg text-left text-indigo-600 mb-2 block">
                     Our Team
                 </span>
                 <p class="text-base text-body-color mb-2">
@@ -77,10 +77,10 @@
  <!-- ====== About Section Start -->
  <section class="pb-12 lg:pb-[90px] overflow-hidden">
     <div class="container">
-       <div class="flex flex-wrap justify-center items-center -mx-4">
+       <div class="flex flex-wrap justify-left items-center -mx-4">
           <div class="w-full lg:w-1/2 xl:w-11/12 px-4">
              <div class="mt-10 lg:mt-0">
-                <span class="font-semibold text-lg text-center text-indigo-600 mb-2 block">
+                <span class="font-semibold text-lg text-left text-indigo-600 mb-2 block">
                     Why Use nkonta
                 </span>
                 <p class="text-base text-body-color mb-2">
