@@ -12,8 +12,6 @@ class ReportService
     public function storeTotals($transactions)
     {
 
-        $user =  auth()->user();
-
         foreach ($transactions as $input) {
 
             //AcountId-amount-date
@@ -44,7 +42,7 @@ class ReportService
                 'transaction_id' => $input->id,
             ]);
 
-            $data->save();
+          //  $data->save();
        // }
 
         }

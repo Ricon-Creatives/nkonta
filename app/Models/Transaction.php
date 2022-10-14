@@ -28,6 +28,7 @@ class Transaction extends Model
         'company_name',
         'contact_address',
         'expected_payment_date',
+        'slug'
     ];
 
 

@@ -32,7 +32,7 @@ class TransactionsController extends Controller
     public function index()
     {
         $transactions = Transaction::with(['companyaccount'])
-       // ->whereDate('created_at',Carbon::today())
+        ->whereDate('created_at',Carbon::today())
         ->latest()->paginate(10);
         $accounts = CompanyAccount::where('company_id',auth()->user()->current_team_id)->get();
 
@@ -81,6 +81,7 @@ class TransactionsController extends Controller
 
          $transactions = [$data,$copy];
          //
+       //  dd($transactions);
          $this->reportService->storeTotals($transactions);
      });
 
