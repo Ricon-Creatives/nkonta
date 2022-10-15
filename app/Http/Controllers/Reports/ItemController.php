@@ -8,6 +8,7 @@ use App\Http\Requests\ItemRequest;
 use App\Models\Title;
 use App\Models\Item;
 use App\Models\CompanyAccount;
+use App\Models\Company;
 use App\Services\ReportService;
 use Illuminate\Support\Facades\DB;
 
