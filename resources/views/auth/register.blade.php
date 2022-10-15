@@ -26,7 +26,7 @@
                 <select class="form-select appearance-none block text-base font-normal text-gray-600
                     bg-white bg-no-repeat transition ease-in-out mt-1 w-full
                     focus:text-gray-600 focus:bg-white focus:outline-none" name="industry" required>
-                      <option>Choose your industry</option>
+                      <option disabled>Choose your industry</option>
                        @foreach($industries as $industry)
                        <option value="{{$industry->id }}"}>
                         {{ $industry->name }}
