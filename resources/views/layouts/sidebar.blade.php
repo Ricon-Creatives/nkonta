@@ -93,7 +93,7 @@
               class="px-2 py-0 transition-colors duration-150 text-white">
               <a href="{{ route('profit-loss') }}" class="{{ request()->routeIs('profit-loss') ? ' text-blue-600' : '' }} focus:shadow-outline
                   text-left block text-sm leading-5 ">
-                  <span class="">Prfoit & Loss</span>
+                  <span class="">Profit & Loss</span>
               </a>
               </li>
                   </ul>

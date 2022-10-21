@@ -18,19 +18,19 @@ class DashboardController extends Controller
          $bank1 = Transaction::with('companyaccount')
          ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
          ->where('companyaccount.company_id',$user->current_team_id)
-         ->where('companyaccount.name','Bank Acount 1')
+         ->where('companyaccount.code','1010')
          ->sum('transactions.amount');
 
          $bank2 = Transaction::with('account')
          ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
          ->where('companyaccount.company_id',$user->current_team_id)
-         ->where('companyaccount.name','Bank Acount 2')
+         ->where('companyaccount.code','1020')
          ->sum('transactions.amount');
 
          $pettyCash = Transaction::with('account')
          ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
          ->where('companyaccount.company_id',$user->current_team_id)
-         ->where('companyaccount.name','Petty Cash')
+         ->where('companyaccount.code','1040')
          ->sum('transactions.amount');
 
         //dd($query);
@@ -77,19 +77,19 @@ class DashboardController extends Controller
           $bank1 = Transaction::with('companyaccount')
           ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
           ->where('companyaccount.company_id',$user->current_team_id)
-          ->where('companyaccount.name','Bank Acount 1')
+          ->where('companyaccount.code','1010')
           ->sum('transactions.amount');
 
           $bank2 = Transaction::with('companyaccount')
           ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
           ->where('companyaccount.company_id',$user->current_team_id)
-          ->where('companyaccount.name','Bank Acount 2')
+          ->where('companyaccount.code','1020')
           ->sum('transactions.amount');
 
           $pettyCash = Transaction::with('companyaccount')
           ->join('companyaccount', 'transactions.account_id', '=', 'companyaccount.id')
           ->where('companyaccount.company_id',$user->current_team_id)
-          ->where('companyaccount.name','Petty Cash')
+          ->where('companyaccount.code','1040')
           ->sum('transactions.amount');
 
        // dd($totalRevenue);

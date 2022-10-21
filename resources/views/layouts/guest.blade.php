@@ -34,7 +34,7 @@
                 <a href="{{ url('/home') }}" class="text-gray-500 font-medium dark:text-gray-500">Home</a>
             @else
             @endauth
-                <a href="{{ url('/pricing') }}" class="ml-1text-gray-500 font-medium dark:text-gray-500">Pricing</a>
+               <!-- <a href="{{ url('/pricing') }}" class="ml-1text-gray-500 font-medium dark:text-gray-500">Pricing</a>-->
                 <a href="{{ url('/about') }}" class="ml-1 text-gray-500 font-medium dark:text-gray-500">About</a>
               @guest
                 <a href="{{ route('login') }}" class="ml-1 text-gray-500 font-medium dark:text-gray-500">Log in</a>
